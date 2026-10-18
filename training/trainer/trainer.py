@@ -9,6 +9,7 @@ sys.path.append(parent_dir)
 sys.path.append(project_root_dir)
 
 import pickle
+import json
 import datetime
 import logging
 import numpy as np
@@ -31,6 +32,20 @@ from metrics.utils import get_test_metrics
 from sklearn.metrics import roc_auc_score, average_precision_score, roc_curve
 
 FFpp_pool=['FaceForensics++','FF-DF','FF-F2F','FF-FS','FF-NT']
+
+
+def move_batch_to_device(data_dict, device):
+    """Move tensor batch values to one device while preserving metadata/None."""
+    return {
+        key: value.to(device) if isinstance(value, torch.Tensor) else value
+        for key, value in data_dict.items()
+    }
+
+
+def _as_metric_scalar(value):
+    if torch.is_tensor(value):
+        return float(value.detach().float().mean().cpu().item())
+    return float(np.asarray(value, dtype=float).mean())
 
 
 class Trainer(object):
@@ -62,11 +77,16 @@ class Trainer(object):
         self.threshold_ratio = 0.05
         print("uncertainty thrshold ratio: ", self.threshold_ratio)
         
-        if self.config['device_choice'] == 'old':
-            self.device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
-        elif self.config['device_choice'] == 'new':
-            local_rank = int(os.environ["LOCAL_RANK"])
-            self.device = torch.device("cuda", local_rank if torch.cuda.is_available() else "cpu")
+        if torch.cuda.is_available():
+            if self.config['device_choice'] == 'new':
+                local_rank = int(os.environ.get(
+                    "LOCAL_RANK", self.config.get('local_rank', 0)
+                ))
+                self.device = torch.device("cuda", local_rank)
+            else:
+                self.device = torch.device("cuda")
+        else:
+            self.device = torch.device("cpu")
         self.logger.info(f"Using device: {self.device}")
         
         self.metric_scoring = metric_scoring
@@ -226,13 +246,52 @@ class Trainer(object):
             pickle.dump(data_dict, file)
         self.logger.info(f"data_dict saved to {file_path}")
 
-    def save_metrics(self, phase, metric_one_dataset, dataset_key):
+    def save_metrics(self, phase, metric_one_dataset, dataset_key, epoch=None, is_best=False):
         save_dir = os.path.join(self.log_dir, phase, dataset_key)
         os.makedirs(save_dir, exist_ok=True)
-        file_path = os.path.join(save_dir, 'metric_dict_best.pickle')
-        with open(file_path, 'wb') as file:
-            pickle.dump(metric_one_dataset, file)
-        self.logger.info(f"Metrics saved to {file_path}")
+        epoch_tag = f"{epoch + 1:03d}" if epoch is not None else "final"
+        prediction_arrays = {}
+        report = {}
+        for name, value in metric_one_dataset.items():
+            if isinstance(value, np.ndarray):
+                prediction_arrays[name] = value
+            elif isinstance(value, np.generic):
+                report[name] = value.item()
+            elif isinstance(value, dict):
+                report[name] = {
+                    key: (item.item() if isinstance(item, np.generic) else item)
+                    for key, item in value.items()
+                }
+            else:
+                report[name] = value
+
+        metrics_path = os.path.join(save_dir, f"metrics_epoch_{epoch_tag}.json")
+        with open(metrics_path, 'w', encoding='utf-8') as file:
+            json.dump(report, file, indent=2, allow_nan=False)
+            file.write('\n')
+        if prediction_arrays:
+            predictions_path = os.path.join(save_dir, f"predictions_epoch_{epoch_tag}.npz")
+            np.savez_compressed(predictions_path, **prediction_arrays)
+        if is_best:
+            file_path = os.path.join(save_dir, 'metric_dict_best.pickle')
+            with open(file_path, 'wb') as file:
+                pickle.dump(metric_one_dataset, file)
+            self.logger.info(f"Best metrics saved to {file_path}")
+        self.logger.info(f"Epoch metrics saved to {metrics_path}")
+
+    def save_latest_checkpoint(self, epoch):
+        """Save model weights after each completed epoch for recovery."""
+        if not self.config.get('save_model', False):
+            return
+        save_dir = self.config.get('save_path', self.log_dir)
+        os.makedirs(save_dir, exist_ok=True)
+        path = os.path.join(save_dir, 'ckpt_latest.pth')
+        model = self.model.module if isinstance(self.model, DDP) else self.model
+        torch.save(model.state_dict(), path)
+        with open(os.path.join(save_dir, 'latest_epoch.json'), 'w', encoding='utf-8') as file:
+            json.dump({'completed_epoch': epoch + 1, 'checkpoint': path}, file, indent=2)
+            file.write('\n')
+        self.logger.info(f"Latest checkpoint saved to {path} (completed epoch {epoch + 1})")
 
     def train_step(self, data_dict, epoch, total_epoch):
         if hasattr(self, 'step_count'):
@@ -308,13 +367,12 @@ class Trainer(object):
         # define training recorder
         train_recorder_loss = defaultdict(Recorder)
         train_recorder_metric = defaultdict(Recorder)
+        epoch_loss_values = defaultdict(list)
+        epoch_metric_values = defaultdict(list)
     
         for iteration, data_dict in tqdm(enumerate(train_data_loader),total=len(train_data_loader)):
             self.setTrain()
-            # more elegant and more scalable way of moving data to GPU
-            for key in data_dict.keys():
-                if data_dict[key]!=None and key!='name':
-                    data_dict[key]=data_dict[key].cuda()
+            data_dict = move_batch_to_device(data_dict, self.device)
 
             losses, predictions=self.train_step(data_dict, epoch, self.config['nEpochs'])
 
@@ -328,9 +386,11 @@ class Trainer(object):
             ## store metric
             for name, value in batch_metrics.items():
                 train_recorder_metric[name].update(value)
+                epoch_metric_values[name].append(_as_metric_scalar(value))
             ## store loss
             for name, value in losses.items():
                 train_recorder_loss[name].update(value)
+                epoch_loss_values[name].append(_as_metric_scalar(value))
 
             # run tensorboard to visualize the training process
             if iteration % 300 == 0 and self.config['local_rank']==0:
@@ -370,11 +430,18 @@ class Trainer(object):
             test_best_metric = None
             step_cnt += 1
 
+        epoch_loss = {name: float(np.mean(values)) for name, values in epoch_loss_values.items() if values}
+        epoch_metrics = {name: float(np.mean(values)) for name, values in epoch_metric_values.items() if values}
+        self.logger.info(f"Epoch[{epoch + 1}] training loss means: {epoch_loss}")
+        self.logger.info(f"Epoch[{epoch + 1}] training metric means: {epoch_metrics}")
+
         # adjust learning rate
         if type(self.model) is DDP:
             self.model.module.update_lr()
         else:
             self.model.update_lr()
+
+        self.save_latest_checkpoint(epoch)
 
         if epoch == 0 or (epoch+1)%test_epoch_freq==0:
             u_threshold = self.calculate_uthre(train_data_loader)
@@ -608,6 +675,11 @@ class Trainer(object):
         fused_y_pred = np.array(fused_binary_y_pred)
         fused_y_prob = np.array(fused_all_probs)
         fused_confidences = np.array(all_confidences_fused)
+        fused_precision, fused_recall, fused_f1, _ = metrics.precision_recall_fscore_support(
+            y_true, fused_y_pred, average='binary', zero_division=0
+        ) if len(binary_y_true) else (0.0, 0.0, 0.0, None)
+        fused_confusion = metrics.confusion_matrix(y_true, fused_y_pred, labels=[0, 1]).tolist()
+        class_counts = np.bincount(y_true, minlength=2).tolist()
 
         label_np = np.array(label_nps)
         spatial_pred_classes = np.array(spatial_pred_cls_nps)
@@ -700,10 +772,18 @@ class Trainer(object):
             'fused_auc': fused_auc,
             'fused_eer': fused_eer,
             'fused_ap': fused_ap,
+            'fused_precision': float(fused_precision),
+            'fused_recall': float(fused_recall),
+            'fused_f1': float(fused_f1),
+            'binary_confusion_matrix_real_fake': fused_confusion,
+            'binary_class_counts_real_fake': class_counts,
 
             'spatial_pred': spatial_y_pred,
             'frequency_pred': frequency_y_pred,
             'fused_pred': fused_y_pred,
+            'spatial_fake_probability': spatial_y_prob,
+            'frequency_fake_probability': frequency_y_prob,
+            'fused_fake_probability': fused_y_prob,
             'label': y_true,
             'losses': {k: v.avg for k, v in losses_one_dataset_recorder.items()},
             'spatial_mean_confidence': spatial_mean_conf,
@@ -714,7 +794,9 @@ class Trainer(object):
             'fused_std_confidence': fused_std_conf
         }
         
-        return losses_one_dataset_recorder, np.array(fused_predictions_nps), np.array(label_nps), np.array(feature_nps), metric_one_dataset
+        fused_predictions = np.concatenate(fused_predictions_nps, axis=0) if fused_predictions_nps else np.empty((0,))
+        features = np.concatenate(feature_nps, axis=0) if feature_nps else np.empty((0,))
+        return losses_one_dataset_recorder, fused_predictions, np.array(label_nps), features, metric_one_dataset
 
     def test_epoch(self, epoch, iteration, test_data_loaders, step, u_threshold):
         # set model to eval mode
@@ -766,6 +848,13 @@ class Trainer(object):
         """Save the best model and metrics."""
         save_dir = os.path.join(self.log_dir, 'test', key)
         os.makedirs(save_dir, exist_ok=True)
+        primary_metric = f"fused_{self.metric_scoring}"
+        primary_value = metric_one_dataset.get(primary_metric, -1)
+        primary_best = self.best_metrics_all_time[key][primary_metric]
+        primary_is_valid = isinstance(primary_value, (int, float, np.number)) and np.isfinite(primary_value) and primary_value >= 0
+        is_best = primary_is_valid and (
+            primary_value < primary_best if self.metric_scoring == 'eer' else primary_value > primary_best
+        )
 
         # Log dataset metrics
         metrics_str = f"dataset: {key}    step: {step}    "
@@ -782,6 +871,8 @@ class Trainer(object):
         for metric_name, metric_value in metric_one_dataset.items():
             if metric_name not in ['spatial_pred', 'frequency_pred', 'fused_pred', 'label', 'losses']:
                 if isinstance(metric_value, (int, float)) and metric_value != -1:  # Only process numeric metrics
+                    if not np.isfinite(metric_value):
+                        continue
                     metrics_str += f"testing-metric, {metric_name}: {metric_value}    "
                     
                     # Initialize if not present
@@ -821,17 +912,18 @@ class Trainer(object):
 
         self.logger.info(metrics_str)
 
-        # Save checkpoint and metrics
-        ckpt_name = 'ckpt_best.pth'
-        save_path = os.path.join(save_dir, ckpt_name)
-        if self.config['ddp'] == True:
-            torch.save(self.model.module.state_dict(), save_path)
-        else:
-            torch.save(self.model.state_dict(), save_path)
-        self.logger.info(f"Checkpoint saved to {save_path}, current ckpt is {epoch}+{iteration}")
-        
-        # Save metrics
-        self.save_metrics('test', metric_one_dataset, key)
+        # Preserve each validation epoch and update the best snapshot only when
+        # the configured fused metric improves.
+        self.save_metrics('test', metric_one_dataset, key, epoch=epoch, is_best=is_best)
+        if is_best:
+            ckpt_name = 'ckpt_best.pth'
+            save_path = os.path.join(save_dir, ckpt_name)
+            model = self.model.module if isinstance(self.model, DDP) else self.model
+            torch.save(model.state_dict(), save_path)
+            self.logger.info(
+                f"Best checkpoint saved to {save_path}, {primary_metric}={primary_value} "
+                f"at epoch {epoch + 1} (iteration {iteration})"
+            )
 
 
     @torch.no_grad()
@@ -847,10 +939,7 @@ class Trainer(object):
                                   'fused': []}
    
         for _, data_dict in tqdm(enumerate(train_data_loader),total=len(train_data_loader)):
-            # more elegant and more scalable way of moving data to GPU
-            for key in data_dict.keys():
-                if data_dict[key]!=None and key!='name':
-                    data_dict[key]=data_dict[key].cuda()
+            data_dict = move_batch_to_device(data_dict, self.device)
             if type(self.model) is DDP:
                 predictions = self.model.module.model_full_fp(data_dict)
             else:

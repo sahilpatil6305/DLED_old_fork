@@ -1,0 +1,365 @@
+{
+  "name": "E4S-to-FSGAN limited cross-method pilot",
+  "seed": 1024,
+  "epochs": 5,
+  "max_samples_per_class": 256,
+  "num_classes": 2,
+  "training_mode": "single",
+  "checkpoint_selection": "highest E4S validation fused accuracy",
+  "model": {
+    "pretrained": null,
+    "model_name": "dled",
+    "backbone_name": "vit",
+    "backbone_config": {
+      "mode": "original",
+      "num_classes": 4,
+      "inc": 3,
+      "dropout": false
+    },
+    "all_dataset": [
+      "FaceForensics++",
+      "FF-F2F",
+      "FF-DF",
+      "FF-FS",
+      "FF-NT",
+      "FaceShifter",
+      "DeepFakeDetection",
+      "Celeb-DF-v1",
+      "Celeb-DF-v2",
+      "DFDCP",
+      "DFDC",
+      "DeeperForensics-1.0",
+      "UADFV"
+    ],
+    "train_dataset": [
+      "FaceForensics++"
+    ],
+    "test_dataset": [
+      "FaceForensics++",
+      "DeepFakeDetection"
+    ],
+    "compression": "c23",
+    "train_batchSize": 32,
+    "test_batchSize": 100,
+    "workers": 8,
+    "frame_num": {
+      "train": 32,
+      "test": 32
+    },
+    "resolution": 224,
+    "with_mask": false,
+    "with_landmark": false,
+    "use_data_augmentation": true,
+    "data_aug": {
+      "flip_prob": 0.5,
+      "rotate_prob": 0.0,
+      "rotate_limit": [
+        -10,
+        10
+      ],
+      "blur_prob": 0.5,
+      "blur_limit": [
+        3,
+        7
+      ],
+      "brightness_prob": 0.5,
+      "brightness_limit": [
+        -0.1,
+        0.1
+      ],
+      "contrast_limit": [
+        -0.1,
+        0.1
+      ],
+      "quality_lower": 40,
+      "quality_upper": 100
+    },
+    "mean": [
+      0.5,
+      0.5,
+      0.5
+    ],
+    "std": [
+      0.5,
+      0.5,
+      0.5
+    ],
+    "optimizer": {
+      "type": "sgd",
+      "adam": {
+        "lr": 0.0002,
+        "beta1": 0.9,
+        "beta2": 0.999,
+        "eps": 1e-08,
+        "weight_decay": 0.0005,
+        "amsgrad": false
+      },
+      "sgd": {
+        "lr": 0.0002,
+        "momentum": 0.9,
+        "weight_decay": 0.0005
+      }
+    },
+    "DATALOADER": {
+      "TRAIN_X": {
+        "BATCH_SIZE": 32
+      },
+      "TEST": {
+        "BATCH_SIZE": 100
+      },
+      "NUM_WORKERS": 8
+    },
+    "INPUT": {
+      "SIZE": "(224, 224)",
+      "INTERPOLATION": "bicubic",
+      "PIXEL_MEAN": [
+        0.48145466,
+        0.4578275,
+        0.40821073
+      ],
+      "PIXEL_STD": [
+        0.26862954,
+        0.26130258,
+        0.27577711
+      ],
+      "TRANSFORMS": [
+        "random_resized_crop",
+        "random_flip",
+        "normalize"
+      ]
+    },
+    "OPTIM": {
+      "NAME": "sgd",
+      "LR": 0.002,
+      "WEIGHT_DECAY": 0.0005,
+      "MOMENTUM": 0.9,
+      "SGD_DAMPNING": null,
+      "SGD_NESTEROV": null,
+      "RMSPROP_ALPHA": null,
+      "ADAM_BETA1": 0.9,
+      "ADAM_BETA2": 0.999,
+      "STAGED_LR": false,
+      "NEW_LAYERS": null,
+      "BASE_LR_MULT": null,
+      "MAX_EPOCH": 50,
+      "LR_SCHEDULER": "cosine",
+      "STEPSIZE": null,
+      "GAMMA": null,
+      "WARMUP_RECOUNT": null,
+      "WARMUP_EPOCH": 1,
+      "WARMUP_TYPE": "constant",
+      "WARMUP_CONS_LR": 0.0002
+    },
+    "TRAIN": {
+      "PRINT_FREQ": 5
+    },
+    "TRAINER": {
+      "N_CTX": 16,
+      "CSC": false,
+      "CTX_INIT": "",
+      "PREC": "fp16",
+      "CLASS_TOKEN_POSITION": "end",
+      "ENCODER": "both",
+      "POSITION": "all",
+      "ENABLE_LORA": [
+        "q",
+        "k",
+        "v",
+        "o"
+      ],
+      "RANK": 16,
+      "DROPOUT_RATE": 0,
+      "LORA_ALPHA": 1,
+      "BACKUP": "freq"
+    },
+    "MODEL": {
+      "BACKBONE": {
+        "NAME": "ViT-B/16"
+      },
+      "PROMPT_EDL": {
+        "FIXED_PROMPT": false
+      },
+      "INIT_WEIGHTS": false
+    },
+    "lr_scheduler": null,
+    "nEpochs": 50,
+    "start_epoch": 0,
+    "save_epoch": 1,
+    "rec_iter": 100,
+    "manualSeed": 1024,
+    "loss_func": "edl_loss",
+    "evi_func": "log",
+    "metric_scoring": "acc",
+    "cuda": true,
+    "cudnn": true
+  },
+  "train_config": {
+    "mode": "train",
+    "lmdb": false,
+    "dry_run": false,
+    "rgb_dir": "",
+    "lmdb_dir": "./datasets/lmdb",
+    "dataset_json_folder": "./datasets/DF40/json_file",
+    "SWA": false,
+    "save_avg": true,
+    "log_dir": "./logs/",
+    "label_dict": {
+      "fsgan_Real": 0,
+      "faceswap_Real": 0,
+      "simswap_Real": 0,
+      "roop_Real": 0,
+      "inswap_Real": 0,
+      "blendface_Real": 0,
+      "uniface_Real": 0,
+      "mobileswap_Real": 0,
+      "e4s_Real": 0,
+      "facedancer_Real": 0,
+      "deepfacelab_Real": 0,
+      "fomm_Real": 0,
+      "facevid2vid_Real": 0,
+      "wav2lip_Real": 0,
+      "MRAA_Real": 0,
+      "one_shot_free_Real": 0,
+      "pirender_Real": 0,
+      "tpsm_Real": 0,
+      "lia_Real": 0,
+      "danet_Real": 0,
+      "sadtalker_Real": 0,
+      "mcnet_Real": 0,
+      "hyperreenact_Real": 0,
+      "heygen_Real": 0,
+      "VQGAN_Real": 0,
+      "StyleGAN2_Real": 0,
+      "StyleGAN3_Real": 0,
+      "StyleGANXL_Real": 0,
+      "sd2.1_Real": 0,
+      "ddim_Real": 0,
+      "rddm_Real": 0,
+      "pixart_Real": 0,
+      "DiT_Real": 0,
+      "SiT_Real": 0,
+      "MidJourney_Real": 0,
+      "whichisreal_Real": 0,
+      "CollabDiff_Real": 0,
+      "e4e_Real": 0,
+      "stargan_Real": 0,
+      "starganv2_Real": 0,
+      "styleclip_Real": 0,
+      "StarGAN-BlendFace-Stack_Fake": 4,
+      "DeepFakes-StarGAN-Stack_Fake": 4,
+      "CollabDiff_Fake": 4,
+      "e4e_Fake": 4,
+      "stargan_Fake": 4,
+      "starganv2_Fake": 4,
+      "styleclip_Fake": 4,
+      "VQGAN_Fake": 3,
+      "StyleGAN2_Fake": 3,
+      "StyleGAN3_Fake": 3,
+      "StyleGANXL_Fake": 3,
+      "sd2.1_Fake": 3,
+      "ddim_Fake": 3,
+      "rddm_Fake": 3,
+      "pixart_Fake": 3,
+      "DiT_Fake": 3,
+      "SiT_Fake": 3,
+      "MidJourney_Fake": 3,
+      "whichisreal_Fake": 3,
+      "fomm_Fake": 2,
+      "facevid2vid_Fake": 2,
+      "wav2lip_Fake": 2,
+      "MRAA_Fake": 2,
+      "one_shot_free_Fake": 2,
+      "pirender_Fake": 2,
+      "tpsm_Fake": 2,
+      "lia_Fake": 2,
+      "danet_Fake": 2,
+      "sadtalker_Fake": 2,
+      "mcnet_Fake": 2,
+      "hyperreenact_Fake": 2,
+      "heygen_Fake": 2,
+      "fsgan_Fake": 1,
+      "faceswap_Fake": 1,
+      "simswap_Fake": 1,
+      "roop_Fake": 1,
+      "inswap_Fake": 1,
+      "blendface_Fake": 1,
+      "uniface_Fake": 1,
+      "mobileswap_Fake": 1,
+      "e4s_Fake": 1,
+      "facedancer_Fake": 1,
+      "deepfacelab_Fake": 1
+    }
+  },
+  "data_preflight": {
+    "experiment": "E4S-to-FSGAN limited cross-method pilot",
+    "seed": 1024,
+    "validation_fraction_by_source_component": 0.2,
+    "e4s_source_components": 360,
+    "validation_components": 72,
+    "e4s_source_video_counts": {
+      "train": 576,
+      "val": 144
+    },
+    "source_video_id_disjoint": true,
+    "fsgan_test_source_ids_match_heldout_ffpp_real_ids": true,
+    "real_source_id_overlap_train_val": 0,
+    "real_source_id_overlap_train_test": 0,
+    "real_source_id_overlap_val_test": 0,
+    "e4s_train": {
+      "e4s_Real": {
+        "videos": 575,
+        "frame_references": 18390
+      },
+      "e4s_Fake": {
+        "videos": 574,
+        "frame_references": 18191
+      }
+    },
+    "e4s_validation": {
+      "e4s_Real": {
+        "videos": 144,
+        "frame_references": 4603
+      },
+      "e4s_Fake": {
+        "videos": 144,
+        "frame_references": 4588
+      }
+    },
+    "fsgan_test": {
+      "fsgan_Real": {
+        "videos": 140,
+        "frame_references": 4479
+      },
+      "fsgan_Fake": {
+        "videos": 140,
+        "frame_references": 4455
+      }
+    },
+    "unique_staged_pngs": 54706,
+    "selected_uncompressed_bytes": 5089239911,
+    "archive_image_entries": {
+      "e4s": 22779,
+      "ffpp_real": 31949,
+      "fsgan_ff": 4455
+    },
+    "excluded": [
+      "FSGAN CDF images",
+      "all .npy landmarks",
+      "unreferenced PNGs"
+    ],
+    "labels_from_config": {
+      "e4s_Real": 0,
+      "e4s_Fake": 1,
+      "fsgan_Real": 0,
+      "fsgan_Fake": 1
+    },
+    "dataset_root": "/Volumes/pendrive/DF40/deepfakes_detection_datasets",
+    "output_dir": "/Users/sahilpatil/Documents/Default Project/DLED/results/e4s_to_fsgan_pilot",
+    "decoded_images": 54706,
+    "archive_paths": {
+      "e4s": "/Volumes/pendrive/DF40/incoming/e4s.zip",
+      "ffpp_real": "/Volumes/pendrive/DF40/incoming/FaceForensics++_real_data_for_DF40.zip",
+      "fsgan": "/Volumes/pendrive/DF40/incoming/fsgan.zip"
+    }
+  }
+}

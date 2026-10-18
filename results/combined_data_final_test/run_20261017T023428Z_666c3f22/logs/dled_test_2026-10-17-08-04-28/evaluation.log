@@ -1,0 +1,13 @@
+2026-10-17 08:04:28,601 - INFO - Save log to /Users/sahilpatil/Documents/Default Project/DLED/results/combined_data_final_test/run_20261017T023428Z_666c3f22/logs/dled_test_2026-10-17-08-04-28
+2026-10-17 08:52:57,454 - INFO - ==== combined_A_test ====
+2026-10-17 08:52:57,457 - INFO - Class 0 spatial accuracy: 0.49273
+2026-10-17 08:52:57,458 - INFO - Class 1 spatial accuracy: 0.56380
+2026-10-17 08:52:57,459 - INFO - Class 0 frequency accuracy: 0.95878
+2026-10-17 08:52:57,460 - INFO - Class 1 frequency accuracy: 0.00147
+2026-10-17 08:52:57,460 - INFO - Class 0 fused accuracy: 0.75073
+2026-10-17 08:52:57,461 - INFO - Class 1 fused accuracy: 0.28998
+2026-10-17 08:52:57,462 - INFO - Spatial   binary: 0.55575, multi: 0.52809
+2026-10-17 08:52:57,462 - INFO - Frequency binary: 0.49750, multi: 0.48251
+2026-10-17 08:52:57,462 - INFO - Fused     binary: 0.54319, multi: 0.52151
+2026-10-17 08:52:57,502 - INFO - combined_A_test binary metrics: {"branches": {"frequency": {"binary_accuracy": 0.4975021323260631, "confusion_matrix_real_fake": [[3954, 170], [3954, 129]], "f1_fake": 0.058877225011410315, "multiclass_accuracy": 0.4825149262824418, "precision_fake": 0.431438127090301, "recall_fake": 0.03159441587068332, "roc_auc_fake_score": 0.4773168798830665}, "fused": {"binary_accuracy": 0.543194833678567, "confusion_matrix_real_fake": [[3096, 1028], [2721, 1362]], "f1_fake": 0.42082496524022867, "multiclass_accuracy": 0.5215060314365785, "precision_fake": 0.5698744769874478, "recall_fake": 0.33357825128581925, "roc_auc_fake_score": 0.5902970146853375}, "spatial": {"binary_accuracy": 0.5557450956500548, "confusion_matrix_real_fake": [[2032, 2092], [1554, 2529]], "f1_fake": 0.5811121323529411, "multiclass_accuracy": 0.5280857804313391, "precision_fake": 0.547284137632547, "recall_fake": 0.6193975018368847, "roc_auc_fake_score": 0.6207779862708166}}, "class_mapping": {"fake": 1, "real": 0}, "dataset": "combined_A_test", "inference_images_per_second": 5.877505956626718, "inference_seconds": 1396.3405669962522, "per_class_sample_counts": {"fake": 4083, "real": 4124}, "sample_count": 8207, "uncertainty_thresholds": {"frequency": {"0": 0.9920642971992493, "1": 0.9920427203178406}, "fused": {"0": 0.943271815776825, "1": 0.95372074842453}, "spatial": {"0": 0.9826615452766418, "1": 0.990481972694397}}}
+2026-10-17 08:52:57,577 - INFO - Metrics saved to /Users/sahilpatil/Documents/Default Project/DLED/results/combined_data_final_test/run_20261017T023428Z_666c3f22/predictions/combined_A_test_metrics.json; predictions saved to /Users/sahilpatil/Documents/Default Project/DLED/results/combined_data_final_test/run_20261017T023428Z_666c3f22/predictions/combined_A_test_metrics_predictions.npz

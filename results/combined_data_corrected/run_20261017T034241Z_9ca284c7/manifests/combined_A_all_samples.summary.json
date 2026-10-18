@@ -1,0 +1,78 @@
+{
+  "split_dir": "/Users/sahilpatil/Documents/Default Project/DLED/results/combined_dataset/split_20261017_02",
+  "dataset_root": "/Volumes/pendrive/DF40/deepfakes_detection_datasets",
+  "unique_frame_references": 54706,
+  "missing_paths": 0,
+  "source_group_overlaps": {
+    "train_validation": 0,
+    "train_test": 0,
+    "validation_test": 0
+  },
+  "partitions": {
+    "train": {
+      "source_video_groups": 301,
+      "video_rows_by_method": {
+        "e4s": 501,
+        "fsgan": 100,
+        "real": 602
+      },
+      "frame_references": 38325,
+      "frames_by_method": {
+        "real": 19252,
+        "e4s": 15897,
+        "fsgan": 3176
+      },
+      "class_frames": {
+        "real": 19252,
+        "fake": 19073
+      }
+    },
+    "validation": {
+      "source_video_groups": 64,
+      "video_rows_by_method": {
+        "e4s": 104,
+        "fsgan": 24,
+        "real": 128
+      },
+      "frame_references": 8174,
+      "frames_by_method": {
+        "real": 4096,
+        "e4s": 3310,
+        "fsgan": 768
+      },
+      "class_frames": {
+        "real": 4096,
+        "fake": 4078
+      }
+    },
+    "test": {
+      "source_video_groups": 65,
+      "video_rows_by_method": {
+        "e4s": 113,
+        "fsgan": 16,
+        "real": 129
+      },
+      "frame_references": 8207,
+      "frames_by_method": {
+        "real": 4124,
+        "e4s": 3572,
+        "fsgan": 511
+      },
+      "class_frames": {
+        "real": 4124,
+        "fake": 4083
+      }
+    }
+  },
+  "proportions_by_source_group": {
+    "train": 0.7,
+    "validation": 0.14883720930232558,
+    "test": 0.1511627906976744
+  },
+  "proportions_by_frame_reference": {
+    "train": 0.700563009541915,
+    "validation": 0.14941688297444522,
+    "test": 0.1500201074836398
+  },
+  "per_frame_manifest": "/Users/sahilpatil/Documents/Default Project/DLED/results/combined_data_corrected/run_20261017T034241Z_9ca284c7/manifests/combined_A_all_samples.jsonl"
+}

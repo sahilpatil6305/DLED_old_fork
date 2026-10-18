@@ -75,10 +75,35 @@ INDEX_POSITIONS_VISION = {
 
 def _get_lora_r(cfg: dict) -> int:
     """Extract LoRA rank from the config dict."""
-    try:
-        return int(cfg['TRAINER']['LORA_R'])
-    except (KeyError, TypeError):
-        return 4   # sensible default matching typical CLIP-LoRA setups
+    trainer_cfg = cfg.get('TRAINER')
+    if not isinstance(trainer_cfg, dict) or 'RANK' not in trainer_cfg:
+        raise ValueError("TRAINER.RANK is required; refusing an implicit LoRA rank")
+    rank = trainer_cfg['RANK']
+    if isinstance(rank, bool) or not isinstance(rank, int) or rank <= 0:
+        raise ValueError(f"TRAINER.RANK must be a positive integer, got {rank!r}")
+    return rank
+
+
+def _get_lora_targets(cfg: dict) -> tuple:
+    """Validate and return the configured attention projection targets."""
+    trainer_cfg = cfg.get('TRAINER')
+    if not isinstance(trainer_cfg, dict) or 'ENABLE_LORA' not in trainer_cfg:
+        raise ValueError("TRAINER.ENABLE_LORA is required; refusing implicit targets")
+    targets = trainer_cfg['ENABLE_LORA']
+    supported = {'q', 'k', 'v', 'o'}
+    if not isinstance(targets, (list, tuple)) or not targets:
+        raise ValueError("TRAINER.ENABLE_LORA must be a non-empty list/tuple")
+    if any(not isinstance(target, str) for target in targets):
+        raise ValueError(f"TRAINER.ENABLE_LORA entries must be strings, got {targets!r}")
+    if len(set(targets)) != len(targets):
+        raise ValueError(f"TRAINER.ENABLE_LORA contains duplicates: {targets!r}")
+    unsupported = set(targets) - supported
+    if unsupported:
+        raise ValueError(
+            f"Unsupported TRAINER.ENABLE_LORA targets {sorted(unsupported)}; "
+            f"supported targets are {sorted(supported)}"
+        )
+    return tuple(targets)
 
 
 def _get_lora_alpha(cfg: dict) -> int:
@@ -132,16 +157,15 @@ def apply_lora(cfg: dict, encoder: nn.Module, indices: list, dtype=None) -> list
     Parameters
     ----------
     cfg : dict
-        DLED training config.  Must contain cfg['TRAINER']['LORA_R'] and
-        optionally cfg['TRAINER']['LORA_ALPHA'].
+        DLED training config. Must contain TRAINER.RANK,
+        TRAINER.ENABLE_LORA, and optionally TRAINER.LORA_ALPHA.
     encoder : nn.Module
         A CLIP TextEncoder or Visual encoder whose transformer blocks will be
         modified in-place at the given indices.
     indices : list[int]
         Transformer block indices at which to inject LoRA layers.
     dtype : torch.dtype or None
-        The CLIP model's parameter dtype.  LoRA parameters are cast to this
-        dtype so they participate in mixed-precision training correctly.
+        The CLIP model's parameter dtype. It must match the source attention.
 
     Returns
     -------
@@ -150,47 +174,83 @@ def apply_lora(cfg: dict, encoder: nn.Module, indices: list, dtype=None) -> list
         should extend its lora_layers list with this for parameter tracking.
     """
     r = _get_lora_r(cfg)
+    targets = _get_lora_targets(cfg)
     alpha = _get_lora_alpha(cfg)
     lora_layers = []
+    requested_indices = set(indices)
+    replaced_indices = set()
 
     for block_idx, block in _iter_transformer_blocks(encoder):
-        if block_idx not in indices:
+        if block_idx not in requested_indices:
             continue
-        print(f"  [apply_lora] block {block_idx}: injecting LoRA (r={r}, alpha={alpha})")
+        print(
+            f"  [apply_lora] block {block_idx}: injecting LoRA "
+            f"(r={r}, targets={list(targets)}, alpha={alpha})"
+        )
 
         # Find and replace MultiheadAttention inside this residual block
+        block_replacements = 0
         for child_name, child_module in list(block.named_children()):
+            if isinstance(child_module, MultiheadAttentionLoRA):
+                raise ValueError(
+                    f"Selected block {block_idx} already contains a "
+                    "MultiheadAttentionLoRA; refusing to wrap it again"
+                )
             if isinstance(child_module, nn.MultiheadAttention):
                 lora_attn = MultiheadAttentionLoRA(
-                    child_module, r=r, lora_alpha=alpha, dtype=dtype
+                    child_module, r=r, lora_alpha=alpha,
+                    enable_lora=targets, dtype=dtype
                 )
                 setattr(block, child_name, lora_attn)
                 lora_layers.append(lora_attn)
+                block_replacements += 1
                 print(f"    Replaced {child_name} in block {block_idx} with MultiheadAttentionLoRA")
 
             # CLIP uses 'attn' attribute inside ResidualAttentionBlock
             elif hasattr(child_module, 'attn') and isinstance(
                     getattr(child_module, 'attn', None), nn.MultiheadAttention):
                 orig_attn = child_module.attn
+                if isinstance(orig_attn, MultiheadAttentionLoRA):
+                    raise ValueError(
+                        f"Selected block {block_idx}.{child_name}.attn already "
+                        "contains MultiheadAttentionLoRA; refusing to wrap it again"
+                    )
                 lora_attn = MultiheadAttentionLoRA(
-                    orig_attn, r=r, lora_alpha=alpha, dtype=dtype
+                    orig_attn, r=r, lora_alpha=alpha,
+                    enable_lora=targets, dtype=dtype
                 )
                 child_module.attn = lora_attn
                 lora_layers.append(lora_attn)
+                block_replacements += 1
                 print(f"    Replaced .attn inside {child_name} in block {block_idx}")
 
         # CLIP ResidualAttentionBlock stores attn directly on the block
-        if hasattr(block, 'attn') and isinstance(block.attn, nn.MultiheadAttention):
+        if (
+            hasattr(block, 'attn')
+            and isinstance(block.attn, nn.MultiheadAttention)
+            and not isinstance(block.attn, MultiheadAttentionLoRA)
+        ):
             lora_attn = MultiheadAttentionLoRA(
-                block.attn, r=r, lora_alpha=alpha, dtype=dtype
+                block.attn, r=r, lora_alpha=alpha,
+                enable_lora=targets, dtype=dtype
             )
             block.attn = lora_attn
             lora_layers.append(lora_attn)
+            block_replacements += 1
             print(f"    Replaced block.attn in block {block_idx}")
 
-    if not lora_layers:
-        print(f"  WARNING: apply_lora found no MultiheadAttention modules at indices {indices}. "
-              "Check encoder structure.")
+        if block_replacements != 1:
+            raise ValueError(
+                f"Expected exactly one nn.MultiheadAttention in selected block "
+                f"{block_idx}, found {block_replacements}"
+            )
+        replaced_indices.add(block_idx)
+
+    missing_indices = requested_indices - replaced_indices
+    if missing_indices:
+        raise ValueError(
+            f"Requested LoRA block indices not found in encoder: {sorted(missing_indices)}"
+        )
 
     return lora_layers
 

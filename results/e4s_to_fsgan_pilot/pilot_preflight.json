@@ -1,0 +1,56 @@
+{
+  "train": {
+    "videos": 1149,
+    "frame_references": 36581,
+    "missing_paths": 0,
+    "missing_examples": [],
+    "class_counts": {
+      "real": 18390,
+      "fake": 18191
+    },
+    "video_counts": {
+      "real": 575,
+      "fake": 574
+    }
+  },
+  "validation": {
+    "videos": 288,
+    "frame_references": 9191,
+    "missing_paths": 0,
+    "missing_examples": [],
+    "class_counts": {
+      "real": 4603,
+      "fake": 4588
+    },
+    "video_counts": {
+      "real": 144,
+      "fake": 144
+    }
+  },
+  "test": {
+    "videos": 280,
+    "frame_references": 8934,
+    "missing_paths": 0,
+    "missing_examples": [],
+    "class_counts": {
+      "real": 4479,
+      "fake": 4455
+    },
+    "video_counts": {
+      "real": 140,
+      "fake": 140
+    }
+  },
+  "source_video_id_counts": {
+    "train": 576,
+    "validation": 144,
+    "test": 140
+  },
+  "source_video_id_overlap": {
+    "train_val": 0,
+    "train_test": 0,
+    "val_test": 0
+  },
+  "missing_paths": 0,
+  "passed": true
+}

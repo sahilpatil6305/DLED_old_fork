@@ -85,93 +85,152 @@ class LoRALayer:
 
 
 # ---------------------------------------------------------------------------
-# MultiheadAttention with LoRA applied to in-projection weights
+# MultiheadAttention with independently selected projection adapters
 # ---------------------------------------------------------------------------
 
 class MultiheadAttentionLoRA(nn.MultiheadAttention, LoRALayer):
     """
-    Drop-in replacement for nn.MultiheadAttention with LoRA adapters applied
-    to the in-projection weight matrix (q, k, v together in in_proj_weight).
-    This matches the structure CLIP uses for its attention blocks.
+    Drop-in replacement for CLIP's packed-QKV nn.MultiheadAttention.
+
+    The adapter targets are supplied explicitly. Q/K/V updates are applied to
+    their respective packed in_proj_weight slices, while O updates the actual
+    out_proj weight. Base parameters are copied and frozen.
     """
 
-    def __init__(self, original_attn: nn.MultiheadAttention, r: int = 4,
+    def __init__(self, original_attn: nn.MultiheadAttention, r: int,
                  lora_alpha: int = 1, dropout_rate: float = 0.0,
-                 dtype=None):
+                 dtype=None, enable_lora=None):
+        source_weight = original_attn.in_proj_weight
+        if source_weight is None or not original_attn._qkv_same_embed_dim:
+            raise ValueError(
+                "MultiheadAttentionLoRA requires CLIP-style packed Q/K/V in_proj_weight"
+            )
+        if r <= 0:
+            raise ValueError(f"LoRA rank must be positive, got {r!r}")
+        if enable_lora is None:
+            raise ValueError("enable_lora targets must be provided explicitly")
+        supported_targets = {'q', 'k', 'v', 'o'}
+        targets = tuple(enable_lora)
+        if (
+            not targets
+            or any(not isinstance(target, str) for target in targets)
+            or len(set(targets)) != len(targets)
+            or set(targets) - supported_targets
+        ):
+            raise ValueError(f"Invalid LoRA projection targets: {targets!r}")
+
         embed_dim = original_attn.embed_dim
         num_heads = original_attn.num_heads
         dropout = original_attn.dropout
         bias = original_attn.in_proj_bias is not None
         kdim = original_attn.kdim
         vdim = original_attn.vdim
+        source_state = {
+            name: tensor.detach().clone()
+            for name, tensor in original_attn.state_dict().items()
+        }
 
         nn.MultiheadAttention.__init__(
             self, embed_dim, num_heads, dropout=dropout, bias=bias,
-            kdim=kdim, vdim=vdim
+            add_bias_kv=original_attn.bias_k is not None,
+            add_zero_attn=original_attn.add_zero_attn,
+            kdim=kdim, vdim=vdim, batch_first=original_attn.batch_first,
         )
         LoRALayer.__init__(self, r=r, lora_alpha=lora_alpha,
                            dropout_rate=dropout_rate)
 
-        # Copy weights from original attention
-        self.load_state_dict(original_attn.state_dict(), strict=False)
+        # Strictly preserve the complete source attention state.
+        self.load_state_dict(source_state, strict=True)
 
-        source_weight = original_attn.in_proj_weight
-        if source_weight is None:
-            raise ValueError("LoRA attention currently requires a combined in_proj_weight")
         if dtype is not None and dtype != source_weight.dtype:
             raise ValueError(
                 f"Requested LoRA dtype {dtype} does not match source attention dtype "
                 f"{source_weight.dtype}"
             )
         self.to(device=source_weight.device, dtype=source_weight.dtype)
+        self.enable_lora = targets
+
+        copied_state = self.state_dict()
+        for name, source_tensor in source_state.items():
+            if not torch.equal(copied_state[name], source_tensor.to(copied_state[name].device)):
+                raise RuntimeError(f"Replacement changed source attention parameter {name}")
 
         # Freeze all parameters initially
         for p in self.parameters():
             p.requires_grad = False
 
-        # Apply LoRA to q, k, v projection separately
-        if r > 0:
-            dim = embed_dim
-            # We add separate A/B matrices for q, k, v
-            self.lora_q_A = nn.Parameter(self.in_proj_weight.new_zeros((r, dim)))
-            self.lora_q_B = nn.Parameter(self.in_proj_weight.new_zeros((dim, r)))
-            self.lora_v_A = nn.Parameter(self.in_proj_weight.new_zeros((r, dim)))
-            self.lora_v_B = nn.Parameter(self.in_proj_weight.new_zeros((dim, r)))
-
-            nn.init.kaiming_uniform_(self.lora_q_A, a=math.sqrt(5))
-            nn.init.zeros_(self.lora_q_B)
-            nn.init.kaiming_uniform_(self.lora_v_A, a=math.sqrt(5))
-            nn.init.zeros_(self.lora_v_B)
+        dim = embed_dim
+        for projection in targets:
+            base_weight = self.out_proj.weight if projection == 'o' else self.in_proj_weight
+            setattr(
+                self,
+                f'lora_{projection}_A',
+                nn.Parameter(base_weight.new_empty((r, dim))),
+            )
+            setattr(
+                self,
+                f'lora_{projection}_B',
+                nn.Parameter(base_weight.new_zeros((dim, r))),
+            )
+            # Local convention: Kaiming-uniform A, zero B; initial delta is zero.
+            nn.init.kaiming_uniform_(getattr(self, f'lora_{projection}_A'), a=math.sqrt(5))
+            nn.init.zeros_(getattr(self, f'lora_{projection}_B'))
 
     def forward(self, query, key, value, key_padding_mask=None,
                 need_weights=True, attn_mask=None):
-        # If LoRA is active, add delta to in_proj_weight for q and v slices
-        if self.r > 0 and not self.merged:
-            dim = self.embed_dim
-            delta_q = (self.lora_q_B @ self.lora_q_A) * self.scaling
-            delta_v = (self.lora_v_B @ self.lora_v_A) * self.scaling
+        is_batched = query.dim() == 3
+        if self.batch_first and is_batched:
+            if key is value:
+                if query is key:
+                    query = key = value = query.transpose(1, 0)
+                else:
+                    query, key = (tensor.transpose(1, 0) for tensor in (query, key))
+                    value = key
+            else:
+                query, key, value = (
+                    tensor.transpose(1, 0) for tensor in (query, key, value)
+                )
 
-            # in_proj_weight layout: [W_q; W_k; W_v]  shape [3*dim, dim]
+        # Add Q/K/V deltas to packed rows and O delta to the output projection.
+        if self.r > 0 and not self.merged and any(
+            projection in self.enable_lora for projection in ('q', 'k', 'v')
+        ):
+            dim = self.embed_dim
             weight = self.in_proj_weight.clone()
-            weight[:dim] = weight[:dim] + delta_q
-            weight[2 * dim:] = weight[2 * dim:] + delta_v
+            for index, projection in enumerate(('q', 'k', 'v')):
+                if projection in self.enable_lora:
+                    delta = (
+                        getattr(self, f'lora_{projection}_B')
+                        @ getattr(self, f'lora_{projection}_A')
+                    ) * self.scaling
+                    weight[index * dim:(index + 1) * dim] = (
+                        weight[index * dim:(index + 1) * dim] + delta
+                    )
         else:
             weight = self.in_proj_weight
 
-        return F.multi_head_attention_forward(
+        out_proj_weight = self.out_proj.weight
+        if self.r > 0 and not self.merged and 'o' in self.enable_lora:
+            delta_o = (self.lora_o_B @ self.lora_o_A) * self.scaling
+            out_proj_weight = out_proj_weight + delta_o
+
+        output, attention_weights = F.multi_head_attention_forward(
             query, key, value,
             self.embed_dim, self.num_heads,
             weight, self.in_proj_bias,
             self.bias_k, self.bias_v, self.add_zero_attn,
-            self.dropout, self.out_proj.weight, self.out_proj.bias,
+            self.dropout, out_proj_weight, self.out_proj.bias,
             training=self.training,
             key_padding_mask=key_padding_mask,
             need_weights=need_weights,
             attn_mask=attn_mask,
         )
+        if self.batch_first and is_batched:
+            output = output.transpose(1, 0)
+        return output, attention_weights
 
 
 # ---------------------------------------------------------------------------
-# PlainMultiheadAttentionLoRA — alias used in the original CLIP-LoRA codebase
+# Compatibility alias retained for existing imports.
 # ---------------------------------------------------------------------------
 PlainMultiheadAttentionLoRA = MultiheadAttentionLoRA

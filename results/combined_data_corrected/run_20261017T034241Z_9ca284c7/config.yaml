@@ -1,0 +1,266 @@
+DATALOADER:
+  NUM_WORKERS: 0
+  TEST:
+    BATCH_SIZE: 100
+  TRAIN_X:
+    BATCH_SIZE: 32
+INPUT:
+  INTERPOLATION: bicubic
+  PIXEL_MEAN:
+  - 0.48145466
+  - 0.4578275
+  - 0.40821073
+  PIXEL_STD:
+  - 0.26862954
+  - 0.26130258
+  - 0.27577711
+  SIZE: (224, 224)
+  TRANSFORMS:
+  - random_resized_crop
+  - random_flip
+  - normalize
+MODEL:
+  BACKBONE:
+    NAME: ViT-B/16
+  INIT_WEIGHTS: false
+  PROMPT_EDL:
+    FIXED_PROMPT: false
+OPTIM:
+  ADAM_BETA1: 0.9
+  ADAM_BETA2: 0.999
+  BASE_LR_MULT: null
+  GAMMA: null
+  LR: 0.002
+  LR_SCHEDULER: cosine
+  MAX_EPOCH: 50
+  MOMENTUM: 0.9
+  NAME: sgd
+  NEW_LAYERS: null
+  RMSPROP_ALPHA: null
+  SGD_DAMPNING: null
+  SGD_NESTEROV: null
+  STAGED_LR: false
+  STEPSIZE: null
+  WARMUP_CONS_LR: 0.0002
+  WARMUP_EPOCH: 1
+  WARMUP_RECOUNT: null
+  WARMUP_TYPE: constant
+  WEIGHT_DECAY: 0.0005
+SWA: false
+TRAIN:
+  PRINT_FREQ: 5
+TRAINER:
+  BACKUP: freq
+  CLASS_TOKEN_POSITION: end
+  CSC: false
+  CTX_INIT: ''
+  DROPOUT_RATE: 0
+  ENABLE_LORA:
+  - q
+  - k
+  - v
+  - o
+  ENCODER: both
+  LORA_ALPHA: 1
+  N_CTX: 16
+  POSITION: all
+  PREC: fp32
+  RANK: 16
+all_dataset:
+- FaceForensics++
+- FF-F2F
+- FF-DF
+- FF-FS
+- FF-NT
+- FaceShifter
+- DeepFakeDetection
+- Celeb-DF-v1
+- Celeb-DF-v2
+- DFDCP
+- DFDC
+- DeeperForensics-1.0
+- UADFV
+avu_reg: true
+backbone_config:
+  dropout: false
+  inc: 3
+  mode: original
+  num_classes: 2
+backbone_name: vit
+balance_train_data: false
+compression: c23
+cuda: true
+cudnn: true
+data_aug:
+  blur_limit:
+  - 3
+  - 7
+  blur_prob: 0.5
+  brightness_limit:
+  - -0.1
+  - 0.1
+  brightness_prob: 0.5
+  contrast_limit:
+  - -0.1
+  - 0.1
+  flip_prob: 0.5
+  quality_lower: 40
+  quality_upper: 100
+  rotate_limit:
+  - -10
+  - 10
+  rotate_prob: 0.0
+dataset_json_folder: results/combined_dataset/split_20261017_02
+ddp: false
+detect_novel: false
+device_choice: old
+dry_run: false
+evi_func: log
+frame_num:
+  test: 32
+  train: 32
+kl_reg: false
+label_dict:
+  CollabDiff_Fake: 4
+  CollabDiff_Real: 0
+  DeepFakes-StarGAN-Stack_Fake: 4
+  DiT_Fake: 3
+  DiT_Real: 0
+  MRAA_Fake: 2
+  MRAA_Real: 0
+  MidJourney_Fake: 3
+  MidJourney_Real: 0
+  SiT_Fake: 3
+  SiT_Real: 0
+  StarGAN-BlendFace-Stack_Fake: 4
+  StyleGAN2_Fake: 3
+  StyleGAN2_Real: 0
+  StyleGAN3_Fake: 3
+  StyleGAN3_Real: 0
+  StyleGANXL_Fake: 3
+  StyleGANXL_Real: 0
+  VQGAN_Fake: 3
+  VQGAN_Real: 0
+  blendface_Fake: 1
+  blendface_Real: 0
+  danet_Fake: 2
+  danet_Real: 0
+  ddim_Fake: 3
+  ddim_Real: 0
+  deepfacelab_Fake: 1
+  deepfacelab_Real: 0
+  e4e_Fake: 4
+  e4e_Real: 0
+  e4s_Fake: 1
+  e4s_Real: 0
+  facedancer_Fake: 1
+  facedancer_Real: 0
+  faceswap_Fake: 1
+  faceswap_Real: 0
+  facevid2vid_Fake: 2
+  facevid2vid_Real: 0
+  fomm_Fake: 2
+  fomm_Real: 0
+  fsgan_Fake: 1
+  fsgan_Real: 0
+  heygen_Fake: 2
+  heygen_Real: 0
+  hyperreenact_Fake: 2
+  hyperreenact_Real: 0
+  inswap_Fake: 1
+  inswap_Real: 0
+  lia_Fake: 2
+  lia_Real: 0
+  mcnet_Fake: 2
+  mcnet_Real: 0
+  mobileswap_Fake: 1
+  mobileswap_Real: 0
+  one_shot_free_Fake: 2
+  one_shot_free_Real: 0
+  pirender_Fake: 2
+  pirender_Real: 0
+  pixart_Fake: 3
+  pixart_Real: 0
+  rddm_Fake: 3
+  rddm_Real: 0
+  roop_Fake: 1
+  roop_Real: 0
+  sadtalker_Fake: 2
+  sadtalker_Real: 0
+  sd2.1_Fake: 3
+  sd2.1_Real: 0
+  simswap_Fake: 1
+  simswap_Real: 0
+  stargan_Fake: 4
+  stargan_Real: 0
+  starganv2_Fake: 4
+  starganv2_Real: 0
+  styleclip_Fake: 4
+  styleclip_Real: 0
+  tpsm_Fake: 2
+  tpsm_Real: 0
+  uniface_Fake: 1
+  uniface_Real: 0
+  wav2lip_Fake: 2
+  wav2lip_Real: 0
+  whichisreal_Fake: 3
+  whichisreal_Real: 0
+lmdb: false
+lmdb_dir: ./datasets/lmdb
+local_rank: 0
+log_dir: /Users/sahilpatil/Documents/Default Project/DLED/results/combined_data_corrected/run_20261017T034241Z_9ca284c7/logs
+loss_func: edl_loss
+lr_scheduler: null
+manualSeed: 1024
+max_samples_per_class: null
+mean:
+- 0.5
+- 0.5
+- 0.5
+metric_scoring: acc
+mode: train
+model_name: dled
+nEpochs: 5
+num_classes: 2
+optimizer:
+  adam:
+    amsgrad: false
+    beta1: 0.9
+    beta2: 0.999
+    eps: 1.0e-08
+    lr: 0.0002
+    weight_decay: 0.0005
+  sgd:
+    lr: 0.0002
+    momentum: 0.9
+    weight_decay: 0.0005
+  type: sgd
+pretrained: null
+rec_iter: 100
+resolution: 224
+rgb_dir: ''
+samples_per_class_per_epoch: 256
+save_avg: true
+save_epoch: 1
+save_model: true
+save_path: /Users/sahilpatil/Documents/Default Project/DLED/results/combined_data_corrected/run_20261017T034241Z_9ca284c7/checkpoints
+start_epoch: 0
+std:
+- 0.5
+- 0.5
+- 0.5
+task_target: combined_A_fullpool_diagnostic
+test_batchSize: 100
+test_dataset:
+- combined_A_validation
+test_fre: 1
+track_his: false
+train_batchSize: 32
+train_dataset:
+- combined_A_train
+training_data_ratio: 1.0
+training_mode: single
+use_data_augmentation: true
+with_landmark: false
+with_mask: false
+workers: 0

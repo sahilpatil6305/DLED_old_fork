@@ -1,0 +1,31 @@
+{
+  "run_id": "run_20261017T015427Z_265b7a9d",
+  "timestamp": "2026-10-17T01:54:27.652838+00:00",
+  "experiment_type": "tracking_smoke",
+  "dataset_combination": "synthetic-only",
+  "config_id": "",
+  "status": "COMPLETED",
+  "completed_epochs": 0,
+  "best_validation_metric": "",
+  "test_accuracy": "",
+  "test_roc_auc": "",
+  "runtime_seconds": 0.0,
+  "artifact_dir": "/Users/sahilpatil/Documents/Default Project/DLED/results/tracking_smoke/run_20261017T015427Z_265b7a9d",
+  "start_time": "2026-10-17T01:54:27.652838+00:00",
+  "end_time": "2026-10-17T01:54:27.685377+00:00",
+  "command": "lightweight capture test",
+  "parent_run_id": null,
+  "python": "3.10.22 (main, Oct  1 2026, 00:48:01) [Clang 21.0.0 (clang-2100.3.34.2)]",
+  "platform": "macOS-26.5-arm64-arm-64bit",
+  "torch": "2.2.2",
+  "device": "cpu",
+  "dependencies": {
+    "numpy": "1.26.4",
+    "Pillow": "10.4.0",
+    "scikit-learn": "1.5.2",
+    "PyYAML": "6.0.2",
+    "torchvision": "0.17.2"
+  },
+  "synthetic": true,
+  "evaluation_status": "not_applicable"
+}

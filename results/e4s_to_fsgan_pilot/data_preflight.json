@@ -1,0 +1,72 @@
+{
+  "experiment": "E4S-to-FSGAN limited cross-method pilot",
+  "seed": 1024,
+  "validation_fraction_by_source_component": 0.2,
+  "e4s_source_components": 360,
+  "validation_components": 72,
+  "e4s_source_video_counts": {
+    "train": 576,
+    "val": 144
+  },
+  "source_video_id_disjoint": true,
+  "fsgan_test_source_ids_match_heldout_ffpp_real_ids": true,
+  "real_source_id_overlap_train_val": 0,
+  "real_source_id_overlap_train_test": 0,
+  "real_source_id_overlap_val_test": 0,
+  "e4s_train": {
+    "e4s_Real": {
+      "videos": 575,
+      "frame_references": 18390
+    },
+    "e4s_Fake": {
+      "videos": 574,
+      "frame_references": 18191
+    }
+  },
+  "e4s_validation": {
+    "e4s_Real": {
+      "videos": 144,
+      "frame_references": 4603
+    },
+    "e4s_Fake": {
+      "videos": 144,
+      "frame_references": 4588
+    }
+  },
+  "fsgan_test": {
+    "fsgan_Real": {
+      "videos": 140,
+      "frame_references": 4479
+    },
+    "fsgan_Fake": {
+      "videos": 140,
+      "frame_references": 4455
+    }
+  },
+  "unique_staged_pngs": 54706,
+  "selected_uncompressed_bytes": 5089239911,
+  "archive_image_entries": {
+    "e4s": 22779,
+    "ffpp_real": 31949,
+    "fsgan_ff": 4455
+  },
+  "excluded": [
+    "FSGAN CDF images",
+    "all .npy landmarks",
+    "unreferenced PNGs"
+  ],
+  "labels_from_config": {
+    "e4s_Real": 0,
+    "e4s_Fake": 1,
+    "fsgan_Real": 0,
+    "fsgan_Fake": 1
+  },
+  "dataset_root": "/Volumes/pendrive/DF40/deepfakes_detection_datasets",
+  "output_dir": "/Users/sahilpatil/Documents/Default Project/DLED/results/e4s_to_fsgan_pilot",
+  "decoded_images": 54706,
+  "archive_paths": {
+    "e4s": "/Volumes/pendrive/DF40/incoming/e4s.zip",
+    "ffpp_real": "/Volumes/pendrive/DF40/incoming/FaceForensics++_real_data_for_DF40.zip",
+    "fsgan": "/Volumes/pendrive/DF40/incoming/fsgan.zip"
+  }
+}

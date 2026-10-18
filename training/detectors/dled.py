@@ -76,6 +76,28 @@ def tolist_if_not(x):
         x = [x]
     return x
 
+
+def _validate_lora_checkpoint_compatibility(model_state, checkpoint_state):
+    """Reject checkpoints whose LoRA target keys or adapter shapes differ."""
+    expected = {key: value for key, value in model_state.items() if 'lora_' in key}
+    supplied = {key: value for key, value in checkpoint_state.items() if 'lora_' in key}
+    missing = sorted(set(expected) - set(supplied))
+    unexpected = sorted(set(supplied) - set(expected))
+    shape_mismatches = sorted(
+        (key, tuple(supplied[key].shape), tuple(expected[key].shape))
+        for key in set(expected) & set(supplied)
+        if supplied[key].shape != expected[key].shape
+    )
+    if missing or unexpected or shape_mismatches:
+        raise RuntimeError(
+            "LoRA checkpoint is incompatible with this configured adapter variant. "
+            f"Missing keys ({len(missing)}): {missing[:12]}; "
+            f"unexpected keys ({len(unexpected)}): {unexpected[:12]}; "
+            f"shape mismatches (key, checkpoint, model) ({len(shape_mismatches)}): "
+            f"{shape_mismatches[:12]}. Checkpoints from a different LoRA rank/target "
+            "variant must not be loaded."
+        )
+
 class TextEncoder(nn.Module):
     def __init__(self, clip_model):
         super().__init__()
@@ -387,11 +409,16 @@ class DLED_Detector(AbstractDetector):
         self._models = OrderedDict()
         self._optims = OrderedDict()
         self._scheds = OrderedDict()
-        if self.cfg['device_choice'] == 'old':
-            self.device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
-        elif self.cfg['device_choice'] == 'new':
-            local_rank = int(os.environ["LOCAL_RANK"])
-            self.device = torch.device("cuda", local_rank if torch.cuda.is_available() else "cpu")
+        if torch.cuda.is_available():
+            if self.cfg['device_choice'] == 'new':
+                local_rank = int(os.environ.get(
+                    "LOCAL_RANK", self.cfg.get('local_rank', 0)
+                ))
+                self.device = torch.device("cuda", local_rank)
+            else:
+                self.device = torch.device("cuda")
+        else:
+            self.device = torch.device("cpu")
         self.backbone = self.build_backbone(config)
         self.loss_func = self.build_loss(config)
 
@@ -691,9 +718,13 @@ class DLED_Detector(AbstractDetector):
             return
 
         ori_state_dict = torch.load(model_path, map_location=torch.device(self.device))
+        if isinstance(ori_state_dict, dict) and isinstance(ori_state_dict.get('state_dict'), dict):
+            ori_state_dict = ori_state_dict['state_dict']
         state_dict = {}
         for name, weights in ori_state_dict.items():
             new_key = name.replace("model.", "", 1) if name.startswith("model.") else name
             state_dict[new_key] = weights
+
+        _validate_lora_checkpoint_compatibility(self.model.state_dict(), state_dict)
         print("keys: ", list(state_dict.keys())[0])
         self.model.load_state_dict(state_dict, strict=False)

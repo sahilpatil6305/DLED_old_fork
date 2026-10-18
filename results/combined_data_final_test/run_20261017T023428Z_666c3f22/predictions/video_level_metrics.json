@@ -1,0 +1,1846 @@
+{
+  "aggregation": "mean frame fake probability per video, decision threshold 0.5",
+  "videos": 258,
+  "frame_count": 8207,
+  "video_counts": {
+    "real": 129,
+    "fake": 129
+  },
+  "accuracy": 0.5271317829457365,
+  "precision_fake": 0.5777777777777777,
+  "recall_fake": 0.20155038759689922,
+  "f1_fake": 0.2988505747126437,
+  "roc_auc_fake_score": 0.6071149570338321,
+  "confusion_matrix_real_fake": [
+    [
+      110,
+      19
+    ],
+    [
+      103,
+      26
+    ]
+  ],
+  "per_method_video_counts": {
+    "e4s": {
+      "videos": 113,
+      "frames": 3572
+    },
+    "fsgan": {
+      "videos": 16,
+      "frames": 511
+    },
+    "real": {
+      "videos": 129,
+      "frames": 4124
+    }
+  },
+  "per_video_predictions": [
+    {
+      "group": "e4s_Fake:016_209",
+      "method": "e4s",
+      "label": 1,
+      "mean_fake_probability": 0.4917344031855464,
+      "frames": 32
+    },
+    {
+      "group": "e4s_Fake:040_997",
+      "method": "e4s",
+      "label": 1,
+      "mean_fake_probability": 0.49452319275587797,
+      "frames": 32
+    },
+    {
+      "group": "e4s_Fake:050_059",
+      "method": "e4s",
+      "label": 1,
+      "mean_fake_probability": 0.4957490162923932,
+      "frames": 32
+    },
+    {
+      "group": "e4s_Fake:052_108",
+      "method": "e4s",
+      "label": 1,
+      "mean_fake_probability": 0.4938275146073309,
+      "frames": 29
+    },
+    {
+      "group": "e4s_Fake:055_147",
+      "method": "e4s",
+      "label": 1,
+      "mean_fake_probability": 0.5034004589542747,
+      "frames": 32
+    },
+    {
+      "group": "e4s_Fake:059_050",
+      "method": "e4s",
+      "label": 1,
+      "mean_fake_probability": 0.48781828954815865,
+      "frames": 32
+    },
+    {
+      "group": "e4s_Fake:060_088",
+      "method": "e4s",
+      "label": 1,
+      "mean_fake_probability": 0.49160038493573666,
+      "frames": 32
+    },
+    {
+      "group": "e4s_Fake:074_825",
+      "method": "e4s",
+      "label": 1,
+      "mean_fake_probability": 0.49086266942322254,
+      "frames": 32
+    },
+    {
+      "group": "e4s_Fake:076_079",
+      "method": "e4s",
+      "label": 1,
+      "mean_fake_probability": 0.49726176261901855,
+      "frames": 32
+    },
+    {
+      "group": "e4s_Fake:079_076",
+      "method": "e4s",
+      "label": 1,
+      "mean_fake_probability": 0.5067444676533341,
+      "frames": 32
+    },
+    {
+      "group": "e4s_Fake:085_124",
+      "method": "e4s",
+      "label": 1,
+      "mean_fake_probability": 0.4992579026147723,
+      "frames": 32
+    },
+    {
+      "group": "e4s_Fake:086_090",
+      "method": "e4s",
+      "label": 1,
+      "mean_fake_probability": 0.49465341307222843,
+      "frames": 32
+    },
+    {
+      "group": "e4s_Fake:088_060",
+      "method": "e4s",
+      "label": 1,
+      "mean_fake_probability": 0.49342741165310144,
+      "frames": 32
+    },
+    {
+      "group": "e4s_Fake:090_086",
+      "method": "e4s",
+      "label": 1,
+      "mean_fake_probability": 0.4977965885773301,
+      "frames": 32
+    },
+    {
+      "group": "e4s_Fake:108_052",
+      "method": "e4s",
+      "label": 1,
+      "mean_fake_probability": 0.4893180252984166,
+      "frames": 32
+    },
+    {
+      "group": "e4s_Fake:124_085",
+      "method": "e4s",
+      "label": 1,
+      "mean_fake_probability": 0.49413552688014123,
+      "frames": 31
+    },
+    {
+      "group": "e4s_Fake:147_055",
+      "method": "e4s",
+      "label": 1,
+      "mean_fake_probability": 0.5165541600435972,
+      "frames": 32
+    },
+    {
+      "group": "e4s_Fake:151_225",
+      "method": "e4s",
+      "label": 1,
+      "mean_fake_probability": 0.4965862687677145,
+      "frames": 32
+    },
+    {
+      "group": "e4s_Fake:156_243",
+      "method": "e4s",
+      "label": 1,
+      "mean_fake_probability": 0.494693904183805,
+      "frames": 32
+    },
+    {
+      "group": "e4s_Fake:172_582",
+      "method": "e4s",
+      "label": 1,
+      "mean_fake_probability": 0.4993427274748683,
+      "frames": 32
+    },
+    {
+      "group": "e4s_Fake:174_964",
+      "method": "e4s",
+      "label": 1,
+      "mean_fake_probability": 0.4956340594217181,
+      "frames": 32
+    },
+    {
+      "group": "e4s_Fake:187_234",
+      "method": "e4s",
+      "label": 1,
+      "mean_fake_probability": 0.5073064402226479,
+      "frames": 31
+    },
+    {
+      "group": "e4s_Fake:206_221",
+      "method": "e4s",
+      "label": 1,
+      "mean_fake_probability": 0.49586154520511627,
+      "frames": 32
+    },
+    {
+      "group": "e4s_Fake:209_016",
+      "method": "e4s",
+      "label": 1,
+      "mean_fake_probability": 0.5057959333062172,
+      "frames": 32
+    },
+    {
+      "group": "e4s_Fake:210_241",
+      "method": "e4s",
+      "label": 1,
+      "mean_fake_probability": 0.5190770421177149,
+      "frames": 32
+    },
+    {
+      "group": "e4s_Fake:221_206",
+      "method": "e4s",
+      "label": 1,
+      "mean_fake_probability": 0.4948837384581566,
+      "frames": 32
+    },
+    {
+      "group": "e4s_Fake:225_151",
+      "method": "e4s",
+      "label": 1,
+      "mean_fake_probability": 0.4910873146727681,
+      "frames": 32
+    },
+    {
+      "group": "e4s_Fake:226_491",
+      "method": "e4s",
+      "label": 1,
+      "mean_fake_probability": 0.4994280422106385,
+      "frames": 32
+    },
+    {
+      "group": "e4s_Fake:229_247",
+      "method": "e4s",
+      "label": 1,
+      "mean_fake_probability": 0.49454481061547995,
+      "frames": 32
+    },
+    {
+      "group": "e4s_Fake:234_187",
+      "method": "e4s",
+      "label": 1,
+      "mean_fake_probability": 0.5095676556229591,
+      "frames": 32
+    },
+    {
+      "group": "e4s_Fake:241_210",
+      "method": "e4s",
+      "label": 1,
+      "mean_fake_probability": 0.49363574013113976,
+      "frames": 32
+    },
+    {
+      "group": "e4s_Fake:243_156",
+      "method": "e4s",
+      "label": 1,
+      "mean_fake_probability": 0.51328931376338,
+      "frames": 32
+    },
+    {
+      "group": "e4s_Fake:244_822",
+      "method": "e4s",
+      "label": 1,
+      "mean_fake_probability": 0.49943968188017607,
+      "frames": 32
+    },
+    {
+      "group": "e4s_Fake:247_229",
+      "method": "e4s",
+      "label": 1,
+      "mean_fake_probability": 0.4941458711400628,
+      "frames": 32
+    },
+    {
+      "group": "e4s_Fake:250_461",
+      "method": "e4s",
+      "label": 1,
+      "mean_fake_probability": 0.49303463008254766,
+      "frames": 32
+    },
+    {
+      "group": "e4s_Fake:260_331",
+      "method": "e4s",
+      "label": 1,
+      "mean_fake_probability": 0.4920269222930074,
+      "frames": 32
+    },
+    {
+      "group": "e4s_Fake:267_286",
+      "method": "e4s",
+      "label": 1,
+      "mean_fake_probability": 0.4891770137473941,
+      "frames": 32
+    },
+    {
+      "group": "e4s_Fake:268_269",
+      "method": "e4s",
+      "label": 1,
+      "mean_fake_probability": 0.4978884235024452,
+      "frames": 32
+    },
+    {
+      "group": "e4s_Fake:269_268",
+      "method": "e4s",
+      "label": 1,
+      "mean_fake_probability": 0.48704682011157274,
+      "frames": 32
+    },
+    {
+      "group": "e4s_Fake:272_396",
+      "method": "e4s",
+      "label": 1,
+      "mean_fake_probability": 0.49666711688041687,
+      "frames": 32
+    },
+    {
+      "group": "e4s_Fake:274_412",
+      "method": "e4s",
+      "label": 1,
+      "mean_fake_probability": 0.494829209787505,
+      "frames": 28
+    },
+    {
+      "group": "e4s_Fake:275_887",
+      "method": "e4s",
+      "label": 1,
+      "mean_fake_probability": 0.507154630497098,
+      "frames": 32
+    },
+    {
+      "group": "e4s_Fake:279_298",
+      "method": "e4s",
+      "label": 1,
+      "mean_fake_probability": 0.4931475669145584,
+      "frames": 32
+    },
+    {
+      "group": "e4s_Fake:281_474",
+      "method": "e4s",
+      "label": 1,
+      "mean_fake_probability": 0.49547405540943146,
+      "frames": 6
+    },
+    {
+      "group": "e4s_Fake:283_313",
+      "method": "e4s",
+      "label": 1,
+      "mean_fake_probability": 0.4989927038550377,
+      "frames": 32
+    },
+    {
+      "group": "e4s_Fake:286_267",
+      "method": "e4s",
+      "label": 1,
+      "mean_fake_probability": 0.4936162820085883,
+      "frames": 32
+    },
+    {
+      "group": "e4s_Fake:293_296",
+      "method": "e4s",
+      "label": 1,
+      "mean_fake_probability": 0.5009333165362477,
+      "frames": 32
+    },
+    {
+      "group": "e4s_Fake:296_293",
+      "method": "e4s",
+      "label": 1,
+      "mean_fake_probability": 0.5135818179696798,
+      "frames": 32
+    },
+    {
+      "group": "e4s_Fake:298_279",
+      "method": "e4s",
+      "label": 1,
+      "mean_fake_probability": 0.4986186036840081,
+      "frames": 32
+    },
+    {
+      "group": "e4s_Fake:313_283",
+      "method": "e4s",
+      "label": 1,
+      "mean_fake_probability": 0.4949675044044852,
+      "frames": 32
+    },
+    {
+      "group": "e4s_Fake:331_260",
+      "method": "e4s",
+      "label": 1,
+      "mean_fake_probability": 0.4983327994123101,
+      "frames": 32
+    },
+    {
+      "group": "e4s_Fake:337_522",
+      "method": "e4s",
+      "label": 1,
+      "mean_fake_probability": 0.5137948039919138,
+      "frames": 32
+    },
+    {
+      "group": "e4s_Fake:340_341",
+      "method": "e4s",
+      "label": 1,
+      "mean_fake_probability": 0.49544730385144553,
+      "frames": 30
+    },
+    {
+      "group": "e4s_Fake:341_340",
+      "method": "e4s",
+      "label": 1,
+      "mean_fake_probability": 0.49751005826457856,
+      "frames": 31
+    },
+    {
+      "group": "e4s_Fake:396_272",
+      "method": "e4s",
+      "label": 1,
+      "mean_fake_probability": 0.49827098194509745,
+      "frames": 32
+    },
+    {
+      "group": "e4s_Fake:400_476",
+      "method": "e4s",
+      "label": 1,
+      "mean_fake_probability": 0.4964147759601474,
+      "frames": 32
+    },
+    {
+      "group": "e4s_Fake:412_274",
+      "method": "e4s",
+      "label": 1,
+      "mean_fake_probability": 0.4928866233676672,
+      "frames": 32
+    },
+    {
+      "group": "e4s_Fake:446_667",
+      "method": "e4s",
+      "label": 1,
+      "mean_fake_probability": 0.49944480415433645,
+      "frames": 32
+    },
+    {
+      "group": "e4s_Fake:461_250",
+      "method": "e4s",
+      "label": 1,
+      "mean_fake_probability": 0.4964602878317237,
+      "frames": 32
+    },
+    {
+      "group": "e4s_Fake:476_400",
+      "method": "e4s",
+      "label": 1,
+      "mean_fake_probability": 0.49478057585656643,
+      "frames": 32
+    },
+    {
+      "group": "e4s_Fake:491_226",
+      "method": "e4s",
+      "label": 1,
+      "mean_fake_probability": 0.4996209545060992,
+      "frames": 32
+    },
+    {
+      "group": "e4s_Fake:495_512",
+      "method": "e4s",
+      "label": 1,
+      "mean_fake_probability": 0.49722498562186956,
+      "frames": 32
+    },
+    {
+      "group": "e4s_Fake:500_592",
+      "method": "e4s",
+      "label": 1,
+      "mean_fake_probability": 0.4871575918889815,
+      "frames": 31
+    },
+    {
+      "group": "e4s_Fake:512_495",
+      "method": "e4s",
+      "label": 1,
+      "mean_fake_probability": 0.4977796897292137,
+      "frames": 32
+    },
+    {
+      "group": "e4s_Fake:520_542",
+      "method": "e4s",
+      "label": 1,
+      "mean_fake_probability": 0.49591164384037256,
+      "frames": 32
+    },
+    {
+      "group": "e4s_Fake:522_337",
+      "method": "e4s",
+      "label": 1,
+      "mean_fake_probability": 0.49246328976005316,
+      "frames": 32
+    },
+    {
+      "group": "e4s_Fake:531_549",
+      "method": "e4s",
+      "label": 1,
+      "mean_fake_probability": 0.49655755516141653,
+      "frames": 32
+    },
+    {
+      "group": "e4s_Fake:542_520",
+      "method": "e4s",
+      "label": 1,
+      "mean_fake_probability": 0.496568888425827,
+      "frames": 32
+    },
+    {
+      "group": "e4s_Fake:549_531",
+      "method": "e4s",
+      "label": 1,
+      "mean_fake_probability": 0.4927537152543664,
+      "frames": 32
+    },
+    {
+      "group": "e4s_Fake:561_998",
+      "method": "e4s",
+      "label": 1,
+      "mean_fake_probability": 0.49383098166435957,
+      "frames": 32
+    },
+    {
+      "group": "e4s_Fake:568_628",
+      "method": "e4s",
+      "label": 1,
+      "mean_fake_probability": 0.49764879141002893,
+      "frames": 32
+    },
+    {
+      "group": "e4s_Fake:569_921",
+      "method": "e4s",
+      "label": 1,
+      "mean_fake_probability": 0.5022977441549301,
+      "frames": 32
+    },
+    {
+      "group": "e4s_Fake:581_697",
+      "method": "e4s",
+      "label": 1,
+      "mean_fake_probability": 0.5031448332592845,
+      "frames": 32
+    },
+    {
+      "group": "e4s_Fake:582_172",
+      "method": "e4s",
+      "label": 1,
+      "mean_fake_probability": 0.507697019726038,
+      "frames": 32
+    },
+    {
+      "group": "e4s_Fake:592_500",
+      "method": "e4s",
+      "label": 1,
+      "mean_fake_probability": 0.4987040152773261,
+      "frames": 32
+    },
+    {
+      "group": "e4s_Fake:613_685",
+      "method": "e4s",
+      "label": 1,
+      "mean_fake_probability": 0.5047034341841936,
+      "frames": 32
+    },
+    {
+      "group": "e4s_Fake:628_568",
+      "method": "e4s",
+      "label": 1,
+      "mean_fake_probability": 0.502134270966053,
+      "frames": 32
+    },
+    {
+      "group": "e4s_Fake:643_646",
+      "method": "e4s",
+      "label": 1,
+      "mean_fake_probability": 0.49870330933481455,
+      "frames": 32
+    },
+    {
+      "group": "e4s_Fake:646_643",
+      "method": "e4s",
+      "label": 1,
+      "mean_fake_probability": 0.4937174180522561,
+      "frames": 32
+    },
+    {
+      "group": "e4s_Fake:652_773",
+      "method": "e4s",
+      "label": 1,
+      "mean_fake_probability": 0.49322650115936995,
+      "frames": 32
+    },
+    {
+      "group": "e4s_Fake:667_446",
+      "method": "e4s",
+      "label": 1,
+      "mean_fake_probability": 0.4990733852609992,
+      "frames": 32
+    },
+    {
+      "group": "e4s_Fake:674_744",
+      "method": "e4s",
+      "label": 1,
+      "mean_fake_probability": 0.4988472582772374,
+      "frames": 32
+    },
+    {
+      "group": "e4s_Fake:685_613",
+      "method": "e4s",
+      "label": 1,
+      "mean_fake_probability": 0.513543919660151,
+      "frames": 32
+    },
+    {
+      "group": "e4s_Fake:697_581",
+      "method": "e4s",
+      "label": 1,
+      "mean_fake_probability": 0.5227579474449158,
+      "frames": 32
+    },
+    {
+      "group": "e4s_Fake:700_813",
+      "method": "e4s",
+      "label": 1,
+      "mean_fake_probability": 0.488818540237844,
+      "frames": 32
+    },
+    {
+      "group": "e4s_Fake:718_972",
+      "method": "e4s",
+      "label": 1,
+      "mean_fake_probability": 0.5009187264367938,
+      "frames": 32
+    },
+    {
+      "group": "e4s_Fake:744_674",
+      "method": "e4s",
+      "label": 1,
+      "mean_fake_probability": 0.5120898764580488,
+      "frames": 32
+    },
+    {
+      "group": "e4s_Fake:751_752",
+      "method": "e4s",
+      "label": 1,
+      "mean_fake_probability": 0.49852120969444513,
+      "frames": 32
+    },
+    {
+      "group": "e4s_Fake:752_751",
+      "method": "e4s",
+      "label": 1,
+      "mean_fake_probability": 0.4986775489524007,
+      "frames": 32
+    },
+    {
+      "group": "e4s_Fake:771_849",
+      "method": "e4s",
+      "label": 1,
+      "mean_fake_probability": 0.49691346753388643,
+      "frames": 32
+    },
+    {
+      "group": "e4s_Fake:773_652",
+      "method": "e4s",
+      "label": 1,
+      "mean_fake_probability": 0.49499323684722185,
+      "frames": 32
+    },
+    {
+      "group": "e4s_Fake:800_840",
+      "method": "e4s",
+      "label": 1,
+      "mean_fake_probability": 0.49422461446374655,
+      "frames": 32
+    },
+    {
+      "group": "e4s_Fake:802_885",
+      "method": "e4s",
+      "label": 1,
+      "mean_fake_probability": 0.4982956927269697,
+      "frames": 32
+    },
+    {
+      "group": "e4s_Fake:813_700",
+      "method": "e4s",
+      "label": 1,
+      "mean_fake_probability": 0.4910846544163568,
+      "frames": 28
+    },
+    {
+      "group": "e4s_Fake:822_244",
+      "method": "e4s",
+      "label": 1,
+      "mean_fake_probability": 0.4931532498449087,
+      "frames": 32
+    },
+    {
+      "group": "e4s_Fake:825_074",
+      "method": "e4s",
+      "label": 1,
+      "mean_fake_probability": 0.49746474996209145,
+      "frames": 32
+    },
+    {
+      "group": "e4s_Fake:840_800",
+      "method": "e4s",
+      "label": 1,
+      "mean_fake_probability": 0.4993638824671507,
+      "frames": 32
+    },
+    {
+      "group": "e4s_Fake:849_771",
+      "method": "e4s",
+      "label": 1,
+      "mean_fake_probability": 0.4975453121587634,
+      "frames": 32
+    },
+    {
+      "group": "e4s_Fake:853_863",
+      "method": "e4s",
+      "label": 1,
+      "mean_fake_probability": 0.5049353456124663,
+      "frames": 32
+    },
+    {
+      "group": "e4s_Fake:858_861",
+      "method": "e4s",
+      "label": 1,
+      "mean_fake_probability": 0.49468239955604076,
+      "frames": 32
+    },
+    {
+      "group": "e4s_Fake:861_858",
+      "method": "e4s",
+      "label": 1,
+      "mean_fake_probability": 0.5071109440177679,
+      "frames": 32
+    },
+    {
+      "group": "e4s_Fake:863_853",
+      "method": "e4s",
+      "label": 1,
+      "mean_fake_probability": 0.497259302996099,
+      "frames": 32
+    },
+    {
+      "group": "e4s_Fake:885_802",
+      "method": "e4s",
+      "label": 1,
+      "mean_fake_probability": 0.49688434321433306,
+      "frames": 32
+    },
+    {
+      "group": "e4s_Fake:887_275",
+      "method": "e4s",
+      "label": 1,
+      "mean_fake_probability": 0.4938504984602332,
+      "frames": 32
+    },
+    {
+      "group": "e4s_Fake:921_569",
+      "method": "e4s",
+      "label": 1,
+      "mean_fake_probability": 0.49641460757101735,
+      "frames": 31
+    },
+    {
+      "group": "e4s_Fake:964_174",
+      "method": "e4s",
+      "label": 1,
+      "mean_fake_probability": 0.4957241443917155,
+      "frames": 32
+    },
+    {
+      "group": "e4s_Fake:972_718",
+      "method": "e4s",
+      "label": 1,
+      "mean_fake_probability": 0.494622265920043,
+      "frames": 32
+    },
+    {
+      "group": "e4s_Fake:975_978",
+      "method": "e4s",
+      "label": 1,
+      "mean_fake_probability": 0.49537701066583395,
+      "frames": 32
+    },
+    {
+      "group": "e4s_Fake:978_975",
+      "method": "e4s",
+      "label": 1,
+      "mean_fake_probability": 0.49317836482077837,
+      "frames": 32
+    },
+    {
+      "group": "e4s_Fake:981_985",
+      "method": "e4s",
+      "label": 1,
+      "mean_fake_probability": 0.4900767616927624,
+      "frames": 32
+    },
+    {
+      "group": "e4s_Fake:985_981",
+      "method": "e4s",
+      "label": 1,
+      "mean_fake_probability": 0.5012810947373509,
+      "frames": 32
+    },
+    {
+      "group": "e4s_Fake:997_040",
+      "method": "e4s",
+      "label": 1,
+      "mean_fake_probability": 0.4963858835399151,
+      "frames": 32
+    },
+    {
+      "group": "e4s_Fake:998_561",
+      "method": "e4s",
+      "label": 1,
+      "mean_fake_probability": 0.4972075102850795,
+      "frames": 32
+    },
+    {
+      "group": "fsgan_Fake:141_161",
+      "method": "fsgan",
+      "label": 1,
+      "mean_fake_probability": 0.49590370804071426,
+      "frames": 32
+    },
+    {
+      "group": "fsgan_Fake:161_141",
+      "method": "fsgan",
+      "label": 1,
+      "mean_fake_probability": 0.4947629915550351,
+      "frames": 32
+    },
+    {
+      "group": "fsgan_Fake:257_420",
+      "method": "fsgan",
+      "label": 1,
+      "mean_fake_probability": 0.49958895771734174,
+      "frames": 31
+    },
+    {
+      "group": "fsgan_Fake:376_381",
+      "method": "fsgan",
+      "label": 1,
+      "mean_fake_probability": 0.4987706793472171,
+      "frames": 32
+    },
+    {
+      "group": "fsgan_Fake:381_376",
+      "method": "fsgan",
+      "label": 1,
+      "mean_fake_probability": 0.4976598098874092,
+      "frames": 32
+    },
+    {
+      "group": "fsgan_Fake:418_507",
+      "method": "fsgan",
+      "label": 1,
+      "mean_fake_probability": 0.4972791615873575,
+      "frames": 32
+    },
+    {
+      "group": "fsgan_Fake:420_257",
+      "method": "fsgan",
+      "label": 1,
+      "mean_fake_probability": 0.49596733320504427,
+      "frames": 32
+    },
+    {
+      "group": "fsgan_Fake:421_423",
+      "method": "fsgan",
+      "label": 1,
+      "mean_fake_probability": 0.4981736298650503,
+      "frames": 32
+    },
+    {
+      "group": "fsgan_Fake:423_421",
+      "method": "fsgan",
+      "label": 1,
+      "mean_fake_probability": 0.49221516214311123,
+      "frames": 32
+    },
+    {
+      "group": "fsgan_Fake:507_418",
+      "method": "fsgan",
+      "label": 1,
+      "mean_fake_probability": 0.5163625003769994,
+      "frames": 32
+    },
+    {
+      "group": "fsgan_Fake:517_521",
+      "method": "fsgan",
+      "label": 1,
+      "mean_fake_probability": 0.49759023170918226,
+      "frames": 32
+    },
+    {
+      "group": "fsgan_Fake:521_517",
+      "method": "fsgan",
+      "label": 1,
+      "mean_fake_probability": 0.4977386435493827,
+      "frames": 32
+    },
+    {
+      "group": "fsgan_Fake:579_701",
+      "method": "fsgan",
+      "label": 1,
+      "mean_fake_probability": 0.48494092375040054,
+      "frames": 32
+    },
+    {
+      "group": "fsgan_Fake:701_579",
+      "method": "fsgan",
+      "label": 1,
+      "mean_fake_probability": 0.5152122918516397,
+      "frames": 32
+    },
+    {
+      "group": "fsgan_Fake:801_855",
+      "method": "fsgan",
+      "label": 1,
+      "mean_fake_probability": 0.4978440888226032,
+      "frames": 32
+    },
+    {
+      "group": "fsgan_Fake:855_801",
+      "method": "fsgan",
+      "label": 1,
+      "mean_fake_probability": 0.49563156720250845,
+      "frames": 32
+    },
+    {
+      "group": "real:016",
+      "method": "real",
+      "label": 0,
+      "mean_fake_probability": 0.49057074449956417,
+      "frames": 32
+    },
+    {
+      "group": "real:040",
+      "method": "real",
+      "label": 0,
+      "mean_fake_probability": 0.4938002796843648,
+      "frames": 32
+    },
+    {
+      "group": "real:050",
+      "method": "real",
+      "label": 0,
+      "mean_fake_probability": 0.49507982190698385,
+      "frames": 32
+    },
+    {
+      "group": "real:052",
+      "method": "real",
+      "label": 0,
+      "mean_fake_probability": 0.48397954646497965,
+      "frames": 32
+    },
+    {
+      "group": "real:055",
+      "method": "real",
+      "label": 0,
+      "mean_fake_probability": 0.4984254026785493,
+      "frames": 32
+    },
+    {
+      "group": "real:059",
+      "method": "real",
+      "label": 0,
+      "mean_fake_probability": 0.4903137404471636,
+      "frames": 32
+    },
+    {
+      "group": "real:060",
+      "method": "real",
+      "label": 0,
+      "mean_fake_probability": 0.48702769353985786,
+      "frames": 32
+    },
+    {
+      "group": "real:074",
+      "method": "real",
+      "label": 0,
+      "mean_fake_probability": 0.49358130525797606,
+      "frames": 32
+    },
+    {
+      "group": "real:076",
+      "method": "real",
+      "label": 0,
+      "mean_fake_probability": 0.49828040413558483,
+      "frames": 32
+    },
+    {
+      "group": "real:079",
+      "method": "real",
+      "label": 0,
+      "mean_fake_probability": 0.4923667712137103,
+      "frames": 32
+    },
+    {
+      "group": "real:085",
+      "method": "real",
+      "label": 0,
+      "mean_fake_probability": 0.4974475922062993,
+      "frames": 32
+    },
+    {
+      "group": "real:086",
+      "method": "real",
+      "label": 0,
+      "mean_fake_probability": 0.4970535337924957,
+      "frames": 32
+    },
+    {
+      "group": "real:088",
+      "method": "real",
+      "label": 0,
+      "mean_fake_probability": 0.49633840657770634,
+      "frames": 32
+    },
+    {
+      "group": "real:090",
+      "method": "real",
+      "label": 0,
+      "mean_fake_probability": 0.49349011946469545,
+      "frames": 32
+    },
+    {
+      "group": "real:108",
+      "method": "real",
+      "label": 0,
+      "mean_fake_probability": 0.4927370958030224,
+      "frames": 32
+    },
+    {
+      "group": "real:124",
+      "method": "real",
+      "label": 0,
+      "mean_fake_probability": 0.4891082476824522,
+      "frames": 32
+    },
+    {
+      "group": "real:141",
+      "method": "real",
+      "label": 0,
+      "mean_fake_probability": 0.4939215946942568,
+      "frames": 32
+    },
+    {
+      "group": "real:147",
+      "method": "real",
+      "label": 0,
+      "mean_fake_probability": 0.4980034474283457,
+      "frames": 32
+    },
+    {
+      "group": "real:151",
+      "method": "real",
+      "label": 0,
+      "mean_fake_probability": 0.5005422607064247,
+      "frames": 32
+    },
+    {
+      "group": "real:156",
+      "method": "real",
+      "label": 0,
+      "mean_fake_probability": 0.49162412621080875,
+      "frames": 32
+    },
+    {
+      "group": "real:161",
+      "method": "real",
+      "label": 0,
+      "mean_fake_probability": 0.4941320111975074,
+      "frames": 32
+    },
+    {
+      "group": "real:172",
+      "method": "real",
+      "label": 0,
+      "mean_fake_probability": 0.5034461980685592,
+      "frames": 32
+    },
+    {
+      "group": "real:174",
+      "method": "real",
+      "label": 0,
+      "mean_fake_probability": 0.49813348799943924,
+      "frames": 32
+    },
+    {
+      "group": "real:187",
+      "method": "real",
+      "label": 0,
+      "mean_fake_probability": 0.5056272679939866,
+      "frames": 32
+    },
+    {
+      "group": "real:206",
+      "method": "real",
+      "label": 0,
+      "mean_fake_probability": 0.4940863810479641,
+      "frames": 32
+    },
+    {
+      "group": "real:209",
+      "method": "real",
+      "label": 0,
+      "mean_fake_probability": 0.5000826362520456,
+      "frames": 32
+    },
+    {
+      "group": "real:210",
+      "method": "real",
+      "label": 0,
+      "mean_fake_probability": 0.5012348014861345,
+      "frames": 32
+    },
+    {
+      "group": "real:221",
+      "method": "real",
+      "label": 0,
+      "mean_fake_probability": 0.5005010841414332,
+      "frames": 32
+    },
+    {
+      "group": "real:225",
+      "method": "real",
+      "label": 0,
+      "mean_fake_probability": 0.49454203713685274,
+      "frames": 32
+    },
+    {
+      "group": "real:226",
+      "method": "real",
+      "label": 0,
+      "mean_fake_probability": 0.5002516927197576,
+      "frames": 32
+    },
+    {
+      "group": "real:229",
+      "method": "real",
+      "label": 0,
+      "mean_fake_probability": 0.49382031336426735,
+      "frames": 32
+    },
+    {
+      "group": "real:234",
+      "method": "real",
+      "label": 0,
+      "mean_fake_probability": 0.5007462287321687,
+      "frames": 32
+    },
+    {
+      "group": "real:241",
+      "method": "real",
+      "label": 0,
+      "mean_fake_probability": 0.48977513797581196,
+      "frames": 32
+    },
+    {
+      "group": "real:243",
+      "method": "real",
+      "label": 0,
+      "mean_fake_probability": 0.4979429738596082,
+      "frames": 32
+    },
+    {
+      "group": "real:244",
+      "method": "real",
+      "label": 0,
+      "mean_fake_probability": 0.49773233383893967,
+      "frames": 32
+    },
+    {
+      "group": "real:247",
+      "method": "real",
+      "label": 0,
+      "mean_fake_probability": 0.4950556047260761,
+      "frames": 32
+    },
+    {
+      "group": "real:250",
+      "method": "real",
+      "label": 0,
+      "mean_fake_probability": 0.49577187094837427,
+      "frames": 32
+    },
+    {
+      "group": "real:257",
+      "method": "real",
+      "label": 0,
+      "mean_fake_probability": 0.5004706055887284,
+      "frames": 31
+    },
+    {
+      "group": "real:260",
+      "method": "real",
+      "label": 0,
+      "mean_fake_probability": 0.4916990175843239,
+      "frames": 32
+    },
+    {
+      "group": "real:267",
+      "method": "real",
+      "label": 0,
+      "mean_fake_probability": 0.48560795560479164,
+      "frames": 32
+    },
+    {
+      "group": "real:268",
+      "method": "real",
+      "label": 0,
+      "mean_fake_probability": 0.4920179657638073,
+      "frames": 32
+    },
+    {
+      "group": "real:269",
+      "method": "real",
+      "label": 0,
+      "mean_fake_probability": 0.48986642342060804,
+      "frames": 32
+    },
+    {
+      "group": "real:272",
+      "method": "real",
+      "label": 0,
+      "mean_fake_probability": 0.4960614452138543,
+      "frames": 32
+    },
+    {
+      "group": "real:274",
+      "method": "real",
+      "label": 0,
+      "mean_fake_probability": 0.49198210425674915,
+      "frames": 32
+    },
+    {
+      "group": "real:275",
+      "method": "real",
+      "label": 0,
+      "mean_fake_probability": 0.4988334057852626,
+      "frames": 32
+    },
+    {
+      "group": "real:279",
+      "method": "real",
+      "label": 0,
+      "mean_fake_probability": 0.4921147841960192,
+      "frames": 32
+    },
+    {
+      "group": "real:283",
+      "method": "real",
+      "label": 0,
+      "mean_fake_probability": 0.49312066193670034,
+      "frames": 32
+    },
+    {
+      "group": "real:286",
+      "method": "real",
+      "label": 0,
+      "mean_fake_probability": 0.4904835596680641,
+      "frames": 32
+    },
+    {
+      "group": "real:293",
+      "method": "real",
+      "label": 0,
+      "mean_fake_probability": 0.4953044578433037,
+      "frames": 32
+    },
+    {
+      "group": "real:296",
+      "method": "real",
+      "label": 0,
+      "mean_fake_probability": 0.5154996626079082,
+      "frames": 32
+    },
+    {
+      "group": "real:298",
+      "method": "real",
+      "label": 0,
+      "mean_fake_probability": 0.49715813994407654,
+      "frames": 32
+    },
+    {
+      "group": "real:313",
+      "method": "real",
+      "label": 0,
+      "mean_fake_probability": 0.4875793121755123,
+      "frames": 32
+    },
+    {
+      "group": "real:331",
+      "method": "real",
+      "label": 0,
+      "mean_fake_probability": 0.4969968628138304,
+      "frames": 32
+    },
+    {
+      "group": "real:337",
+      "method": "real",
+      "label": 0,
+      "mean_fake_probability": 0.5035286480560899,
+      "frames": 32
+    },
+    {
+      "group": "real:340",
+      "method": "real",
+      "label": 0,
+      "mean_fake_probability": 0.49331835969801874,
+      "frames": 31
+    },
+    {
+      "group": "real:341",
+      "method": "real",
+      "label": 0,
+      "mean_fake_probability": 0.49844854418188334,
+      "frames": 32
+    },
+    {
+      "group": "real:376",
+      "method": "real",
+      "label": 0,
+      "mean_fake_probability": 0.498456172645092,
+      "frames": 32
+    },
+    {
+      "group": "real:381",
+      "method": "real",
+      "label": 0,
+      "mean_fake_probability": 0.49706127401441336,
+      "frames": 32
+    },
+    {
+      "group": "real:396",
+      "method": "real",
+      "label": 0,
+      "mean_fake_probability": 0.49628131184726954,
+      "frames": 32
+    },
+    {
+      "group": "real:400",
+      "method": "real",
+      "label": 0,
+      "mean_fake_probability": 0.4875738713890314,
+      "frames": 32
+    },
+    {
+      "group": "real:412",
+      "method": "real",
+      "label": 0,
+      "mean_fake_probability": 0.49283500760793686,
+      "frames": 32
+    },
+    {
+      "group": "real:418",
+      "method": "real",
+      "label": 0,
+      "mean_fake_probability": 0.4932254431769252,
+      "frames": 32
+    },
+    {
+      "group": "real:420",
+      "method": "real",
+      "label": 0,
+      "mean_fake_probability": 0.4959660265594721,
+      "frames": 32
+    },
+    {
+      "group": "real:421",
+      "method": "real",
+      "label": 0,
+      "mean_fake_probability": 0.4976869113743305,
+      "frames": 32
+    },
+    {
+      "group": "real:423",
+      "method": "real",
+      "label": 0,
+      "mean_fake_probability": 0.49625235982239246,
+      "frames": 32
+    },
+    {
+      "group": "real:446",
+      "method": "real",
+      "label": 0,
+      "mean_fake_probability": 0.49549252167344093,
+      "frames": 32
+    },
+    {
+      "group": "real:461",
+      "method": "real",
+      "label": 0,
+      "mean_fake_probability": 0.49488171096891165,
+      "frames": 32
+    },
+    {
+      "group": "real:474",
+      "method": "real",
+      "label": 0,
+      "mean_fake_probability": 0.4959937545561021,
+      "frames": 31
+    },
+    {
+      "group": "real:476",
+      "method": "real",
+      "label": 0,
+      "mean_fake_probability": 0.49876262713223696,
+      "frames": 32
+    },
+    {
+      "group": "real:491",
+      "method": "real",
+      "label": 0,
+      "mean_fake_probability": 0.5038249492645264,
+      "frames": 32
+    },
+    {
+      "group": "real:495",
+      "method": "real",
+      "label": 0,
+      "mean_fake_probability": 0.49418354127556086,
+      "frames": 32
+    },
+    {
+      "group": "real:500",
+      "method": "real",
+      "label": 0,
+      "mean_fake_probability": 0.49683347065001726,
+      "frames": 32
+    },
+    {
+      "group": "real:507",
+      "method": "real",
+      "label": 0,
+      "mean_fake_probability": 0.5103223491460085,
+      "frames": 32
+    },
+    {
+      "group": "real:512",
+      "method": "real",
+      "label": 0,
+      "mean_fake_probability": 0.49575100000947714,
+      "frames": 32
+    },
+    {
+      "group": "real:517",
+      "method": "real",
+      "label": 0,
+      "mean_fake_probability": 0.5008139265701175,
+      "frames": 32
+    },
+    {
+      "group": "real:520",
+      "method": "real",
+      "label": 0,
+      "mean_fake_probability": 0.4938777359202504,
+      "frames": 32
+    },
+    {
+      "group": "real:521",
+      "method": "real",
+      "label": 0,
+      "mean_fake_probability": 0.4983192179352045,
+      "frames": 32
+    },
+    {
+      "group": "real:522",
+      "method": "real",
+      "label": 0,
+      "mean_fake_probability": 0.49764425680041313,
+      "frames": 32
+    },
+    {
+      "group": "real:531",
+      "method": "real",
+      "label": 0,
+      "mean_fake_probability": 0.4966814556429463,
+      "frames": 31
+    },
+    {
+      "group": "real:542",
+      "method": "real",
+      "label": 0,
+      "mean_fake_probability": 0.49482874292880297,
+      "frames": 32
+    },
+    {
+      "group": "real:549",
+      "method": "real",
+      "label": 0,
+      "mean_fake_probability": 0.49323313776403666,
+      "frames": 32
+    },
+    {
+      "group": "real:561",
+      "method": "real",
+      "label": 0,
+      "mean_fake_probability": 0.49437752179801464,
+      "frames": 32
+    },
+    {
+      "group": "real:568",
+      "method": "real",
+      "label": 0,
+      "mean_fake_probability": 0.489168438129127,
+      "frames": 32
+    },
+    {
+      "group": "real:569",
+      "method": "real",
+      "label": 0,
+      "mean_fake_probability": 0.4956328868865967,
+      "frames": 32
+    },
+    {
+      "group": "real:579",
+      "method": "real",
+      "label": 0,
+      "mean_fake_probability": 0.48852917458862066,
+      "frames": 32
+    },
+    {
+      "group": "real:581",
+      "method": "real",
+      "label": 0,
+      "mean_fake_probability": 0.5070693241432309,
+      "frames": 32
+    },
+    {
+      "group": "real:582",
+      "method": "real",
+      "label": 0,
+      "mean_fake_probability": 0.4999046139419079,
+      "frames": 32
+    },
+    {
+      "group": "real:592",
+      "method": "real",
+      "label": 0,
+      "mean_fake_probability": 0.4917737152427435,
+      "frames": 32
+    },
+    {
+      "group": "real:613",
+      "method": "real",
+      "label": 0,
+      "mean_fake_probability": 0.48780516535043716,
+      "frames": 32
+    },
+    {
+      "group": "real:628",
+      "method": "real",
+      "label": 0,
+      "mean_fake_probability": 0.48346978798508644,
+      "frames": 32
+    },
+    {
+      "group": "real:643",
+      "method": "real",
+      "label": 0,
+      "mean_fake_probability": 0.4954421641305089,
+      "frames": 32
+    },
+    {
+      "group": "real:646",
+      "method": "real",
+      "label": 0,
+      "mean_fake_probability": 0.49622409511357546,
+      "frames": 32
+    },
+    {
+      "group": "real:652",
+      "method": "real",
+      "label": 0,
+      "mean_fake_probability": 0.4974366230890155,
+      "frames": 32
+    },
+    {
+      "group": "real:667",
+      "method": "real",
+      "label": 0,
+      "mean_fake_probability": 0.497811415232718,
+      "frames": 32
+    },
+    {
+      "group": "real:674",
+      "method": "real",
+      "label": 0,
+      "mean_fake_probability": 0.49816427286714315,
+      "frames": 32
+    },
+    {
+      "group": "real:685",
+      "method": "real",
+      "label": 0,
+      "mean_fake_probability": 0.49462665617465973,
+      "frames": 32
+    },
+    {
+      "group": "real:697",
+      "method": "real",
+      "label": 0,
+      "mean_fake_probability": 0.5070418808609247,
+      "frames": 32
+    },
+    {
+      "group": "real:700",
+      "method": "real",
+      "label": 0,
+      "mean_fake_probability": 0.4859800236299634,
+      "frames": 32
+    },
+    {
+      "group": "real:701",
+      "method": "real",
+      "label": 0,
+      "mean_fake_probability": 0.472399509511888,
+      "frames": 32
+    },
+    {
+      "group": "real:718",
+      "method": "real",
+      "label": 0,
+      "mean_fake_probability": 0.4957554079592228,
+      "frames": 32
+    },
+    {
+      "group": "real:744",
+      "method": "real",
+      "label": 0,
+      "mean_fake_probability": 0.5071962252259254,
+      "frames": 32
+    },
+    {
+      "group": "real:751",
+      "method": "real",
+      "label": 0,
+      "mean_fake_probability": 0.4956810921430588,
+      "frames": 32
+    },
+    {
+      "group": "real:752",
+      "method": "real",
+      "label": 0,
+      "mean_fake_probability": 0.4965223055332899,
+      "frames": 32
+    },
+    {
+      "group": "real:771",
+      "method": "real",
+      "label": 0,
+      "mean_fake_probability": 0.493049081414938,
+      "frames": 32
+    },
+    {
+      "group": "real:773",
+      "method": "real",
+      "label": 0,
+      "mean_fake_probability": 0.4921093890443444,
+      "frames": 32
+    },
+    {
+      "group": "real:800",
+      "method": "real",
+      "label": 0,
+      "mean_fake_probability": 0.497860380448401,
+      "frames": 32
+    },
+    {
+      "group": "real:801",
+      "method": "real",
+      "label": 0,
+      "mean_fake_probability": 0.4915949823334813,
+      "frames": 32
+    },
+    {
+      "group": "real:802",
+      "method": "real",
+      "label": 0,
+      "mean_fake_probability": 0.49408676102757454,
+      "frames": 32
+    },
+    {
+      "group": "real:813",
+      "method": "real",
+      "label": 0,
+      "mean_fake_probability": 0.49177676625549793,
+      "frames": 32
+    },
+    {
+      "group": "real:822",
+      "method": "real",
+      "label": 0,
+      "mean_fake_probability": 0.4928093384951353,
+      "frames": 32
+    },
+    {
+      "group": "real:825",
+      "method": "real",
+      "label": 0,
+      "mean_fake_probability": 0.49537551030516624,
+      "frames": 32
+    },
+    {
+      "group": "real:840",
+      "method": "real",
+      "label": 0,
+      "mean_fake_probability": 0.4871310368180275,
+      "frames": 32
+    },
+    {
+      "group": "real:849",
+      "method": "real",
+      "label": 0,
+      "mean_fake_probability": 0.4896841188892722,
+      "frames": 32
+    },
+    {
+      "group": "real:853",
+      "method": "real",
+      "label": 0,
+      "mean_fake_probability": 0.4950994784012437,
+      "frames": 32
+    },
+    {
+      "group": "real:855",
+      "method": "real",
+      "label": 0,
+      "mean_fake_probability": 0.4898076085373759,
+      "frames": 32
+    },
+    {
+      "group": "real:858",
+      "method": "real",
+      "label": 0,
+      "mean_fake_probability": 0.49418560322374105,
+      "frames": 32
+    },
+    {
+      "group": "real:861",
+      "method": "real",
+      "label": 0,
+      "mean_fake_probability": 0.4971232311800122,
+      "frames": 32
+    },
+    {
+      "group": "real:863",
+      "method": "real",
+      "label": 0,
+      "mean_fake_probability": 0.5029316637665033,
+      "frames": 32
+    },
+    {
+      "group": "real:885",
+      "method": "real",
+      "label": 0,
+      "mean_fake_probability": 0.4960248526185751,
+      "frames": 32
+    },
+    {
+      "group": "real:887",
+      "method": "real",
+      "label": 0,
+      "mean_fake_probability": 0.4982002815231681,
+      "frames": 32
+    },
+    {
+      "group": "real:921",
+      "method": "real",
+      "label": 0,
+      "mean_fake_probability": 0.4885807940736413,
+      "frames": 32
+    },
+    {
+      "group": "real:964",
+      "method": "real",
+      "label": 0,
+      "mean_fake_probability": 0.49718757066875696,
+      "frames": 32
+    },
+    {
+      "group": "real:972",
+      "method": "real",
+      "label": 0,
+      "mean_fake_probability": 0.49752304423600435,
+      "frames": 32
+    },
+    {
+      "group": "real:975",
+      "method": "real",
+      "label": 0,
+      "mean_fake_probability": 0.495938953012228,
+      "frames": 32
+    },
+    {
+      "group": "real:978",
+      "method": "real",
+      "label": 0,
+      "mean_fake_probability": 0.4990567294880748,
+      "frames": 32
+    },
+    {
+      "group": "real:981",
+      "method": "real",
+      "label": 0,
+      "mean_fake_probability": 0.49356322176754475,
+      "frames": 32
+    },
+    {
+      "group": "real:985",
+      "method": "real",
+      "label": 0,
+      "mean_fake_probability": 0.49654876440763474,
+      "frames": 32
+    },
+    {
+      "group": "real:997",
+      "method": "real",
+      "label": 0,
+      "mean_fake_probability": 0.4938714727759361,
+      "frames": 32
+    },
+    {
+      "group": "real:998",
+      "method": "real",
+      "label": 0,
+      "mean_fake_probability": 0.5009383764117956,
+      "frames": 32
+    }
+  ]
+}

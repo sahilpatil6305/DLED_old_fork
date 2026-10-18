@@ -2,3 +2,29 @@
 # Python cache files
 __pycache__/
 *.py[cod]
+
+# Virtual environments
+.venv/
+venv/
+
+# Local datasets, archives, and credentials
+datasets/
+*.zip
+.env
+.env.*
+*.pem
+*.key
+
+# macOS metadata
+.DS_Store
+
+# Large pretrained model weights (kept locally; see results/EXCLUDED_ARTIFACTS.md)
+training/pretrained/clip/
+
+# Experiment checkpoints and per-frame expansion dumps are large.
+# They are retained locally and documented in results/EXCLUDED_ARTIFACTS.md.
+results/**/*.pth
+results/**/*.pt
+results/**/*.jsonl
+outputs/fsgan_pilot/
+results/e4s_to_fsgan_pilot/checkpoints/

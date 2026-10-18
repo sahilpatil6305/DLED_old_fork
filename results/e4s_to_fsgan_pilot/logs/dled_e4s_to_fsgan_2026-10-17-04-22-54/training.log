@@ -1,0 +1,331 @@
+2026-10-17 04:22:54,324 - INFO - Save log to /Users/sahilpatil/Documents/Default Project/DLED/results/e4s_to_fsgan_pilot/logs/dled_e4s_to_fsgan_2026-10-17-04-22-54
+2026-10-17 04:22:54,325 - INFO - --------------- Configuration ---------------
+2026-10-17 04:22:54,325 - INFO - pretrained: None
+2026-10-17 04:22:54,326 - INFO - model_name: dled
+2026-10-17 04:22:54,326 - INFO - backbone_name: vit
+2026-10-17 04:22:54,326 - INFO - backbone_config: {'mode': 'original', 'num_classes': 2, 'inc': 3, 'dropout': False}
+2026-10-17 04:22:54,327 - INFO - all_dataset: ['FaceForensics++', 'FF-F2F', 'FF-DF', 'FF-FS', 'FF-NT', 'FaceShifter', 'DeepFakeDetection', 'Celeb-DF-v1', 'Celeb-DF-v2', 'DFDCP', 'DFDC', 'DeeperForensics-1.0', 'UADFV']
+2026-10-17 04:22:54,327 - INFO - train_dataset: ['e4s_to_fsgan_train']
+2026-10-17 04:22:54,328 - INFO - test_dataset: ['e4s_to_fsgan_val']
+2026-10-17 04:22:54,328 - INFO - compression: c23
+2026-10-17 04:22:54,329 - INFO - train_batchSize: 32
+2026-10-17 04:22:54,329 - INFO - test_batchSize: 100
+2026-10-17 04:22:54,329 - INFO - workers: 0
+2026-10-17 04:22:54,330 - INFO - frame_num: {'train': 32, 'test': 32}
+2026-10-17 04:22:54,330 - INFO - resolution: 224
+2026-10-17 04:22:54,331 - INFO - with_mask: False
+2026-10-17 04:22:54,331 - INFO - with_landmark: False
+2026-10-17 04:22:54,332 - INFO - use_data_augmentation: True
+2026-10-17 04:22:54,332 - INFO - data_aug: {'flip_prob': 0.5, 'rotate_prob': 0.0, 'rotate_limit': [-10, 10], 'blur_prob': 0.5, 'blur_limit': [3, 7], 'brightness_prob': 0.5, 'brightness_limit': [-0.1, 0.1], 'contrast_limit': [-0.1, 0.1], 'quality_lower': 40, 'quality_upper': 100}
+2026-10-17 04:22:54,332 - INFO - mean: [0.5, 0.5, 0.5]
+2026-10-17 04:22:54,333 - INFO - std: [0.5, 0.5, 0.5]
+2026-10-17 04:22:54,333 - INFO - optimizer: {'type': 'sgd', 'adam': {'lr': 0.0002, 'beta1': 0.9, 'beta2': 0.999, 'eps': 1e-08, 'weight_decay': 0.0005, 'amsgrad': False}, 'sgd': {'lr': 0.0002, 'momentum': 0.9, 'weight_decay': 0.0005}}
+2026-10-17 04:22:54,334 - INFO - DATALOADER: {'TRAIN_X': {'BATCH_SIZE': 32}, 'TEST': {'BATCH_SIZE': 100}, 'NUM_WORKERS': 0}
+2026-10-17 04:22:54,334 - INFO - INPUT: {'SIZE': '(224, 224)', 'INTERPOLATION': 'bicubic', 'PIXEL_MEAN': [0.48145466, 0.4578275, 0.40821073], 'PIXEL_STD': [0.26862954, 0.26130258, 0.27577711], 'TRANSFORMS': ['random_resized_crop', 'random_flip', 'normalize']}
+2026-10-17 04:22:54,334 - INFO - OPTIM: {'NAME': 'sgd', 'LR': 0.002, 'WEIGHT_DECAY': 0.0005, 'MOMENTUM': 0.9, 'SGD_DAMPNING': None, 'SGD_NESTEROV': None, 'RMSPROP_ALPHA': None, 'ADAM_BETA1': 0.9, 'ADAM_BETA2': 0.999, 'STAGED_LR': False, 'NEW_LAYERS': None, 'BASE_LR_MULT': None, 'MAX_EPOCH': 50, 'LR_SCHEDULER': 'cosine', 'STEPSIZE': None, 'GAMMA': None, 'WARMUP_RECOUNT': None, 'WARMUP_EPOCH': 1, 'WARMUP_TYPE': 'constant', 'WARMUP_CONS_LR': 0.0002}
+2026-10-17 04:22:54,335 - INFO - TRAIN: {'PRINT_FREQ': 5}
+2026-10-17 04:22:54,335 - INFO - TRAINER: {'N_CTX': 16, 'CSC': False, 'CTX_INIT': '', 'PREC': 'fp32', 'CLASS_TOKEN_POSITION': 'end', 'ENCODER': 'both', 'POSITION': 'all', 'ENABLE_LORA': ['q', 'k', 'v', 'o'], 'RANK': 16, 'DROPOUT_RATE': 0, 'LORA_ALPHA': 1, 'BACKUP': 'freq'}
+2026-10-17 04:22:54,336 - INFO - MODEL: {'BACKBONE': {'NAME': 'ViT-B/16'}, 'PROMPT_EDL': {'FIXED_PROMPT': False}, 'INIT_WEIGHTS': False}
+2026-10-17 04:22:54,336 - INFO - lr_scheduler: None
+2026-10-17 04:22:54,337 - INFO - nEpochs: 5
+2026-10-17 04:22:54,337 - INFO - start_epoch: 0
+2026-10-17 04:22:54,337 - INFO - save_epoch: 1
+2026-10-17 04:22:54,338 - INFO - rec_iter: 100
+2026-10-17 04:22:54,338 - INFO - manualSeed: 1024
+2026-10-17 04:22:54,339 - INFO - loss_func: edl_loss
+2026-10-17 04:22:54,339 - INFO - evi_func: log
+2026-10-17 04:22:54,339 - INFO - metric_scoring: acc
+2026-10-17 04:22:54,340 - INFO - cuda: True
+2026-10-17 04:22:54,340 - INFO - cudnn: True
+2026-10-17 04:22:54,341 - INFO - mode: train
+2026-10-17 04:22:54,341 - INFO - lmdb: False
+2026-10-17 04:22:54,341 - INFO - dry_run: False
+2026-10-17 04:22:54,342 - INFO - rgb_dir: 
+2026-10-17 04:22:54,342 - INFO - lmdb_dir: ./datasets/lmdb
+2026-10-17 04:22:54,342 - INFO - dataset_json_folder: /Users/sahilpatil/Documents/Default Project/DLED/results/e4s_to_fsgan_pilot/manifests
+2026-10-17 04:22:54,343 - INFO - SWA: False
+2026-10-17 04:22:54,343 - INFO - save_avg: True
+2026-10-17 04:22:54,344 - INFO - log_dir: /Users/sahilpatil/Documents/Default Project/DLED/results/e4s_to_fsgan_pilot/logs
+2026-10-17 04:22:54,344 - INFO - label_dict: {'fsgan_Real': 0, 'faceswap_Real': 0, 'simswap_Real': 0, 'roop_Real': 0, 'inswap_Real': 0, 'blendface_Real': 0, 'uniface_Real': 0, 'mobileswap_Real': 0, 'e4s_Real': 0, 'facedancer_Real': 0, 'deepfacelab_Real': 0, 'fomm_Real': 0, 'facevid2vid_Real': 0, 'wav2lip_Real': 0, 'MRAA_Real': 0, 'one_shot_free_Real': 0, 'pirender_Real': 0, 'tpsm_Real': 0, 'lia_Real': 0, 'danet_Real': 0, 'sadtalker_Real': 0, 'mcnet_Real': 0, 'hyperreenact_Real': 0, 'heygen_Real': 0, 'VQGAN_Real': 0, 'StyleGAN2_Real': 0, 'StyleGAN3_Real': 0, 'StyleGANXL_Real': 0, 'sd2.1_Real': 0, 'ddim_Real': 0, 'rddm_Real': 0, 'pixart_Real': 0, 'DiT_Real': 0, 'SiT_Real': 0, 'MidJourney_Real': 0, 'whichisreal_Real': 0, 'CollabDiff_Real': 0, 'e4e_Real': 0, 'stargan_Real': 0, 'starganv2_Real': 0, 'styleclip_Real': 0, 'StarGAN-BlendFace-Stack_Fake': 4, 'DeepFakes-StarGAN-Stack_Fake': 4, 'CollabDiff_Fake': 4, 'e4e_Fake': 4, 'stargan_Fake': 4, 'starganv2_Fake': 4, 'styleclip_Fake': 4, 'VQGAN_Fake': 3, 'StyleGAN2_Fake': 3, 'StyleGAN3_Fake': 3, 'StyleGANXL_Fake': 3, 'sd2.1_Fake': 3, 'ddim_Fake': 3, 'rddm_Fake': 3, 'pixart_Fake': 3, 'DiT_Fake': 3, 'SiT_Fake': 3, 'MidJourney_Fake': 3, 'whichisreal_Fake': 3, 'fomm_Fake': 2, 'facevid2vid_Fake': 2, 'wav2lip_Fake': 2, 'MRAA_Fake': 2, 'one_shot_free_Fake': 2, 'pirender_Fake': 2, 'tpsm_Fake': 2, 'lia_Fake': 2, 'danet_Fake': 2, 'sadtalker_Fake': 2, 'mcnet_Fake': 2, 'hyperreenact_Fake': 2, 'heygen_Fake': 2, 'fsgan_Fake': 1, 'faceswap_Fake': 1, 'simswap_Fake': 1, 'roop_Fake': 1, 'inswap_Fake': 1, 'blendface_Fake': 1, 'uniface_Fake': 1, 'mobileswap_Fake': 1, 'e4s_Fake': 1, 'facedancer_Fake': 1, 'deepfacelab_Fake': 1}
+2026-10-17 04:22:54,345 - INFO - local_rank: 0
+2026-10-17 04:22:54,345 - INFO - track_his: False
+2026-10-17 04:22:54,345 - INFO - kl_reg: False
+2026-10-17 04:22:54,346 - INFO - avu_reg: True
+2026-10-17 04:22:54,346 - INFO - save_model: True
+2026-10-17 04:22:54,346 - INFO - device_choice: old
+2026-10-17 04:22:54,347 - INFO - save_path: /Users/sahilpatil/Documents/Default Project/DLED/results/e4s_to_fsgan_pilot/checkpoints
+2026-10-17 04:22:54,347 - INFO - training_data_ratio: 1.0
+2026-10-17 04:22:54,348 - INFO - max_samples_per_class: 256
+2026-10-17 04:22:54,348 - INFO - detect_novel: False
+2026-10-17 04:22:54,349 - INFO - num_classes: 2
+2026-10-17 04:22:54,349 - INFO - training_mode: single
+2026-10-17 04:22:54,349 - INFO - ddp: False
+2026-10-17 04:22:54,350 - INFO - test_fre: 1
+2026-10-17 04:22:54,350 - INFO - task_target: e4s_to_fsgan
+2026-10-17 04:22:54,350 - INFO - AvU regularization: enabled
+2026-10-17 04:22:54,351 - INFO - KL regularization: disabled
+2026-10-17 04:22:54,351 - INFO - Save model: yes
+2026-10-17 04:22:56,762 - INFO - === Initializing Validation Trainer ===
+2026-10-17 04:22:56,763 - INFO - Using device: cpu
+2026-10-17 04:22:56,769 - INFO - Logging to: /Users/sahilpatil/Documents/Default Project/DLED/results/e4s_to_fsgan_pilot/logs/dled_e4s_to_fsgan_2026-10-17-04-22-53
+2026-10-17 04:22:56,770 - INFO - ===> Epoch[0] start!
+2026-10-17 04:23:18,243 - INFO - Fusion Step 0 - lr: 0.000200, clip: 1.00000
+2026-10-17 04:23:18,311 - INFO - Iter: 0    training-loss, fused_spatial_cls_loss: 0.6928424835205078    training-loss, fused_spatial_avu_loss: 1.6074728965759277    training-loss, fused_frequency_cls_loss: 0.6943120956420898    training-loss, fused_frequency_avu_loss: 1.8476393222808838    training-loss, overall: 4.842267036437988    
+2026-10-17 04:23:18,314 - INFO - Iter: 0    training-metric, acc: 0.46875    training-metric, auc: not calculated    training-metric, eer: not calculated    training-metric, ap: -1.0    
+2026-10-17 04:27:04,161 - INFO - Fusion Step 10 - lr: 0.000200, clip: 1.01000
+2026-10-17 04:28:55,351 - INFO - Epoch[1] training loss means: {'fused_spatial_cls_loss': 0.6929330639541149, 'fused_spatial_avu_loss': 1.4892106130719185, 'fused_frequency_cls_loss': 0.6930116899311543, 'fused_frequency_avu_loss': 1.6257966384291649, 'overall': 4.50095197558403}
+2026-10-17 04:28:55,355 - INFO - Epoch[1] training metric means: {'acc': 0.51953125, 'auc': nan, 'eer': nan, 'ap': -1.0}
+2026-10-17 04:28:56,626 - INFO - Latest checkpoint saved to /Users/sahilpatil/Documents/Default Project/DLED/results/e4s_to_fsgan_pilot/checkpoints/ckpt_latest.pth (completed epoch 1)
+2026-10-17 04:28:56,628 - INFO - ===> Calculate Uncertainty Threshold !
+2026-10-17 04:30:50,522 - INFO - Retrieved uncertainty dict {'spatial': {'overall': 0.055224206298589706, 0: 0.05581869184970856, 1: 0.054790545254945755}, 'frequency': {'overall': 0.0418577566742897, 0: 0.0418577566742897, 1: 0.04187389463186264}, 'fused': {'overall': 0.004001936875283718, 0: 0.004019428975880146, 1: 0.003952270373702049}} !
+2026-10-17 04:30:50,524 - INFO - ===> Test start!
+2026-10-17 04:30:50,533 - INFO - 
+test dataset class distribution:
+  Real: 256 (50.0%)
+  Fake_1: 256 (50.0%)
+2026-10-17 04:32:37,103 - INFO - Class 0 spatial accuracy: 0.49219
+2026-10-17 04:32:37,104 - INFO - Class 0 frequency accuracy: 0.96484
+2026-10-17 04:32:37,104 - INFO - Class 0 fused accuracy: 0.86719
+2026-10-17 04:32:37,105 - INFO - Class 1 spatial accuracy: 0.58984
+2026-10-17 04:32:37,106 - INFO - Class 1 frequency accuracy: 0.01172
+2026-10-17 04:32:37,106 - INFO - Class 1 fused accuracy: 0.07422
+2026-10-17 04:32:37,107 - INFO - Sptial Prediction confidence - mean: 0.53886, std: 0.03102
+2026-10-17 04:32:37,108 - INFO - Sptial Prediction confidence range - min: 0.50353, max: 0.59382
+2026-10-17 04:32:37,108 - INFO - Sptial Prediction confidence - mean: 0.59256, std: 0.02504
+2026-10-17 04:32:37,109 - INFO - Sptial Prediction confidence range - min: 0.55235, max: 0.62478
+2026-10-17 04:32:37,109 - INFO - Sptial Prediction confidence - mean: 0.90890, std: 0.09922
+2026-10-17 04:32:37,110 - INFO - Sptial Prediction confidence range - min: 0.66930, max: 0.99995
+2026-10-17 04:32:37,110 - INFO - Spatial Mean probabilities per class: ['0.49283', '0.50717']
+2026-10-17 04:32:37,111 - INFO - Frequency Mean probabilities per class: ['0.59256', '0.40744']
+2026-10-17 04:32:37,111 - INFO - Fused Mean probabilities per class: ['0.85583', '0.14417']
+2026-10-17 04:32:37,118 - INFO - dataset: e4s_to_fsgan_val    step: 16    testing-loss, spatial_cls_loss: 0.6762827588245273    testing-loss, spatial_avu_loss: 4.773028217108788e-08    testing-loss, spatial_overall: 0.676282818429172    testing-loss, frequency_cls_loss: 0.7073306520469487    testing-loss, frequency_avu_loss: 5.913898351583846e-08    testing-loss, frequency_overall: 0.7073307116515934    testing-loss, overall: 1.383613565005362    
+2026-10-17 04:32:37,119 - INFO - dataset: e4s_to_fsgan_val    step: 16    testing-metric, spatial_acc: 0.541015625    (new best)    testing-metric, spatial_binary_acc: 0.5859375    (new best)    testing-metric, frequency_acc: 0.48828125    (new best)    testing-metric, frequency_binary_acc: 0.505859375    (new best)    testing-metric, fused_acc: 0.470703125    (new best)    testing-metric, fused_binary_acc: 0.52734375    (new best)    testing-metric, spatial_auc: 0.638763427734375    (new best)    testing-metric, spatial_eer: 0.40625    (new best)    testing-metric, spatial_ap: 0.6314774772782576    (new best)    testing-metric, frequency_auc: 0.5475006103515625    (new best)    testing-metric, frequency_eer: 0.47265625    (new best)    testing-metric, frequency_ap: 0.5518955945869719    (new best)    testing-metric, fused_auc: 0.635040283203125    (new best)    testing-metric, fused_eer: 0.41015625    (new best)    testing-metric, fused_ap: 0.623334892993415    (new best)    testing-metric, fused_precision: 0.5853658536585366    (new best)    testing-metric, fused_recall: 0.1875    (new best)    testing-metric, fused_f1: 0.28402366863905326    (new best)    spatial_acc_real:0.24609; spatial_acc_fake:0.33984frequency_acc_real:0.48242; frequency_acc_fake:0.02344fused_acc_real:0.43359; fused_acc_fake:0.09375
+2026-10-17 04:32:37,130 - INFO - Best metrics saved to /Users/sahilpatil/Documents/Default Project/DLED/results/e4s_to_fsgan_pilot/logs/dled_e4s_to_fsgan_2026-10-17-04-22-53/test/e4s_to_fsgan_val/metric_dict_best.pickle
+2026-10-17 04:32:37,130 - INFO - Epoch metrics saved to /Users/sahilpatil/Documents/Default Project/DLED/results/e4s_to_fsgan_pilot/logs/dled_e4s_to_fsgan_2026-10-17-04-22-53/test/e4s_to_fsgan_val/metrics_epoch_001.json
+2026-10-17 04:32:38,766 - INFO - Best checkpoint saved to /Users/sahilpatil/Documents/Default Project/DLED/results/e4s_to_fsgan_pilot/logs/dled_e4s_to_fsgan_2026-10-17-04-22-53/test/e4s_to_fsgan_val/ckpt_best.pth, fused_acc=0.470703125 at epoch 1 (iteration 15)
+2026-10-17 04:32:38,767 - INFO - dataset: avg    step: 16    testing-metric, fused_acc: 0.470703125    (new best)    testing-metric, fused_binary_acc: 0.52734375    (new best)    testing-metric, fused_auc: 0.635040283203125    (new best)    testing-metric, fused_eer: 0.41015625    (new best)    testing-metric, fused_ap: 0.623334892993415    (new best)    
+2026-10-17 04:32:38,768 - INFO - Best metrics saved to /Users/sahilpatil/Documents/Default Project/DLED/results/e4s_to_fsgan_pilot/logs/dled_e4s_to_fsgan_2026-10-17-04-22-53/test/avg/metric_dict_best.pickle
+2026-10-17 04:32:38,769 - INFO - Epoch metrics saved to /Users/sahilpatil/Documents/Default Project/DLED/results/e4s_to_fsgan_pilot/logs/dled_e4s_to_fsgan_2026-10-17-04-22-53/test/avg/metrics_epoch_001.json
+2026-10-17 04:32:40,267 - INFO - Best checkpoint saved to /Users/sahilpatil/Documents/Default Project/DLED/results/e4s_to_fsgan_pilot/logs/dled_e4s_to_fsgan_2026-10-17-04-22-53/test/avg/ckpt_best.pth, fused_acc=0.470703125 at epoch 1 (iteration 15)
+2026-10-17 04:32:40,268 - INFO - ===> Test Done!
+2026-10-17 04:32:40,420 - INFO - ===> Epoch[0] end with testing acc: 
+================================ Each dataset best metric ================================ 
+| e4s_to_fsgan_val:  fused_acc=0.470703125  spatial_acc=0.541015625  spatial_binary_acc=0.5859375  frequency_acc=0.48828125  frequency_binary_acc=0.505859375  fused_binary_acc=0.52734375  spatial_auc=0.638763427734375  spatial_eer=0.40625  spatial_ap=0.6314774772782576  frequency_auc=0.5475006103515625  frequency_eer=0.47265625  frequency_ap=0.5518955945869719  fused_auc=0.635040283203125  fused_eer=0.41015625  fused_ap=0.623334892993415  fused_precision=0.5853658536585366  fused_recall=0.1875  fused_f1=0.28402366863905326 | 
+============================================================================================= 
+================================== Average best metric ====================================== 
+| avg fused_acc: 0.470703125 | 
+| avg fused_binary_acc: 0.52734375 | 
+| avg fused_auc: 0.635040283203125 | 
+| avg fused_eer: 0.41015625 | 
+| avg fused_ap: 0.623334892993415 | 
+=============================================================================================!
+2026-10-17 04:32:40,421 - INFO - ===> Epoch[1] start!
+2026-10-17 04:33:02,788 - INFO - Iter: 16    training-loss, fused_spatial_cls_loss: 0.6924987435340881    training-loss, fused_spatial_avu_loss: 1.3835104703903198    training-loss, fused_frequency_cls_loss: 0.6932774782180786    training-loss, fused_frequency_avu_loss: 1.5684802532196045    training-loss, overall: 4.337766647338867    
+2026-10-17 04:33:02,789 - INFO - Iter: 16    training-metric, acc: 0.5    training-metric, auc: not calculated    training-metric, eer: not calculated    training-metric, ap: -1.0    
+2026-10-17 04:34:32,974 - INFO - Fusion Step 20 - lr: 0.002000, clip: 1.02000
+2026-10-17 04:38:14,281 - INFO - Fusion Step 30 - lr: 0.002000, clip: 1.03000
+2026-10-17 04:38:42,330 - INFO - Epoch[2] training loss means: {'fused_spatial_cls_loss': 0.6922258287668228, 'fused_spatial_avu_loss': 1.0747687928378582, 'fused_frequency_cls_loss': 0.6930178739130497, 'fused_frequency_avu_loss': 1.2834541127085686, 'overall': 3.7434665709733963}
+2026-10-17 04:38:42,331 - INFO - Epoch[2] training metric means: {'acc': 0.517578125, 'auc': nan, 'eer': nan, 'ap': -1.0}
+2026-10-17 04:38:43,705 - INFO - Latest checkpoint saved to /Users/sahilpatil/Documents/Default Project/DLED/results/e4s_to_fsgan_pilot/checkpoints/ckpt_latest.pth (completed epoch 2)
+2026-10-17 04:38:43,706 - INFO - ===> Calculate Uncertainty Threshold !
+2026-10-17 04:40:59,318 - INFO - Retrieved uncertainty dict {'spatial': {'overall': 0.8876963257789612, 0: 0.9451863169670105, 1: 0.8050504326820374}, 'frequency': {'overall': 0.466459184885025, 0: 0.501491904258728, 1: 0.39875638484954834}, 'fused': {'overall': 0.2537117004394531, 0: 0.28259140253067017, 1: 0.20382985472679138}} !
+2026-10-17 04:40:59,321 - INFO - ===> Test start!
+2026-10-17 04:40:59,327 - INFO - 
+test dataset class distribution:
+  Real: 256 (50.0%)
+  Fake_1: 256 (50.0%)
+2026-10-17 04:43:03,249 - INFO - Class 0 spatial accuracy: 0.01562
+2026-10-17 04:43:03,250 - INFO - Class 0 frequency accuracy: 0.96875
+2026-10-17 04:43:03,251 - INFO - Class 0 fused accuracy: 0.49609
+2026-10-17 04:43:03,252 - INFO - Class 1 spatial accuracy: 0.75781
+2026-10-17 04:43:03,253 - INFO - Class 1 frequency accuracy: 0.00000
+2026-10-17 04:43:03,254 - INFO - Class 1 fused accuracy: 0.58203
+2026-10-17 04:43:03,254 - INFO - Sptial Prediction confidence - mean: 0.59053, std: 0.06509
+2026-10-17 04:43:03,255 - INFO - Sptial Prediction confidence range - min: 0.50788, max: 0.70230
+2026-10-17 04:43:03,256 - INFO - Sptial Prediction confidence - mean: 0.59048, std: 0.01529
+2026-10-17 04:43:03,256 - INFO - Sptial Prediction confidence range - min: 0.56343, max: 0.61098
+2026-10-17 04:43:03,257 - INFO - Sptial Prediction confidence - mean: 0.63553, std: 0.10366
+2026-10-17 04:43:03,258 - INFO - Sptial Prediction confidence range - min: 0.51178, max: 0.82024
+2026-10-17 04:43:03,259 - INFO - Spatial Mean probabilities per class: ['0.40947', '0.59053']
+2026-10-17 04:43:03,259 - INFO - Frequency Mean probabilities per class: ['0.59048', '0.40952']
+2026-10-17 04:43:03,260 - INFO - Fused Mean probabilities per class: ['0.44107', '0.55893']
+2026-10-17 04:43:03,262 - INFO - dataset: e4s_to_fsgan_val    step: 32    testing-loss, spatial_cls_loss: 0.6853294274769723    testing-loss, spatial_avu_loss: 5.89061533162738e-08    testing-loss, spatial_overall: 0.6853294870816171    testing-loss, frequency_cls_loss: 0.7078344952315092    testing-loss, frequency_avu_loss: 5.983747478066626e-08    testing-loss, frequency_overall: 0.707834554836154    testing-loss, overall: 1.3931640405207872    
+2026-10-17 04:43:03,263 - INFO - dataset: e4s_to_fsgan_val    step: 32    testing-metric, spatial_acc: 0.38671875    testing-metric, spatial_binary_acc: 0.501953125    testing-metric, frequency_acc: 0.484375    testing-metric, frequency_binary_acc: 0.490234375    testing-metric, fused_acc: 0.5390625    (new best)    testing-metric, fused_binary_acc: 0.58203125    (new best)    testing-metric, spatial_auc: 0.6207427978515625    testing-metric, spatial_eer: 0.39453125    testing-metric, spatial_ap: 0.614735180093827    testing-metric, frequency_auc: 0.4823455810546875    testing-metric, frequency_eer: 0.51953125    (new best)    testing-metric, frequency_ap: 0.497705551134338    testing-metric, fused_auc: 0.6370849609375    (new best)    testing-metric, fused_eer: 0.39453125    testing-metric, fused_ap: 0.6202244228109051    testing-metric, fused_precision: 0.57    testing-metric, fused_recall: 0.66796875    (new best)    testing-metric, fused_f1: 0.6151079136690647    (new best)    spatial_acc_real:0.00781; spatial_acc_fake:0.49414frequency_acc_real:0.48438; frequency_acc_fake:0.00586fused_acc_real:0.24805; fused_acc_fake:0.33398
+2026-10-17 04:43:03,273 - INFO - Best metrics saved to /Users/sahilpatil/Documents/Default Project/DLED/results/e4s_to_fsgan_pilot/logs/dled_e4s_to_fsgan_2026-10-17-04-22-53/test/e4s_to_fsgan_val/metric_dict_best.pickle
+2026-10-17 04:43:03,273 - INFO - Epoch metrics saved to /Users/sahilpatil/Documents/Default Project/DLED/results/e4s_to_fsgan_pilot/logs/dled_e4s_to_fsgan_2026-10-17-04-22-53/test/e4s_to_fsgan_val/metrics_epoch_002.json
+2026-10-17 04:43:04,646 - INFO - Best checkpoint saved to /Users/sahilpatil/Documents/Default Project/DLED/results/e4s_to_fsgan_pilot/logs/dled_e4s_to_fsgan_2026-10-17-04-22-53/test/e4s_to_fsgan_val/ckpt_best.pth, fused_acc=0.5390625 at epoch 2 (iteration 15)
+2026-10-17 04:43:04,647 - INFO - dataset: avg    step: 32    testing-metric, fused_acc: 0.5390625    (new best)    testing-metric, fused_binary_acc: 0.58203125    (new best)    testing-metric, fused_auc: 0.6370849609375    (new best)    testing-metric, fused_eer: 0.39453125    testing-metric, fused_ap: 0.6202244228109051    
+2026-10-17 04:43:04,648 - INFO - Best metrics saved to /Users/sahilpatil/Documents/Default Project/DLED/results/e4s_to_fsgan_pilot/logs/dled_e4s_to_fsgan_2026-10-17-04-22-53/test/avg/metric_dict_best.pickle
+2026-10-17 04:43:04,648 - INFO - Epoch metrics saved to /Users/sahilpatil/Documents/Default Project/DLED/results/e4s_to_fsgan_pilot/logs/dled_e4s_to_fsgan_2026-10-17-04-22-53/test/avg/metrics_epoch_002.json
+2026-10-17 04:43:05,765 - INFO - Best checkpoint saved to /Users/sahilpatil/Documents/Default Project/DLED/results/e4s_to_fsgan_pilot/logs/dled_e4s_to_fsgan_2026-10-17-04-22-53/test/avg/ckpt_best.pth, fused_acc=0.5390625 at epoch 2 (iteration 15)
+2026-10-17 04:43:05,765 - INFO - ===> Test Done!
+2026-10-17 04:43:05,849 - INFO - ===> Epoch[1] end with testing acc: 
+================================ Each dataset best metric ================================ 
+| e4s_to_fsgan_val:  fused_acc=0.5390625  spatial_acc=0.541015625  spatial_binary_acc=0.5859375  frequency_acc=0.48828125  frequency_binary_acc=0.505859375  fused_binary_acc=0.58203125  spatial_auc=0.638763427734375  spatial_eer=0.40625  spatial_ap=0.6314774772782576  frequency_auc=0.5475006103515625  frequency_eer=0.51953125  frequency_ap=0.5518955945869719  fused_auc=0.6370849609375  fused_eer=0.41015625  fused_ap=0.623334892993415  fused_precision=0.5853658536585366  fused_recall=0.66796875  fused_f1=0.6151079136690647 | 
+============================================================================================= 
+================================== Average best metric ====================================== 
+| avg fused_acc: 0.5390625 | 
+| avg fused_binary_acc: 0.58203125 | 
+| avg fused_auc: 0.6370849609375 | 
+| avg fused_eer: 0.41015625 | 
+| avg fused_ap: 0.623334892993415 | 
+=============================================================================================!
+2026-10-17 04:43:05,850 - INFO - ===> Epoch[2] start!
+2026-10-17 04:43:27,154 - INFO - Iter: 32    training-loss, fused_spatial_cls_loss: 0.7101019620895386    training-loss, fused_spatial_avu_loss: 0.6891206502914429    training-loss, fused_frequency_cls_loss: 0.6807085275650024    training-loss, fused_frequency_avu_loss: 0.498991459608078    training-loss, overall: 2.578922748565674    
+2026-10-17 04:43:27,157 - INFO - Iter: 32    training-metric, acc: 0.5625    training-metric, auc: not calculated    training-metric, eer: not calculated    training-metric, ap: -1.0    
+2026-10-17 04:46:30,561 - INFO - Fusion Step 40 - lr: 0.001994, clip: 1.04000
+2026-10-17 04:49:14,419 - INFO - Epoch[3] training loss means: {'fused_spatial_cls_loss': 0.6922829337418079, 'fused_spatial_avu_loss': 0.27821165323257446, 'fused_frequency_cls_loss': 0.6936756297945976, 'fused_frequency_avu_loss': 0.26577459927648306, 'overall': 1.9299448505043983}
+2026-10-17 04:49:14,425 - INFO - Epoch[3] training metric means: {'acc': 0.529296875, 'auc': nan, 'eer': nan, 'ap': -1.0}
+2026-10-17 04:49:15,633 - INFO - Latest checkpoint saved to /Users/sahilpatil/Documents/Default Project/DLED/results/e4s_to_fsgan_pilot/checkpoints/ckpt_latest.pth (completed epoch 3)
+2026-10-17 04:49:15,634 - INFO - ===> Calculate Uncertainty Threshold !
+2026-10-17 04:51:08,284 - INFO - Retrieved uncertainty dict {'spatial': {'overall': 0.9996384382247925, 0: 0.9998341798782349, 1: 0.9992897510528564}, 'frequency': {'overall': 0.9948793649673462, 0: 0.9951701760292053, 1: 0.9945693016052246}, 'fused': {'overall': 0.980874240398407, 0: 0.9812012910842896, 1: 0.980874240398407}} !
+2026-10-17 04:51:08,286 - INFO - ===> Test start!
+2026-10-17 04:51:08,292 - INFO - 
+test dataset class distribution:
+  Real: 256 (50.0%)
+  Fake_1: 256 (50.0%)
+2026-10-17 04:52:51,987 - INFO - Class 0 spatial accuracy: 0.58203
+2026-10-17 04:52:51,988 - INFO - Class 0 frequency accuracy: 0.98438
+2026-10-17 04:52:51,989 - INFO - Class 0 fused accuracy: 0.88672
+2026-10-17 04:52:51,989 - INFO - Class 1 spatial accuracy: 0.53906
+2026-10-17 04:52:51,990 - INFO - Class 1 frequency accuracy: 0.00000
+2026-10-17 04:52:51,990 - INFO - Class 1 fused accuracy: 0.07422
+2026-10-17 04:52:51,991 - INFO - Sptial Prediction confidence - mean: 0.50292, std: 0.00571
+2026-10-17 04:52:51,992 - INFO - Sptial Prediction confidence range - min: 0.50000, max: 0.52029
+2026-10-17 04:52:51,993 - INFO - Sptial Prediction confidence - mean: 0.50781, std: 0.00792
+2026-10-17 04:52:51,993 - INFO - Sptial Prediction confidence range - min: 0.50137, max: 0.52621
+2026-10-17 04:52:51,994 - INFO - Sptial Prediction confidence - mean: 0.51013, std: 0.00883
+2026-10-17 04:52:51,995 - INFO - Sptial Prediction confidence range - min: 0.50158, max: 0.52593
+2026-10-17 04:52:51,995 - INFO - Spatial Mean probabilities per class: ['0.49889', '0.50111']
+2026-10-17 04:52:51,996 - INFO - Frequency Mean probabilities per class: ['0.50781', '0.49219']
+2026-10-17 04:52:51,996 - INFO - Fused Mean probabilities per class: ['0.50702', '0.49298']
+2026-10-17 04:52:51,998 - INFO - dataset: e4s_to_fsgan_val    step: 48    testing-loss, spatial_cls_loss: 0.6919106896966696    testing-loss, spatial_avu_loss: 4.679895909687204e-08    testing-loss, spatial_overall: 0.6919107493013144    testing-loss, frequency_cls_loss: 0.6948880348354578    testing-loss, frequency_avu_loss: 5.960464435905699e-08    testing-loss, frequency_overall: 0.6948880944401026    testing-loss, overall: 1.3867988307029009    
+2026-10-17 04:52:51,999 - INFO - dataset: e4s_to_fsgan_val    step: 48    testing-metric, spatial_acc: 0.560546875    (new best)    testing-metric, spatial_binary_acc: 0.576171875    testing-metric, frequency_acc: 0.4921875    (new best)    testing-metric, frequency_binary_acc: 0.50390625    testing-metric, fused_acc: 0.48046875    testing-metric, fused_binary_acc: 0.501953125    testing-metric, spatial_auc: 0.6150054931640625    testing-metric, spatial_eer: 0.421875    (new best)    testing-metric, spatial_ap: 0.6671937691057768    (new best)    testing-metric, frequency_auc: 0.4770355224609375    testing-metric, frequency_eer: 0.515625    testing-metric, frequency_ap: 0.4940026599960871    testing-metric, fused_auc: 0.51220703125    testing-metric, fused_eer: 0.49609375    (new best)    testing-metric, fused_ap: 0.5534007579235922    testing-metric, fused_precision: 0.5084745762711864    testing-metric, fused_recall: 0.1171875    testing-metric, fused_f1: 0.19047619047619047    spatial_acc_real:0.29102; spatial_acc_fake:0.28516frequency_acc_real:0.49219; frequency_acc_fake:0.01172fused_acc_real:0.44336; fused_acc_fake:0.05859
+2026-10-17 04:52:52,006 - INFO - Epoch metrics saved to /Users/sahilpatil/Documents/Default Project/DLED/results/e4s_to_fsgan_pilot/logs/dled_e4s_to_fsgan_2026-10-17-04-22-53/test/e4s_to_fsgan_val/metrics_epoch_003.json
+2026-10-17 04:52:52,006 - INFO - dataset: avg    step: 48    testing-metric, fused_acc: 0.48046875    testing-metric, fused_binary_acc: 0.501953125    testing-metric, fused_auc: 0.51220703125    testing-metric, fused_eer: 0.49609375    (new best)    testing-metric, fused_ap: 0.5534007579235922    
+2026-10-17 04:52:52,008 - INFO - Epoch metrics saved to /Users/sahilpatil/Documents/Default Project/DLED/results/e4s_to_fsgan_pilot/logs/dled_e4s_to_fsgan_2026-10-17-04-22-53/test/avg/metrics_epoch_003.json
+2026-10-17 04:52:52,008 - INFO - ===> Test Done!
+2026-10-17 04:52:52,093 - INFO - ===> Epoch[2] end with testing acc: 
+================================ Each dataset best metric ================================ 
+| e4s_to_fsgan_val:  fused_acc=0.5390625  spatial_acc=0.560546875  spatial_binary_acc=0.5859375  frequency_acc=0.4921875  frequency_binary_acc=0.505859375  fused_binary_acc=0.58203125  spatial_auc=0.638763427734375  spatial_eer=0.421875  spatial_ap=0.6671937691057768  frequency_auc=0.5475006103515625  frequency_eer=0.51953125  frequency_ap=0.5518955945869719  fused_auc=0.6370849609375  fused_eer=0.49609375  fused_ap=0.623334892993415  fused_precision=0.5853658536585366  fused_recall=0.66796875  fused_f1=0.6151079136690647 | 
+============================================================================================= 
+================================== Average best metric ====================================== 
+| avg fused_acc: 0.5390625 | 
+| avg fused_binary_acc: 0.58203125 | 
+| avg fused_auc: 0.6370849609375 | 
+| avg fused_eer: 0.49609375 | 
+| avg fused_ap: 0.623334892993415 | 
+=============================================================================================!
+2026-10-17 04:52:52,094 - INFO - ===> Epoch[3] start!
+2026-10-17 04:53:16,676 - INFO - Iter: 48    training-loss, fused_spatial_cls_loss: 0.6896912455558777    training-loss, fused_spatial_avu_loss: 0.5406071543693542    training-loss, fused_frequency_cls_loss: 0.6978033185005188    training-loss, fused_frequency_avu_loss: 0.30650097131729126    training-loss, overall: 2.234602689743042    
+2026-10-17 04:53:16,679 - INFO - Iter: 48    training-metric, acc: 0.5    training-metric, auc: not calculated    training-metric, eer: not calculated    training-metric, ap: -1.0    
+2026-10-17 04:54:03,983 - INFO - Fusion Step 50 - lr: 0.001984, clip: 1.05000
+2026-10-17 04:58:24,948 - INFO - Fusion Step 60 - lr: 0.001984, clip: 1.06000
+2026-10-17 04:59:31,271 - INFO - Epoch[4] training loss means: {'fused_spatial_cls_loss': 0.6905939988791943, 'fused_spatial_avu_loss': 0.3456010827794671, 'fused_frequency_cls_loss': 0.6910054832696915, 'fused_frequency_avu_loss': 0.26145287696272135, 'overall': 1.9886534512043}
+2026-10-17 04:59:31,274 - INFO - Epoch[4] training metric means: {'acc': 0.5390625, 'auc': nan, 'eer': nan, 'ap': -1.0}
+2026-10-17 04:59:32,517 - INFO - Latest checkpoint saved to /Users/sahilpatil/Documents/Default Project/DLED/results/e4s_to_fsgan_pilot/checkpoints/ckpt_latest.pth (completed epoch 4)
+2026-10-17 04:59:32,518 - INFO - ===> Calculate Uncertainty Threshold !
+2026-10-17 05:01:25,046 - INFO - Retrieved uncertainty dict {'spatial': {'overall': 0.9913014769554138, 0: 0.9931371212005615, 1: 0.9871923923492432}, 'frequency': {'overall': 0.9652037620544434, 0: 0.95318204164505, 1: 0.9681652784347534}, 'fused': {'overall': 0.8737492561340332, 0: 0.8369121551513672, 1: 0.8944537043571472}} !
+2026-10-17 05:01:25,049 - INFO - ===> Test start!
+2026-10-17 05:01:25,055 - INFO - 
+test dataset class distribution:
+  Real: 256 (50.0%)
+  Fake_1: 256 (50.0%)
+2026-10-17 05:03:17,122 - INFO - Class 0 spatial accuracy: 0.38281
+2026-10-17 05:03:17,124 - INFO - Class 0 frequency accuracy: 0.95703
+2026-10-17 05:03:17,124 - INFO - Class 0 fused accuracy: 0.89453
+2026-10-17 05:03:17,125 - INFO - Class 1 spatial accuracy: 0.75781
+2026-10-17 05:03:17,126 - INFO - Class 1 frequency accuracy: 0.00000
+2026-10-17 05:03:17,127 - INFO - Class 1 fused accuracy: 0.06641
+2026-10-17 05:03:17,130 - INFO - Sptial Prediction confidence - mean: 0.50654, std: 0.00879
+2026-10-17 05:03:17,131 - INFO - Sptial Prediction confidence range - min: 0.50000, max: 0.52741
+2026-10-17 05:03:17,132 - INFO - Sptial Prediction confidence - mean: 0.54571, std: 0.03791
+2026-10-17 05:03:17,132 - INFO - Sptial Prediction confidence range - min: 0.50798, max: 0.62110
+2026-10-17 05:03:17,133 - INFO - Sptial Prediction confidence - mean: 0.54664, std: 0.04055
+2026-10-17 05:03:17,133 - INFO - Sptial Prediction confidence range - min: 0.50075, max: 0.61991
+2026-10-17 05:03:17,134 - INFO - Spatial Mean probabilities per class: ['0.49431', '0.50569']
+2026-10-17 05:03:17,135 - INFO - Frequency Mean probabilities per class: ['0.54571', '0.45429']
+2026-10-17 05:03:17,135 - INFO - Fused Mean probabilities per class: ['0.54517', '0.45483']
+2026-10-17 05:03:17,138 - INFO - dataset: e4s_to_fsgan_val    step: 64    testing-loss, spatial_cls_loss: 0.6862597521394491    testing-loss, spatial_avu_loss: 4.5867636883079044e-08    testing-loss, spatial_overall: 0.6862598117440939    testing-loss, frequency_cls_loss: 0.6928337677381933    testing-loss, frequency_avu_loss: 5.960464435905699e-08    testing-loss, frequency_overall: 0.692833827342838    testing-loss, overall: 1.3790936274453998    
+2026-10-17 05:03:17,139 - INFO - dataset: e4s_to_fsgan_val    step: 64    testing-metric, spatial_acc: 0.5703125    (new best)    testing-metric, spatial_binary_acc: 0.5859375    testing-metric, frequency_acc: 0.478515625    testing-metric, frequency_binary_acc: 0.509765625    (new best)    testing-metric, fused_acc: 0.48046875    testing-metric, fused_binary_acc: 0.525390625    testing-metric, spatial_auc: 0.693389892578125    (new best)    testing-metric, spatial_eer: 0.3515625    testing-metric, spatial_ap: 0.7036378980341657    (new best)    testing-metric, frequency_auc: 0.57470703125    (new best)    testing-metric, frequency_eer: 0.4453125    testing-metric, frequency_ap: 0.5747457405644684    (new best)    testing-metric, fused_auc: 0.5992279052734375    testing-metric, fused_eer: 0.43359375    testing-metric, fused_ap: 0.618092647406491    testing-metric, fused_precision: 0.5970149253731343    (new best)    testing-metric, fused_recall: 0.15625    testing-metric, fused_f1: 0.2476780185758514    spatial_acc_real:0.19141; spatial_acc_fake:0.39453frequency_acc_real:0.47852; frequency_acc_fake:0.03125fused_acc_real:0.44727; fused_acc_fake:0.07812
+2026-10-17 05:03:17,150 - INFO - Epoch metrics saved to /Users/sahilpatil/Documents/Default Project/DLED/results/e4s_to_fsgan_pilot/logs/dled_e4s_to_fsgan_2026-10-17-04-22-53/test/e4s_to_fsgan_val/metrics_epoch_004.json
+2026-10-17 05:03:17,151 - INFO - dataset: avg    step: 64    testing-metric, fused_acc: 0.48046875    testing-metric, fused_binary_acc: 0.525390625    testing-metric, fused_auc: 0.5992279052734375    testing-metric, fused_eer: 0.43359375    testing-metric, fused_ap: 0.618092647406491    
+2026-10-17 05:03:17,152 - INFO - Epoch metrics saved to /Users/sahilpatil/Documents/Default Project/DLED/results/e4s_to_fsgan_pilot/logs/dled_e4s_to_fsgan_2026-10-17-04-22-53/test/avg/metrics_epoch_004.json
+2026-10-17 05:03:17,153 - INFO - ===> Test Done!
+2026-10-17 05:03:17,290 - INFO - ===> Epoch[3] end with testing acc: 
+================================ Each dataset best metric ================================ 
+| e4s_to_fsgan_val:  fused_acc=0.5390625  spatial_acc=0.5703125  spatial_binary_acc=0.5859375  frequency_acc=0.4921875  frequency_binary_acc=0.509765625  fused_binary_acc=0.58203125  spatial_auc=0.693389892578125  spatial_eer=0.421875  spatial_ap=0.7036378980341657  frequency_auc=0.57470703125  frequency_eer=0.51953125  frequency_ap=0.5747457405644684  fused_auc=0.6370849609375  fused_eer=0.49609375  fused_ap=0.623334892993415  fused_precision=0.5970149253731343  fused_recall=0.66796875  fused_f1=0.6151079136690647 | 
+============================================================================================= 
+================================== Average best metric ====================================== 
+| avg fused_acc: 0.5390625 | 
+| avg fused_binary_acc: 0.58203125 | 
+| avg fused_auc: 0.6370849609375 | 
+| avg fused_eer: 0.49609375 | 
+| avg fused_ap: 0.623334892993415 | 
+=============================================================================================!
+2026-10-17 05:03:17,291 - INFO - ===> Epoch[4] start!
+2026-10-17 05:03:51,082 - INFO - Iter: 64    training-loss, fused_spatial_cls_loss: 0.6953915357589722    training-loss, fused_spatial_avu_loss: 0.5254210233688354    training-loss, fused_frequency_cls_loss: 0.705564022064209    training-loss, fused_frequency_avu_loss: 0.3864842653274536    training-loss, overall: 2.3128609657287598    
+2026-10-17 05:03:51,086 - INFO - Iter: 64    training-metric, acc: 0.4375    training-metric, auc: not calculated    training-metric, eer: not calculated    training-metric, ap: -1.0    
+2026-10-17 05:16:29,428 - INFO - Fusion Step 70 - lr: 0.001971, clip: 1.07000
+2026-10-17 05:22:42,323 - INFO - Epoch[5] training loss means: {'fused_spatial_cls_loss': 0.6883017383515835, 'fused_spatial_avu_loss': 0.41984267346560955, 'fused_frequency_cls_loss': 0.6911194659769535, 'fused_frequency_avu_loss': 0.3457821421325207, 'overall': 2.1450460106134415}
+2026-10-17 05:22:42,329 - INFO - Epoch[5] training metric means: {'acc': 0.525390625, 'auc': nan, 'eer': nan, 'ap': -1.0}
+2026-10-17 05:22:43,542 - INFO - Latest checkpoint saved to /Users/sahilpatil/Documents/Default Project/DLED/results/e4s_to_fsgan_pilot/checkpoints/ckpt_latest.pth (completed epoch 5)
+2026-10-17 05:22:43,544 - INFO - ===> Calculate Uncertainty Threshold !
+2026-10-17 05:24:40,795 - INFO - Retrieved uncertainty dict {'spatial': {'overall': 0.8235940933227539, 0: 0.8419220447540283, 1: 0.8006406426429749}, 'frequency': {'overall': 0.9525207281112671, 0: 0.9102259874343872, 1: 0.9613146185874939}, 'fused': {'overall': 0.63219153881073, 0: 0.63219153881073, 1: 0.6375695466995239}} !
+2026-10-17 05:24:40,797 - INFO - ===> Test start!
+2026-10-17 05:24:40,806 - INFO - 
+test dataset class distribution:
+  Real: 256 (50.0%)
+  Fake_1: 256 (50.0%)
+2026-10-17 05:26:28,929 - INFO - Class 0 spatial accuracy: 0.56641
+2026-10-17 05:26:28,930 - INFO - Class 0 frequency accuracy: 0.94141
+2026-10-17 05:26:28,931 - INFO - Class 0 fused accuracy: 0.89844
+2026-10-17 05:26:28,931 - INFO - Class 1 spatial accuracy: 0.55078
+2026-10-17 05:26:28,932 - INFO - Class 1 frequency accuracy: 0.00000
+2026-10-17 05:26:28,932 - INFO - Class 1 fused accuracy: 0.16406
+2026-10-17 05:26:28,934 - INFO - Sptial Prediction confidence - mean: 0.52384, std: 0.01898
+2026-10-17 05:26:28,935 - INFO - Sptial Prediction confidence range - min: 0.50047, max: 0.55480
+2026-10-17 05:26:28,935 - INFO - Sptial Prediction confidence - mean: 0.53564, std: 0.02850
+2026-10-17 05:26:28,936 - INFO - Sptial Prediction confidence range - min: 0.50556, max: 0.59355
+2026-10-17 05:26:28,936 - INFO - Sptial Prediction confidence - mean: 0.56011, std: 0.05663
+2026-10-17 05:26:28,937 - INFO - Sptial Prediction confidence range - min: 0.50763, max: 0.69292
+2026-10-17 05:26:28,938 - INFO - Spatial Mean probabilities per class: ['0.49722', '0.50278']
+2026-10-17 05:26:28,938 - INFO - Frequency Mean probabilities per class: ['0.53564', '0.46436']
+2026-10-17 05:26:28,939 - INFO - Fused Mean probabilities per class: ['0.55429', '0.44571']
+2026-10-17 05:26:28,940 - INFO - dataset: e4s_to_fsgan_val    step: 80    testing-loss, spatial_cls_loss: 0.6690418678335845    testing-loss, spatial_avu_loss: 4.074536275044949e-08    testing-loss, spatial_overall: 0.6690419274382293    testing-loss, frequency_cls_loss: 0.6868149032816291    testing-loss, frequency_avu_loss: 5.960464435905699e-08    testing-loss, frequency_overall: 0.6868149628862739    testing-loss, overall: 1.355856891721487    
+2026-10-17 05:26:28,941 - INFO - dataset: e4s_to_fsgan_val    step: 80    testing-metric, spatial_acc: 0.55859375    testing-metric, spatial_binary_acc: 0.625    (new best)    testing-metric, frequency_acc: 0.470703125    testing-metric, frequency_binary_acc: 0.525390625    (new best)    testing-metric, fused_acc: 0.53125    testing-metric, fused_binary_acc: 0.5703125    testing-metric, spatial_auc: 0.7121124267578125    (new best)    testing-metric, spatial_eer: 0.359375    testing-metric, spatial_ap: 0.7104079652707721    (new best)    testing-metric, frequency_auc: 0.6271820068359375    (new best)    testing-metric, frequency_eer: 0.41015625    testing-metric, frequency_ap: 0.6210056203539542    (new best)    testing-metric, fused_auc: 0.705078125    (new best)    testing-metric, fused_eer: 0.37109375    testing-metric, fused_ap: 0.7163236574058516    (new best)    testing-metric, fused_precision: 0.7045454545454546    (new best)    testing-metric, fused_recall: 0.2421875    testing-metric, fused_f1: 0.36046511627906974    spatial_acc_real:0.28320; spatial_acc_fake:0.34180frequency_acc_real:0.47070; frequency_acc_fake:0.05469fused_acc_real:0.44922; fused_acc_fake:0.12109
+2026-10-17 05:26:29,045 - INFO - Epoch metrics saved to /Users/sahilpatil/Documents/Default Project/DLED/results/e4s_to_fsgan_pilot/logs/dled_e4s_to_fsgan_2026-10-17-04-22-53/test/e4s_to_fsgan_val/metrics_epoch_005.json
+2026-10-17 05:26:29,046 - INFO - dataset: avg    step: 80    testing-metric, fused_acc: 0.53125    testing-metric, fused_binary_acc: 0.5703125    testing-metric, fused_auc: 0.705078125    (new best)    testing-metric, fused_eer: 0.37109375    testing-metric, fused_ap: 0.7163236574058516    (new best)    
+2026-10-17 05:26:29,047 - INFO - Epoch metrics saved to /Users/sahilpatil/Documents/Default Project/DLED/results/e4s_to_fsgan_pilot/logs/dled_e4s_to_fsgan_2026-10-17-04-22-53/test/avg/metrics_epoch_005.json
+2026-10-17 05:26:29,048 - INFO - ===> Test Done!
+2026-10-17 05:26:29,152 - INFO - ===> Epoch[4] end with testing acc: 
+================================ Each dataset best metric ================================ 
+| e4s_to_fsgan_val:  fused_acc=0.5390625  spatial_acc=0.5703125  spatial_binary_acc=0.625  frequency_acc=0.4921875  frequency_binary_acc=0.525390625  fused_binary_acc=0.58203125  spatial_auc=0.7121124267578125  spatial_eer=0.421875  spatial_ap=0.7104079652707721  frequency_auc=0.6271820068359375  frequency_eer=0.51953125  frequency_ap=0.6210056203539542  fused_auc=0.705078125  fused_eer=0.49609375  fused_ap=0.7163236574058516  fused_precision=0.7045454545454546  fused_recall=0.66796875  fused_f1=0.6151079136690647 | 
+============================================================================================= 
+================================== Average best metric ====================================== 
+| avg fused_acc: 0.5390625 | 
+| avg fused_binary_acc: 0.58203125 | 
+| avg fused_auc: 0.705078125 | 
+| avg fused_eer: 0.49609375 | 
+| avg fused_ap: 0.7163236574058516 | 
+=============================================================================================!
+2026-10-17 05:26:29,152 - INFO - Stop Training on best Testing metric 
+================================ Each dataset best metric ================================ 
+| e4s_to_fsgan_val:  fused_acc=0.5390625  spatial_acc=0.5703125  spatial_binary_acc=0.625  frequency_acc=0.4921875  frequency_binary_acc=0.525390625  fused_binary_acc=0.58203125  spatial_auc=0.7121124267578125  spatial_eer=0.421875  spatial_ap=0.7104079652707721  frequency_auc=0.6271820068359375  frequency_eer=0.51953125  frequency_ap=0.6210056203539542  fused_auc=0.705078125  fused_eer=0.49609375  fused_ap=0.7163236574058516  fused_precision=0.7045454545454546  fused_recall=0.66796875  fused_f1=0.6151079136690647 | 
+============================================================================================= 
+================================== Average best metric ====================================== 
+| avg fused_acc: 0.5390625 | 
+| avg fused_binary_acc: 0.58203125 | 
+| avg fused_auc: 0.705078125 | 
+| avg fused_eer: 0.49609375 | 
+| avg fused_ap: 0.7163236574058516 | 
+=============================================================================================
+2026-10-17 05:26:29,153 - INFO - Uncertainty threshold: {0: {'spatial': {'overall': 0.055224206298589706, 0: 0.05581869184970856, 1: 0.054790545254945755}, 'frequency': {'overall': 0.0418577566742897, 0: 0.0418577566742897, 1: 0.04187389463186264}, 'fused': {'overall': 0.004001936875283718, 0: 0.004019428975880146, 1: 0.003952270373702049}}, 1: {'spatial': {'overall': 0.8876963257789612, 0: 0.9451863169670105, 1: 0.8050504326820374}, 'frequency': {'overall': 0.466459184885025, 0: 0.501491904258728, 1: 0.39875638484954834}, 'fused': {'overall': 0.2537117004394531, 0: 0.28259140253067017, 1: 0.20382985472679138}}, 2: {'spatial': {'overall': 0.9996384382247925, 0: 0.9998341798782349, 1: 0.9992897510528564}, 'frequency': {'overall': 0.9948793649673462, 0: 0.9951701760292053, 1: 0.9945693016052246}, 'fused': {'overall': 0.980874240398407, 0: 0.9812012910842896, 1: 0.980874240398407}}, 3: {'spatial': {'overall': 0.9913014769554138, 0: 0.9931371212005615, 1: 0.9871923923492432}, 'frequency': {'overall': 0.9652037620544434, 0: 0.95318204164505, 1: 0.9681652784347534}, 'fused': {'overall': 0.8737492561340332, 0: 0.8369121551513672, 1: 0.8944537043571472}}, 4: {'spatial': {'overall': 0.8235940933227539, 0: 0.8419220447540283, 1: 0.8006406426429749}, 'frequency': {'overall': 0.9525207281112671, 0: 0.9102259874343872, 1: 0.9613146185874939}, 'fused': {'overall': 0.63219153881073, 0: 0.63219153881073, 1: 0.6375695466995239}}}
+2026-10-17 05:26:29,154 - INFO - Dataset e4s_to_fsgan_val
+2026-10-17 05:26:29,165 - INFO - spatial_Accuracy: [0.541015625, 0.38671875, 0.560546875, 0.5703125, 0.55859375]
+2026-10-17 05:26:29,166 - INFO - spatial_Binary Accuracy: [0.5859375, 0.501953125, 0.576171875, 0.5859375, 0.625]
+2026-10-17 05:26:29,166 - INFO - frequency_Accuracy: [0.48828125, 0.484375, 0.4921875, 0.478515625, 0.470703125]
+2026-10-17 05:26:29,167 - INFO - frequency_Binary Accuracy: [0.505859375, 0.490234375, 0.50390625, 0.509765625, 0.525390625]
+2026-10-17 05:26:29,167 - INFO - fused_Accuracy: [0.470703125, 0.5390625, 0.48046875, 0.48046875, 0.53125]
+2026-10-17 05:26:29,167 - INFO - fused_Binary Accuracy: [0.52734375, 0.58203125, 0.501953125, 0.525390625, 0.5703125]
+2026-10-17 05:26:29,168 - INFO - ===> Save Model

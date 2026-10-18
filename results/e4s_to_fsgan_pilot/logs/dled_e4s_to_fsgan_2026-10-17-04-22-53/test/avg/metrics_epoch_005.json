@@ -1,0 +1,10 @@
+{
+  "fused_acc": 0.53125,
+  "fused_binary_acc": 0.5703125,
+  "fused_auc": 0.705078125,
+  "fused_eer": 0.37109375,
+  "fused_ap": 0.7163236574058516,
+  "dataset_dict": {
+    "e4s_to_fsgan_val": 0.53125
+  }
+}

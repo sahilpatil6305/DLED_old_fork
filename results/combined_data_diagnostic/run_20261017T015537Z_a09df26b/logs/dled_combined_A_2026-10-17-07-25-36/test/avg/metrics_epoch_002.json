@@ -1,0 +1,10 @@
+{
+  "fused_acc": 0.51171875,
+  "fused_binary_acc": 0.541015625,
+  "fused_auc": 0.5908660888671875,
+  "fused_eer": 0.44921875,
+  "fused_ap": 0.5788768094878539,
+  "dataset_dict": {
+    "combined_A_validation": 0.51171875
+  }
+}

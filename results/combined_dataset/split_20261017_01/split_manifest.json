@@ -1,0 +1,78 @@
+{
+  "experiment": "Experiment A: combined seen-method evaluation",
+  "seed": 1024,
+  "fractions_target": {
+    "train": 0.7,
+    "validation": 0.15,
+    "test": 0.15
+  },
+  "source_video_group_counts": {
+    "train": 348,
+    "validation": 256,
+    "test": 256
+  },
+  "connected_component_counts": {
+    "train": 174,
+    "validation": 128,
+    "test": 128
+  },
+  "source_video_overlaps": {
+    "train_validation": 0,
+    "train_test": 0,
+    "validation_test": 0
+  },
+  "overlap_examples": {
+    "train_validation": [],
+    "train_test": [],
+    "validation_test": []
+  },
+  "split_video_row_counts": {
+    "train": {
+      "real": 347,
+      "fake": 346,
+      "rows": 693,
+      "class_video_rows": {
+        "real": 347,
+        "fake": 346
+      },
+      "class_frame_references": {
+        "real": 11093,
+        "fake": 10999
+      }
+    },
+    "validation": {
+      "real": 256,
+      "fake": 256,
+      "rows": 512,
+      "class_video_rows": {
+        "real": 256,
+        "fake": 256
+      },
+      "class_frame_references": {
+        "real": 8190,
+        "fake": 8132
+      }
+    },
+    "test": {
+      "real": 256,
+      "fake": 256,
+      "rows": 512,
+      "class_video_rows": {
+        "real": 256,
+        "fake": 256
+      },
+      "class_frame_references": {
+        "real": 8189,
+        "fake": 8103
+      }
+    }
+  },
+  "unique_frame_references": 54706,
+  "missing_paths": 0,
+  "dataset_root": "/Volumes/pendrive/DF40/deepfakes_detection_datasets",
+  "input_manifest_sha256": {
+    "/Users/sahilpatil/Documents/Default Project/DLED/results/e4s_to_fsgan_pilot/manifests/e4s_to_fsgan_train.json": "3087b05f681b27de143841d3bd4c2860b20ce5d8f0432ab476134f59c1d91801",
+    "/Users/sahilpatil/Documents/Default Project/DLED/results/e4s_to_fsgan_pilot/manifests/e4s_to_fsgan_val.json": "74c3ca74bc2f58c9752826ed0b372e077efdb4d3d2282b273f9bbf963be11649",
+    "/Users/sahilpatil/Documents/Default Project/DLED/results/e4s_to_fsgan_pilot/manifests/fsgan_to_e4s_test.json": "48540b797b18f5f149e24ff405e194edfc57b5977ed63763408d71bab481bac6"
+  }
+}

@@ -1,0 +1,45 @@
+{
+  "run_id": "run_20261017T034241Z_9ca284c7",
+  "timestamp": "2026-10-17T03:42:41.025144+00:00",
+  "experiment_type": "combined_data_corrected",
+  "dataset_combination": "combined_A_train",
+  "config_id": "combined_A_train_to_combined_A_validation",
+  "status": "COMPLETED",
+  "completed_epochs": 5,
+  "best_validation_metric": 0.5798185384992643,
+  "test_accuracy": "",
+  "test_roc_auc": "",
+  "runtime_seconds": 8212.995,
+  "artifact_dir": "/Users/sahilpatil/Documents/Default Project/DLED/results/combined_data_corrected/run_20261017T034241Z_9ca284c7",
+  "start_time": "2026-10-17T03:42:41.025144+00:00",
+  "end_time": "2026-10-17T08:17:05.913740+00:00",
+  "command": "'/Users/sahilpatil/Documents/Default Project/DLED/.venv/bin/python' training/train.py --detector_path training/config/detector/dled.yaml --train_dataset combined_A_train --test_dataset combined_A_validation --dataset_json_folder results/combined_dataset/split_20261017_02 --samples_per_class_per_epoch 256 --num_classes 2 --training_mode single --num_epochs 5 --test_fre 1 --workers 0 --task_target combined_A_fullpool_diagnostic --save_model --avu_reg --experiment_type combined_data_corrected",
+  "parent_run_id": null,
+  "python": "3.10.22 (main, Oct  1 2026, 00:48:01) [Clang 21.0.0 (clang-2100.3.34.2)]",
+  "platform": "macOS-26.5-arm64-arm-64bit",
+  "torch": "2.2.2",
+  "device": "cpu",
+  "dependencies": {
+    "numpy": "1.26.4",
+    "Pillow": "10.4.0",
+    "scikit-learn": "1.5.2",
+    "PyYAML": "6.0.2",
+    "torchvision": "0.17.2"
+  },
+  "run_kind": "training",
+  "test_dataset": [
+    "combined_A_validation"
+  ],
+  "seed": 1024,
+  "requested_epochs": 5,
+  "dataset_json_folder": "results/combined_dataset/split_20261017_02",
+  "checkpoint_selection": "highest fused_acc on validation",
+  "manifest_hashes": {
+    "results/combined_dataset/split_20261017_02/combined_A_test.json": "930ff4201807d3edfd49a30315658e84e335554503001fe6b28eb85b2aab96dd",
+    "results/combined_dataset/split_20261017_02/combined_A_train.json": "ab96e773a0d6ae0e60fd506edcde7196c25c81044c8910cfe2f787ed01e0113d",
+    "results/combined_dataset/split_20261017_02/combined_A_validation.json": "989ece9de8f3c5376d736140aea0b4f4e8cc9727e737e037f4cfcc0252545199",
+    "results/combined_dataset/split_20261017_02/split_manifest.json": "2fde5e61e2fb49c410212a25152c3413ca88bb952290f9a67cb5955e5629e2b2"
+  },
+  "evaluation_status": "validation_completed",
+  "wall_clock_duration_seconds": 16464.889
+}

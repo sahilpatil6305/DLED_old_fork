@@ -1,0 +1,491 @@
+RUN_DIR=/Users/sahilpatil/Documents/Default Project/DLED/results/combined_data_diagnostic/run_20261017T015537Z_a09df26b
+2026-10-17 07:25:37,813 - INFO - Save log to /Users/sahilpatil/Documents/Default Project/DLED/results/combined_data_diagnostic/run_20261017T015537Z_a09df26b/logs/dled_combined_A_2026-10-17-07-25-37
+2026-10-17 07:25:37,813 - INFO - --------------- Configuration ---------------
+2026-10-17 07:25:37,814 - INFO - pretrained: None
+2026-10-17 07:25:37,814 - INFO - model_name: dled
+2026-10-17 07:25:37,814 - INFO - backbone_name: vit
+2026-10-17 07:25:37,815 - INFO - backbone_config: {'mode': 'original', 'num_classes': 2, 'inc': 3, 'dropout': False}
+2026-10-17 07:25:37,815 - INFO - all_dataset: ['FaceForensics++', 'FF-F2F', 'FF-DF', 'FF-FS', 'FF-NT', 'FaceShifter', 'DeepFakeDetection', 'Celeb-DF-v1', 'Celeb-DF-v2', 'DFDCP', 'DFDC', 'DeeperForensics-1.0', 'UADFV']
+2026-10-17 07:25:37,816 - INFO - train_dataset: ['combined_A_train']
+2026-10-17 07:25:37,816 - INFO - test_dataset: ['combined_A_validation']
+2026-10-17 07:25:37,817 - INFO - compression: c23
+2026-10-17 07:25:37,817 - INFO - train_batchSize: 32
+2026-10-17 07:25:37,817 - INFO - test_batchSize: 100
+2026-10-17 07:25:37,818 - INFO - workers: 0
+2026-10-17 07:25:37,818 - INFO - frame_num: {'train': 32, 'test': 32}
+2026-10-17 07:25:37,818 - INFO - resolution: 224
+2026-10-17 07:25:37,819 - INFO - with_mask: False
+2026-10-17 07:25:37,819 - INFO - with_landmark: False
+2026-10-17 07:25:37,819 - INFO - use_data_augmentation: True
+2026-10-17 07:25:37,820 - INFO - data_aug: {'flip_prob': 0.5, 'rotate_prob': 0.0, 'rotate_limit': [-10, 10], 'blur_prob': 0.5, 'blur_limit': [3, 7], 'brightness_prob': 0.5, 'brightness_limit': [-0.1, 0.1], 'contrast_limit': [-0.1, 0.1], 'quality_lower': 40, 'quality_upper': 100}
+2026-10-17 07:25:37,820 - INFO - mean: [0.5, 0.5, 0.5]
+2026-10-17 07:25:37,820 - INFO - std: [0.5, 0.5, 0.5]
+2026-10-17 07:25:37,821 - INFO - optimizer: {'type': 'sgd', 'adam': {'lr': 0.0002, 'beta1': 0.9, 'beta2': 0.999, 'eps': 1e-08, 'weight_decay': 0.0005, 'amsgrad': False}, 'sgd': {'lr': 0.0002, 'momentum': 0.9, 'weight_decay': 0.0005}}
+2026-10-17 07:25:37,821 - INFO - DATALOADER: {'TRAIN_X': {'BATCH_SIZE': 32}, 'TEST': {'BATCH_SIZE': 100}, 'NUM_WORKERS': 0}
+2026-10-17 07:25:37,821 - INFO - INPUT: {'SIZE': '(224, 224)', 'INTERPOLATION': 'bicubic', 'PIXEL_MEAN': [0.48145466, 0.4578275, 0.40821073], 'PIXEL_STD': [0.26862954, 0.26130258, 0.27577711], 'TRANSFORMS': ['random_resized_crop', 'random_flip', 'normalize']}
+2026-10-17 07:25:37,822 - INFO - OPTIM: {'NAME': 'sgd', 'LR': 0.002, 'WEIGHT_DECAY': 0.0005, 'MOMENTUM': 0.9, 'SGD_DAMPNING': None, 'SGD_NESTEROV': None, 'RMSPROP_ALPHA': None, 'ADAM_BETA1': 0.9, 'ADAM_BETA2': 0.999, 'STAGED_LR': False, 'NEW_LAYERS': None, 'BASE_LR_MULT': None, 'MAX_EPOCH': 50, 'LR_SCHEDULER': 'cosine', 'STEPSIZE': None, 'GAMMA': None, 'WARMUP_RECOUNT': None, 'WARMUP_EPOCH': 1, 'WARMUP_TYPE': 'constant', 'WARMUP_CONS_LR': 0.0002}
+2026-10-17 07:25:37,822 - INFO - TRAIN: {'PRINT_FREQ': 5}
+2026-10-17 07:25:37,822 - INFO - TRAINER: {'N_CTX': 16, 'CSC': False, 'CTX_INIT': '', 'PREC': 'fp32', 'CLASS_TOKEN_POSITION': 'end', 'ENCODER': 'both', 'POSITION': 'all', 'ENABLE_LORA': ['q', 'k', 'v', 'o'], 'RANK': 16, 'DROPOUT_RATE': 0, 'LORA_ALPHA': 1, 'BACKUP': 'freq'}
+2026-10-17 07:25:37,823 - INFO - MODEL: {'BACKBONE': {'NAME': 'ViT-B/16'}, 'PROMPT_EDL': {'FIXED_PROMPT': False}, 'INIT_WEIGHTS': False}
+2026-10-17 07:25:37,823 - INFO - lr_scheduler: None
+2026-10-17 07:25:37,824 - INFO - nEpochs: 5
+2026-10-17 07:25:37,824 - INFO - start_epoch: 0
+2026-10-17 07:25:37,824 - INFO - save_epoch: 1
+2026-10-17 07:25:37,825 - INFO - rec_iter: 100
+2026-10-17 07:25:37,825 - INFO - manualSeed: 1024
+2026-10-17 07:25:37,825 - INFO - loss_func: edl_loss
+2026-10-17 07:25:37,826 - INFO - evi_func: log
+2026-10-17 07:25:37,826 - INFO - metric_scoring: acc
+2026-10-17 07:25:37,826 - INFO - cuda: True
+2026-10-17 07:25:37,827 - INFO - cudnn: True
+2026-10-17 07:25:37,827 - INFO - mode: train
+2026-10-17 07:25:37,827 - INFO - lmdb: False
+2026-10-17 07:25:37,828 - INFO - dry_run: False
+2026-10-17 07:25:37,828 - INFO - rgb_dir: 
+2026-10-17 07:25:37,828 - INFO - lmdb_dir: ./datasets/lmdb
+2026-10-17 07:25:37,829 - INFO - dataset_json_folder: results/combined_dataset/split_20261017_02
+2026-10-17 07:25:37,829 - INFO - SWA: False
+2026-10-17 07:25:37,829 - INFO - save_avg: True
+2026-10-17 07:25:37,830 - INFO - log_dir: /Users/sahilpatil/Documents/Default Project/DLED/results/combined_data_diagnostic/run_20261017T015537Z_a09df26b/logs
+2026-10-17 07:25:37,830 - INFO - label_dict: {'fsgan_Real': 0, 'faceswap_Real': 0, 'simswap_Real': 0, 'roop_Real': 0, 'inswap_Real': 0, 'blendface_Real': 0, 'uniface_Real': 0, 'mobileswap_Real': 0, 'e4s_Real': 0, 'facedancer_Real': 0, 'deepfacelab_Real': 0, 'fomm_Real': 0, 'facevid2vid_Real': 0, 'wav2lip_Real': 0, 'MRAA_Real': 0, 'one_shot_free_Real': 0, 'pirender_Real': 0, 'tpsm_Real': 0, 'lia_Real': 0, 'danet_Real': 0, 'sadtalker_Real': 0, 'mcnet_Real': 0, 'hyperreenact_Real': 0, 'heygen_Real': 0, 'VQGAN_Real': 0, 'StyleGAN2_Real': 0, 'StyleGAN3_Real': 0, 'StyleGANXL_Real': 0, 'sd2.1_Real': 0, 'ddim_Real': 0, 'rddm_Real': 0, 'pixart_Real': 0, 'DiT_Real': 0, 'SiT_Real': 0, 'MidJourney_Real': 0, 'whichisreal_Real': 0, 'CollabDiff_Real': 0, 'e4e_Real': 0, 'stargan_Real': 0, 'starganv2_Real': 0, 'styleclip_Real': 0, 'StarGAN-BlendFace-Stack_Fake': 4, 'DeepFakes-StarGAN-Stack_Fake': 4, 'CollabDiff_Fake': 4, 'e4e_Fake': 4, 'stargan_Fake': 4, 'starganv2_Fake': 4, 'styleclip_Fake': 4, 'VQGAN_Fake': 3, 'StyleGAN2_Fake': 3, 'StyleGAN3_Fake': 3, 'StyleGANXL_Fake': 3, 'sd2.1_Fake': 3, 'ddim_Fake': 3, 'rddm_Fake': 3, 'pixart_Fake': 3, 'DiT_Fake': 3, 'SiT_Fake': 3, 'MidJourney_Fake': 3, 'whichisreal_Fake': 3, 'fomm_Fake': 2, 'facevid2vid_Fake': 2, 'wav2lip_Fake': 2, 'MRAA_Fake': 2, 'one_shot_free_Fake': 2, 'pirender_Fake': 2, 'tpsm_Fake': 2, 'lia_Fake': 2, 'danet_Fake': 2, 'sadtalker_Fake': 2, 'mcnet_Fake': 2, 'hyperreenact_Fake': 2, 'heygen_Fake': 2, 'fsgan_Fake': 1, 'faceswap_Fake': 1, 'simswap_Fake': 1, 'roop_Fake': 1, 'inswap_Fake': 1, 'blendface_Fake': 1, 'uniface_Fake': 1, 'mobileswap_Fake': 1, 'e4s_Fake': 1, 'facedancer_Fake': 1, 'deepfacelab_Fake': 1}
+2026-10-17 07:25:37,830 - INFO - save_path: /Users/sahilpatil/Documents/Default Project/DLED/results/combined_data_diagnostic/run_20261017T015537Z_a09df26b/checkpoints
+2026-10-17 07:25:37,831 - INFO - local_rank: 0
+2026-10-17 07:25:37,831 - INFO - track_his: False
+2026-10-17 07:25:37,831 - INFO - kl_reg: False
+2026-10-17 07:25:37,832 - INFO - avu_reg: True
+2026-10-17 07:25:37,832 - INFO - save_model: True
+2026-10-17 07:25:37,832 - INFO - device_choice: old
+2026-10-17 07:25:37,833 - INFO - training_data_ratio: 1.0
+2026-10-17 07:25:37,833 - INFO - max_samples_per_class: 256
+2026-10-17 07:25:37,833 - INFO - detect_novel: False
+2026-10-17 07:25:37,834 - INFO - num_classes: 2
+2026-10-17 07:25:37,834 - INFO - training_mode: single
+2026-10-17 07:25:37,834 - INFO - ddp: False
+2026-10-17 07:25:37,835 - INFO - test_fre: 1
+2026-10-17 07:25:37,835 - INFO - task_target: combined_A
+2026-10-17 07:25:37,835 - INFO - AvU regularization: enabled
+2026-10-17 07:25:37,836 - INFO - KL regularization: disabled
+2026-10-17 07:25:37,836 - INFO - Save model: yes
+Training datasets: ['combined_A_train']
+Processing dataset: combined_A_train
+Loading dataset: combined_A_train
+results/combined_dataset/split_20261017_02
+
+Pre-balancing distribution:
+  Real: 19252 (50.2%)
+  Fake_1: 19073 (49.8%)
+
+Post-balancing distribution:
+  Real: 256 (50.0%)
+  Fake_1: 256 (50.0%)
+Testing datasets: combined_A_validation
+Processing dataset: combined_A_validation
+Loading dataset: combined_A_validation
+results/combined_dataset/split_20261017_02
+
+Pre-balancing distribution:
+  Real: 4096 (50.1%)
+  Fake_1: 4078 (49.9%)
+
+Post-balancing distribution:
+  Real: 256 (50.0%)
+  Fake_1: 256 (50.0%)
+Train with:  single  Forgery Category!
+classnames:  ['real', 'fake']
+Loading CLIP (backbone: ViT-B/16)
+Building custom CLIP
+Initializing a generic context
+Initial context: "X X X X X X X X X X X X X X X X"
+Number of context words (tokens): 16
+Initializing a generic context
+Initial context: "X X X X X X X X X X X X X X X X"
+Number of context words (tokens): 16
+evidence function:  softplus
+  [apply_lora] block 0: injecting LoRA (r=16, targets=['q', 'k', 'v', 'o'], alpha=1)
+    Replaced attn in block 0 with MultiheadAttentionLoRA
+  [apply_lora] block 1: injecting LoRA (r=16, targets=['q', 'k', 'v', 'o'], alpha=1)
+    Replaced attn in block 1 with MultiheadAttentionLoRA
+  [apply_lora] block 2: injecting LoRA (r=16, targets=['q', 'k', 'v', 'o'], alpha=1)
+    Replaced attn in block 2 with MultiheadAttentionLoRA
+  [apply_lora] block 3: injecting LoRA (r=16, targets=['q', 'k', 'v', 'o'], alpha=1)
+    Replaced attn in block 3 with MultiheadAttentionLoRA
+  [apply_lora] block 4: injecting LoRA (r=16, targets=['q', 'k', 'v', 'o'], alpha=1)
+    Replaced attn in block 4 with MultiheadAttentionLoRA
+  [apply_lora] block 5: injecting LoRA (r=16, targets=['q', 'k', 'v', 'o'], alpha=1)
+    Replaced attn in block 5 with MultiheadAttentionLoRA
+  [apply_lora] block 6: injecting LoRA (r=16, targets=['q', 'k', 'v', 'o'], alpha=1)
+    Replaced attn in block 6 with MultiheadAttentionLoRA
+  [apply_lora] block 7: injecting LoRA (r=16, targets=['q', 'k', 'v', 'o'], alpha=1)
+    Replaced attn in block 7 with MultiheadAttentionLoRA
+  [apply_lora] block 8: injecting LoRA (r=16, targets=['q', 'k', 'v', 'o'], alpha=1)
+    Replaced attn in block 8 with MultiheadAttentionLoRA
+  [apply_lora] block 9: injecting LoRA (r=16, targets=['q', 'k', 'v', 'o'], alpha=1)
+    Replaced attn in block 9 with MultiheadAttentionLoRA
+  [apply_lora] block 10: injecting LoRA (r=16, targets=['q', 'k', 'v', 'o'], alpha=1)
+    Replaced attn in block 10 with MultiheadAttentionLoRA
+  [apply_lora] block 11: injecting LoRA (r=16, targets=['q', 'k', 'v', 'o'], alpha=1)
+    Replaced attn in block 11 with MultiheadAttentionLoRA
+  [apply_lora] block 0: injecting LoRA (r=16, targets=['q', 'k', 'v', 'o'], alpha=1)
+    Replaced attn in block 0 with MultiheadAttentionLoRA
+  [apply_lora] block 1: injecting LoRA (r=16, targets=['q', 'k', 'v', 'o'], alpha=1)
+    Replaced attn in block 1 with MultiheadAttentionLoRA
+  [apply_lora] block 2: injecting LoRA (r=16, targets=['q', 'k', 'v', 'o'], alpha=1)
+    Replaced attn in block 2 with MultiheadAttentionLoRA
+  [apply_lora] block 3: injecting LoRA (r=16, targets=['q', 'k', 'v', 'o'], alpha=1)
+    Replaced attn in block 3 with MultiheadAttentionLoRA
+  [apply_lora] block 4: injecting LoRA (r=16, targets=['q', 'k', 'v', 'o'], alpha=1)
+    Replaced attn in block 4 with MultiheadAttentionLoRA
+  [apply_lora] block 5: injecting LoRA (r=16, targets=['q', 'k', 'v', 'o'], alpha=1)
+    Replaced attn in block 5 with MultiheadAttentionLoRA
+  [apply_lora] block 6: injecting LoRA (r=16, targets=['q', 'k', 'v', 'o'], alpha=1)
+    Replaced attn in block 6 with MultiheadAttentionLoRA
+  [apply_lora] block 7: injecting LoRA (r=16, targets=['q', 'k', 'v', 'o'], alpha=1)
+    Replaced attn in block 7 with MultiheadAttentionLoRA
+  [apply_lora] block 8: injecting LoRA (r=16, targets=['q', 'k', 'v', 'o'], alpha=1)
+    Replaced attn in block 8 with MultiheadAttentionLoRA
+  [apply_lora] block 9: injecting LoRA (r=16, targets=['q', 'k', 'v', 'o'], alpha=1)
+    Replaced attn in block 9 with MultiheadAttentionLoRA
+  [apply_lora] block 10: injecting LoRA (r=16, targets=['q', 'k', 'v', 'o'], alpha=1)
+    Replaced attn in block 10 with MultiheadAttentionLoRA
+  [apply_lora] block 11: injecting LoRA (r=16, targets=['q', 'k', 'v', 'o'], alpha=1)
+    Replaced attn in block 11 with MultiheadAttentionLoRA
+  [apply_lora] block 0: injecting LoRA (r=16, targets=['q', 'k', 'v', 'o'], alpha=1)
+    Replaced attn in block 0 with MultiheadAttentionLoRA
+  [apply_lora] block 1: injecting LoRA (r=16, targets=['q', 'k', 'v', 'o'], alpha=1)
+    Replaced attn in block 1 with MultiheadAttentionLoRA
+  [apply_lora] block 2: injecting LoRA (r=16, targets=['q', 'k', 'v', 'o'], alpha=1)
+    Replaced attn in block 2 with MultiheadAttentionLoRA
+  [apply_lora] block 3: injecting LoRA (r=16, targets=['q', 'k', 'v', 'o'], alpha=1)
+    Replaced attn in block 3 with MultiheadAttentionLoRA
+  [apply_lora] block 4: injecting LoRA (r=16, targets=['q', 'k', 'v', 'o'], alpha=1)
+    Replaced attn in block 4 with MultiheadAttentionLoRA
+  [apply_lora] block 5: injecting LoRA (r=16, targets=['q', 'k', 'v', 'o'], alpha=1)
+    Replaced attn in block 5 with MultiheadAttentionLoRA
+  [apply_lora] block 6: injecting LoRA (r=16, targets=['q', 'k', 'v', 'o'], alpha=1)
+    Replaced attn in block 6 with MultiheadAttentionLoRA
+  [apply_lora] block 7: injecting LoRA (r=16, targets=['q', 'k', 'v', 'o'], alpha=1)
+    Replaced attn in block 7 with MultiheadAttentionLoRA
+  [apply_lora] block 8: injecting LoRA (r=16, targets=['q', 'k', 'v', 'o'], alpha=1)
+    Replaced attn in block 8 with MultiheadAttentionLoRA
+  [apply_lora] block 9: injecting LoRA (r=16, targets=['q', 'k', 'v', 'o'], alpha=1)
+    Replaced attn in block 9 with MultiheadAttentionLoRA
+  [apply_lora] block 10: injecting LoRA (r=16, targets=['q', 'k', 'v', 'o'], alpha=1)
+    Replaced attn in block 10 with MultiheadAttentionLoRA
+  [apply_lora] block 11: injecting LoRA (r=16, targets=['q', 'k', 'v', 'o'], alpha=1)
+    Replaced attn in block 11 with MultiheadAttentionLoRA
+  [apply_lora] block 0: injecting LoRA (r=16, targets=['q', 'k', 'v', 'o'], alpha=1)
+    Replaced attn in block 0 with MultiheadAttentionLoRA
+  [apply_lora] block 1: injecting LoRA (r=16, targets=['q', 'k', 'v', 'o'], alpha=1)
+    Replaced attn in block 1 with MultiheadAttentionLoRA
+  [apply_lora] block 2: injecting LoRA (r=16, targets=['q', 'k', 'v', 'o'], alpha=1)
+    Replaced attn in block 2 with MultiheadAttentionLoRA
+  [apply_lora] block 3: injecting LoRA (r=16, targets=['q', 'k', 'v', 'o'], alpha=1)
+    Replaced attn in block 3 with MultiheadAttentionLoRA
+  [apply_lora] block 4: injecting LoRA (r=16, targets=['q', 'k', 'v', 'o'], alpha=1)
+    Replaced attn in block 4 with MultiheadAttentionLoRA
+  [apply_lora] block 5: injecting LoRA (r=16, targets=['q', 'k', 'v', 'o'], alpha=1)
+    Replaced attn in block 5 with MultiheadAttentionLoRA
+  [apply_lora] block 6: injecting LoRA (r=16, targets=['q', 'k', 'v', 'o'], alpha=1)
+    Replaced attn in block 6 with MultiheadAttentionLoRA
+  [apply_lora] block 7: injecting LoRA (r=16, targets=['q', 'k', 'v', 'o'], alpha=1)
+    Replaced attn in block 7 with MultiheadAttentionLoRA
+  [apply_lora] block 8: injecting LoRA (r=16, targets=['q', 'k', 'v', 'o'], alpha=1)
+    Replaced attn in block 8 with MultiheadAttentionLoRA
+  [apply_lora] block 9: injecting LoRA (r=16, targets=['q', 'k', 'v', 'o'], alpha=1)
+    Replaced attn in block 9 with MultiheadAttentionLoRA
+  [apply_lora] block 10: injecting LoRA (r=16, targets=['q', 'k', 'v', 'o'], alpha=1)
+    Replaced attn in block 10 with MultiheadAttentionLoRA
+  [apply_lora] block 11: injecting LoRA (r=16, targets=['q', 'k', 'v', 'o'], alpha=1)
+    Replaced attn in block 11 with MultiheadAttentionLoRA
+Turning off gradients in both the image and the text encoder
+Parameters to be updated: {'frequency_text_encoder.transformer.resblocks.4.attn.lora_k_B', 'frequency_image_encoder.transformer.resblocks.4.attn.lora_o_A', 'spatial_image_encoder.transformer.resblocks.11.attn.lora_k_B', 'frequency_image_encoder.transformer.resblocks.1.attn.lora_q_B', 'frequency_image_encoder.transformer.resblocks.8.attn.lora_k_B', 'spatial_image_encoder.transformer.resblocks.2.attn.lora_o_B', 'frequency_text_encoder.transformer.resblocks.3.attn.lora_q_A', 'spatial_text_encoder.transformer.resblocks.11.attn.lora_q_B', 'spatial_text_encoder.transformer.resblocks.5.attn.lora_k_B', 'frequency_text_encoder.transformer.resblocks.6.attn.lora_k_A', 'frequency_image_encoder.transformer.resblocks.10.attn.lora_o_A', 'frequency_text_encoder.transformer.resblocks.1.attn.lora_q_A', 'spatial_text_encoder.transformer.resblocks.4.attn.lora_k_B', 'frequency_image_encoder.transformer.resblocks.5.attn.lora_v_B', 'frequency_text_encoder.transformer.resblocks.3.attn.lora_v_B', 'spatial_image_encoder.transformer.resblocks.11.attn.lora_o_B', 'frequency_text_encoder.transformer.resblocks.2.attn.lora_q_B', 'frequency_image_encoder.transformer.resblocks.0.attn.lora_v_B', 'spatial_text_encoder.transformer.resblocks.2.attn.lora_o_A', 'frequency_text_encoder.transformer.resblocks.10.attn.lora_v_B', 'spatial_text_encoder.transformer.resblocks.5.attn.lora_o_A', 'spatial_text_encoder.transformer.resblocks.4.attn.lora_o_A', 'spatial_image_encoder.transformer.resblocks.3.attn.lora_k_B', 'frequency_text_encoder.transformer.resblocks.8.attn.lora_k_B', 'spatial_text_encoder.transformer.resblocks.8.attn.lora_o_B', 'spatial_image_encoder.transformer.resblocks.0.attn.lora_q_B', 'spatial_image_encoder.transformer.resblocks.10.attn.lora_k_A', 'frequency_image_encoder.transformer.resblocks.3.attn.lora_o_A', 'spatial_image_encoder.transformer.resblocks.8.attn.lora_o_B', 'frequency_image_encoder.transformer.resblocks.11.attn.lora_q_A', 'spatial_image_encoder.transformer.resblocks.0.attn.lora_o_A', 'frequency_image_encoder.transformer.resblocks.11.attn.lora_v_B', 'frequency_text_encoder.transformer.resblocks.4.attn.lora_o_B', 'spatial_text_encoder.transformer.resblocks.10.attn.lora_q_B', 'frequency_text_encoder.transformer.resblocks.4.attn.lora_k_A', 'frequency_text_encoder.transformer.resblocks.4.attn.lora_o_A', 'spatial_text_encoder.transformer.resblocks.10.attn.lora_k_A', 'spatial_text_encoder.transformer.resblocks.5.attn.lora_q_A', 'frequency_prompt_learner.ctx', 'frequency_text_encoder.transformer.resblocks.6.attn.lora_q_B', 'spatial_text_encoder.transformer.resblocks.4.attn.lora_k_A', 'spatial_text_encoder.transformer.resblocks.3.attn.lora_k_B', 'frequency_text_encoder.transformer.resblocks.9.attn.lora_k_B', 'spatial_image_encoder.transformer.resblocks.4.attn.lora_v_B', 'spatial_image_encoder.transformer.resblocks.8.attn.lora_q_B', 'spatial_text_encoder.transformer.resblocks.3.attn.lora_o_B', 'spatial_text_encoder.transformer.resblocks.10.attn.lora_v_B', 'spatial_text_encoder.transformer.resblocks.3.attn.lora_q_B', 'spatial_image_encoder.transformer.resblocks.6.attn.lora_o_A', 'spatial_image_encoder.transformer.resblocks.7.attn.lora_q_A', 'frequency_image_encoder.transformer.resblocks.4.attn.lora_v_B', 'frequency_text_encoder.transformer.resblocks.9.attn.lora_v_B', 'frequency_image_encoder.transformer.resblocks.10.attn.lora_q_A', 'spatial_image_encoder.transformer.resblocks.5.attn.lora_k_A', 'spatial_text_encoder.transformer.resblocks.4.attn.lora_v_B', 'spatial_text_encoder.transformer.resblocks.5.attn.lora_v_A', 'spatial_text_encoder.transformer.resblocks.3.attn.lora_v_A', 'spatial_text_encoder.transformer.resblocks.0.attn.lora_v_A', 'spatial_text_encoder.transformer.resblocks.10.attn.lora_o_B', 'frequency_image_encoder.transformer.resblocks.9.attn.lora_v_A', 'frequency_text_encoder.transformer.resblocks.6.attn.lora_q_A', 'frequency_image_encoder.transformer.resblocks.2.attn.lora_v_B', 'frequency_image_encoder.transformer.resblocks.2.attn.lora_k_A', 'spatial_text_encoder.transformer.resblocks.10.attn.lora_q_A', 'spatial_text_encoder.transformer.resblocks.4.attn.lora_q_A', 'frequency_image_encoder.transformer.resblocks.3.attn.lora_k_A', 'frequency_image_encoder.transformer.resblocks.5.attn.lora_o_A', 'spatial_text_encoder.transformer.resblocks.2.attn.lora_v_B', 'frequency_image_encoder.transformer.resblocks.11.attn.lora_k_A', 'frequency_image_encoder.transformer.resblocks.1.attn.lora_v_A', 'spatial_text_encoder.transformer.resblocks.2.attn.lora_v_A', 'frequency_text_encoder.transformer.resblocks.7.attn.lora_k_A', 'spatial_text_encoder.transformer.resblocks.5.attn.lora_k_A', 'spatial_text_encoder.transformer.resblocks.11.attn.lora_o_A', 'spatial_image_encoder.transformer.resblocks.4.attn.lora_k_B', 'frequency_text_encoder.transformer.resblocks.0.attn.lora_o_B', 'spatial_image_encoder.transformer.resblocks.6.attn.lora_k_B', 'frequency_image_encoder.transformer.resblocks.4.attn.lora_o_B', 'frequency_image_encoder.transformer.resblocks.6.attn.lora_k_B', 'frequency_text_encoder.transformer.resblocks.9.attn.lora_q_A', 'spatial_image_encoder.transformer.resblocks.1.attn.lora_k_A', 'frequency_image_encoder.transformer.resblocks.9.attn.lora_k_B', 'spatial_prompt_learner.ctx', 'spatial_image_encoder.transformer.resblocks.7.attn.lora_q_B', 'frequency_text_encoder.transformer.resblocks.3.attn.lora_o_A', 'spatial_image_encoder.transformer.resblocks.1.attn.lora_q_B', 'spatial_image_encoder.transformer.resblocks.0.attn.lora_o_B', 'frequency_image_encoder.transformer.resblocks.7.attn.lora_q_A', 'frequency_text_encoder.transformer.resblocks.2.attn.lora_v_B', 'spatial_text_encoder.transformer.resblocks.5.attn.lora_q_B', 'frequency_image_encoder.transformer.resblocks.6.attn.lora_k_A', 'spatial_image_encoder.transformer.resblocks.4.attn.lora_q_B', 'frequency_image_encoder.transformer.resblocks.4.attn.lora_k_A', 'frequency_text_encoder.transformer.resblocks.0.attn.lora_v_B', 'spatial_text_encoder.transformer.resblocks.7.attn.lora_o_B', 'frequency_image_encoder.transformer.resblocks.6.attn.lora_o_A', 'spatial_text_encoder.transformer.resblocks.6.attn.lora_v_A', 'spatial_image_encoder.transformer.resblocks.3.attn.lora_o_A', 'spatial_image_encoder.transformer.resblocks.3.attn.lora_q_B', 'frequency_image_encoder.transformer.resblocks.11.attn.lora_o_A', 'spatial_text_encoder.transformer.resblocks.1.attn.lora_q_A', 'frequency_image_encoder.transformer.resblocks.0.attn.lora_k_B', 'frequency_image_encoder.transformer.resblocks.4.attn.lora_v_A', 'frequency_image_encoder.transformer.resblocks.7.attn.lora_k_A', 'frequency_text_encoder.transformer.resblocks.9.attn.lora_o_B', 'spatial_text_encoder.transformer.resblocks.8.attn.lora_k_A', 'spatial_image_encoder.transformer.resblocks.1.attn.lora_v_A', 'frequency_text_encoder.transformer.resblocks.5.attn.lora_o_A', 'frequency_image_encoder.transformer.resblocks.9.attn.lora_q_A', 'frequency_text_encoder.transformer.resblocks.9.attn.lora_o_A', 'spatial_image_encoder.transformer.resblocks.8.attn.lora_v_A', 'spatial_text_encoder.transformer.resblocks.7.attn.lora_v_A', 'frequency_image_encoder.transformer.resblocks.7.attn.lora_v_B', 'frequency_text_encoder.transformer.resblocks.9.attn.lora_k_A', 'frequency_text_encoder.transformer.resblocks.10.attn.lora_o_A', 'frequency_text_encoder.transformer.resblocks.9.attn.lora_q_B', 'frequency_text_encoder.transformer.resblocks.5.attn.lora_o_B', 'frequency_image_encoder.transformer.resblocks.3.attn.lora_q_A', 'frequency_image_encoder.transformer.resblocks.5.attn.lora_k_A', 'frequency_image_encoder.transformer.resblocks.7.attn.lora_k_B', 'spatial_text_encoder.transformer.resblocks.11.attn.lora_k_A', 'frequency_image_encoder.transformer.resblocks.2.attn.lora_o_A', 'spatial_text_encoder.transformer.resblocks.6.attn.lora_q_A', 'frequency_image_encoder.transformer.resblocks.5.attn.lora_k_B', 'spatial_text_encoder.transformer.resblocks.1.attn.lora_k_A', 'frequency_text_encoder.transformer.resblocks.0.attn.lora_k_B', 'spatial_image_encoder.transformer.resblocks.3.attn.lora_v_A', 'spatial_image_encoder.transformer.resblocks.2.attn.lora_o_A', 'frequency_image_encoder.transformer.resblocks.0.attn.lora_v_A', 'spatial_image_encoder.transformer.resblocks.6.attn.lora_v_B', 'frequency_image_encoder.transformer.resblocks.9.attn.lora_o_B', 'spatial_image_encoder.transformer.resblocks.4.attn.lora_o_A', 'spatial_image_encoder.transformer.resblocks.0.attn.lora_k_A', 'spatial_image_encoder.transformer.resblocks.2.attn.lora_v_A', 'spatial_image_encoder.transformer.resblocks.5.attn.lora_q_B', 'spatial_image_encoder.transformer.resblocks.9.attn.lora_q_B', 'spatial_image_encoder.transformer.resblocks.10.attn.lora_q_B', 'frequency_text_encoder.transformer.resblocks.10.attn.lora_v_A', 'spatial_image_encoder.transformer.resblocks.11.attn.lora_k_A', 'spatial_image_encoder.transformer.resblocks.4.attn.lora_v_A', 'spatial_image_encoder.transformer.resblocks.9.attn.lora_k_A', 'spatial_text_encoder.transformer.resblocks.3.attn.lora_k_A', 'frequency_text_encoder.transformer.resblocks.3.attn.lora_k_A', 'frequency_image_encoder.transformer.resblocks.11.attn.lora_o_B', 'frequency_text_encoder.transformer.resblocks.11.attn.lora_v_B', 'spatial_text_encoder.transformer.resblocks.11.attn.lora_v_A', 'frequency_text_encoder.transformer.resblocks.3.attn.lora_q_B', 'frequency_text_encoder.transformer.resblocks.7.attn.lora_k_B', 'spatial_image_encoder.transformer.resblocks.11.attn.lora_q_A', 'frequency_image_encoder.transformer.resblocks.7.attn.lora_v_A', 'frequency_image_encoder.transformer.resblocks.3.attn.lora_v_A', 'frequency_text_encoder.transformer.resblocks.11.attn.lora_q_A', 'frequency_text_encoder.transformer.resblocks.1.attn.lora_v_A', 'spatial_text_encoder.transformer.resblocks.4.attn.lora_q_B', 'spatial_image_encoder.transformer.resblocks.7.attn.lora_k_A', 'spatial_image_encoder.transformer.resblocks.0.attn.lora_k_B', 'spatial_image_encoder.transformer.resblocks.1.attn.lora_v_B', 'spatial_image_encoder.transformer.resblocks.5.attn.lora_o_B', 'spatial_text_encoder.transformer.resblocks.7.attn.lora_q_A', 'frequency_text_encoder.transformer.resblocks.0.attn.lora_k_A', 'spatial_text_encoder.transformer.resblocks.9.attn.lora_q_B', 'frequency_text_encoder.transformer.resblocks.11.attn.lora_q_B', 'spatial_image_encoder.transformer.resblocks.11.attn.lora_q_B', 'frequency_image_encoder.transformer.resblocks.3.attn.lora_v_B', 'spatial_text_encoder.transformer.resblocks.1.attn.lora_o_A', 'spatial_image_encoder.transformer.resblocks.0.attn.lora_v_A', 'spatial_text_encoder.transformer.resblocks.8.attn.lora_q_B', 'frequency_text_encoder.transformer.resblocks.0.attn.lora_v_A', 'spatial_image_encoder.transformer.resblocks.0.attn.lora_v_B', 'frequency_image_encoder.transformer.resblocks.3.attn.lora_k_B', 'frequency_text_encoder.transformer.resblocks.2.attn.lora_q_A', 'frequency_image_encoder.transformer.resblocks.1.attn.lora_k_B', 'spatial_image_encoder.transformer.resblocks.8.attn.lora_v_B', 'frequency_image_encoder.transformer.resblocks.0.attn.lora_q_B', 'frequency_text_encoder.transformer.resblocks.3.attn.lora_o_B', 'frequency_text_encoder.transformer.resblocks.10.attn.lora_o_B', 'frequency_image_encoder.transformer.resblocks.0.attn.lora_o_B', 'spatial_text_encoder.transformer.resblocks.8.attn.lora_q_A', 'frequency_text_encoder.transformer.resblocks.2.attn.lora_v_A', 'frequency_text_encoder.transformer.resblocks.7.attn.lora_o_A', 'frequency_image_encoder.transformer.resblocks.8.attn.lora_v_A', 'frequency_text_encoder.transformer.resblocks.1.attn.lora_k_B', 'spatial_image_encoder.transformer.resblocks.9.attn.lora_k_B', 'spatial_text_encoder.transformer.resblocks.0.attn.lora_q_B', 'frequency_image_encoder.transformer.resblocks.8.attn.lora_q_A', 'frequency_image_encoder.transformer.resblocks.9.attn.lora_o_A', 'frequency_image_encoder.transformer.resblocks.2.attn.lora_v_A', 'frequency_text_encoder.transformer.resblocks.0.attn.lora_q_B', 'frequency_text_encoder.transformer.resblocks.5.attn.lora_v_B', 'frequency_image_encoder.transformer.resblocks.10.attn.lora_k_A', 'spatial_text_encoder.transformer.resblocks.8.attn.lora_k_B', 'spatial_image_encoder.transformer.resblocks.6.attn.lora_q_A', 'frequency_text_encoder.transformer.resblocks.2.attn.lora_k_A', 'spatial_text_encoder.transformer.resblocks.9.attn.lora_o_A', 'frequency_image_encoder.transformer.resblocks.4.attn.lora_k_B', 'frequency_text_encoder.transformer.resblocks.6.attn.lora_o_B', 'spatial_image_encoder.transformer.resblocks.1.attn.lora_o_A', 'spatial_image_encoder.transformer.resblocks.5.attn.lora_v_A', 'spatial_text_encoder.transformer.resblocks.0.attn.lora_k_A', 'spatial_image_encoder.transformer.resblocks.8.attn.lora_o_A', 'frequency_text_encoder.transformer.resblocks.1.attn.lora_o_A', 'spatial_image_encoder.transformer.resblocks.10.attn.lora_o_B', 'spatial_text_encoder.transformer.resblocks.6.attn.lora_k_A', 'frequency_image_encoder.transformer.resblocks.8.attn.lora_k_A', 'spatial_image_encoder.transformer.resblocks.1.attn.lora_k_B', 'frequency_image_encoder.transformer.resblocks.6.attn.lora_v_A', 'frequency_text_encoder.transformer.resblocks.8.attn.lora_k_A', 'spatial_image_encoder.transformer.resblocks.6.attn.lora_q_B', 'frequency_image_encoder.transformer.resblocks.3.attn.lora_q_B', 'spatial_text_encoder.transformer.resblocks.6.attn.lora_o_B', 'frequency_image_encoder.transformer.resblocks.10.attn.lora_v_B', 'frequency_image_encoder.transformer.resblocks.11.attn.lora_v_A', 'frequency_image_encoder.transformer.resblocks.7.attn.lora_o_A', 'frequency_text_encoder.transformer.resblocks.6.attn.lora_v_B', 'frequency_text_encoder.transformer.resblocks.8.attn.lora_q_B', 'frequency_image_encoder.transformer.resblocks.4.attn.lora_q_B', 'frequency_image_encoder.transformer.resblocks.1.attn.lora_q_A', 'spatial_text_encoder.transformer.resblocks.2.attn.lora_k_A', 'frequency_image_encoder.transformer.resblocks.4.attn.lora_q_A', 'spatial_text_encoder.transformer.resblocks.7.attn.lora_o_A', 'frequency_image_encoder.transformer.resblocks.11.attn.lora_k_B', 'frequency_text_encoder.transformer.resblocks.5.attn.lora_v_A', 'frequency_text_encoder.transformer.resblocks.4.attn.lora_v_B', 'spatial_text_encoder.transformer.resblocks.11.attn.lora_q_A', 'spatial_text_encoder.transformer.resblocks.6.attn.lora_v_B', 'frequency_text_encoder.transformer.resblocks.4.attn.lora_q_A', 'spatial_image_encoder.transformer.resblocks.2.attn.lora_q_A', 'spatial_image_encoder.transformer.resblocks.0.attn.lora_q_A', 'spatial_text_encoder.transformer.resblocks.10.attn.lora_o_A', 'frequency_text_encoder.transformer.resblocks.10.attn.lora_k_B', 'spatial_image_encoder.transformer.resblocks.5.attn.lora_q_A', 'spatial_text_encoder.transformer.resblocks.0.attn.lora_k_B', 'spatial_image_encoder.transformer.resblocks.5.attn.lora_o_A', 'spatial_image_encoder.transformer.resblocks.7.attn.lora_v_B', 'spatial_image_encoder.transformer.resblocks.11.attn.lora_v_B', 'spatial_image_encoder.transformer.resblocks.7.attn.lora_v_A', 'spatial_text_encoder.transformer.resblocks.8.attn.lora_v_A', 'spatial_text_encoder.transformer.resblocks.9.attn.lora_v_A', 'frequency_image_encoder.transformer.resblocks.6.attn.lora_q_B', 'spatial_text_encoder.transformer.resblocks.7.attn.lora_k_B', 'spatial_text_encoder.transformer.resblocks.2.attn.lora_q_B', 'frequency_text_encoder.transformer.resblocks.8.attn.lora_v_B', 'frequency_text_encoder.transformer.resblocks.2.attn.lora_o_A', 'frequency_text_encoder.transformer.resblocks.4.attn.lora_q_B', 'spatial_text_encoder.transformer.resblocks.9.attn.lora_q_A', 'spatial_image_encoder.transformer.resblocks.9.attn.lora_v_A', 'frequency_text_encoder.transformer.resblocks.6.attn.lora_v_A', 'frequency_image_encoder.transformer.resblocks.2.attn.lora_q_A', 'frequency_image_encoder.transformer.resblocks.1.attn.lora_v_B', 'frequency_text_encoder.transformer.resblocks.7.attn.lora_q_B', 'spatial_image_encoder.transformer.resblocks.6.attn.lora_o_B', 'frequency_image_encoder.transformer.resblocks.6.attn.lora_o_B', 'frequency_text_encoder.transformer.resblocks.10.attn.lora_q_A', 'spatial_text_encoder.transformer.resblocks.1.attn.lora_v_A', 'spatial_text_encoder.transformer.resblocks.1.attn.lora_q_B', 'frequency_image_encoder.transformer.resblocks.2.attn.lora_k_B', 'frequency_image_encoder.transformer.resblocks.8.attn.lora_v_B', 'spatial_text_encoder.transformer.resblocks.7.attn.lora_v_B', 'spatial_image_encoder.transformer.resblocks.3.attn.lora_q_A', 'spatial_text_encoder.transformer.resblocks.5.attn.lora_o_B', 'spatial_text_encoder.transformer.resblocks.6.attn.lora_k_B', 'frequency_image_encoder.transformer.resblocks.5.attn.lora_v_A', 'spatial_image_encoder.transformer.resblocks.4.attn.lora_o_B', 'frequency_image_encoder.transformer.resblocks.6.attn.lora_q_A', 'spatial_text_encoder.transformer.resblocks.6.attn.lora_o_A', 'frequency_image_encoder.transformer.resblocks.7.attn.lora_q_B', 'spatial_image_encoder.transformer.resblocks.9.attn.lora_o_A', 'frequency_text_encoder.transformer.resblocks.11.attn.lora_k_A', 'spatial_image_encoder.transformer.resblocks.4.attn.lora_q_A', 'spatial_text_encoder.transformer.resblocks.3.attn.lora_q_A', 'spatial_text_encoder.transformer.resblocks.2.attn.lora_q_A', 'spatial_image_encoder.transformer.resblocks.1.attn.lora_q_A', 'spatial_text_encoder.transformer.resblocks.11.attn.lora_k_B', 'frequency_image_encoder.transformer.resblocks.10.attn.lora_q_B', 'frequency_image_encoder.transformer.resblocks.0.attn.lora_q_A', 'spatial_text_encoder.transformer.resblocks.10.attn.lora_v_A', 'spatial_image_encoder.transformer.resblocks.3.attn.lora_k_A', 'spatial_text_encoder.transformer.resblocks.0.attn.lora_q_A', 'frequency_image_encoder.transformer.resblocks.0.attn.lora_o_A', 'spatial_text_encoder.transformer.resblocks.11.attn.lora_o_B', 'spatial_text_encoder.transformer.resblocks.3.attn.lora_v_B', 'frequency_text_encoder.transformer.resblocks.2.attn.lora_k_B', 'spatial_text_encoder.transformer.resblocks.4.attn.lora_o_B', 'frequency_text_encoder.transformer.resblocks.7.attn.lora_v_A', 'frequency_image_encoder.transformer.resblocks.5.attn.lora_q_A', 'frequency_text_encoder.transformer.resblocks.6.attn.lora_o_A', 'spatial_image_encoder.transformer.resblocks.4.attn.lora_k_A', 'frequency_text_encoder.transformer.resblocks.10.attn.lora_k_A', 'frequency_image_encoder.transformer.resblocks.1.attn.lora_k_A', 'spatial_text_encoder.transformer.resblocks.7.attn.lora_k_A', 'frequency_image_encoder.transformer.resblocks.0.attn.lora_k_A', 'frequency_text_encoder.transformer.resblocks.11.attn.lora_v_A', 'spatial_image_encoder.transformer.resblocks.5.attn.lora_k_B', 'spatial_text_encoder.transformer.resblocks.1.attn.lora_o_B', 'spatial_text_encoder.transformer.resblocks.10.attn.lora_k_B', 'spatial_text_encoder.transformer.resblocks.7.attn.lora_q_B', 'spatial_text_encoder.transformer.resblocks.0.attn.lora_o_A', 'spatial_text_encoder.transformer.resblocks.0.attn.lora_o_B', 'frequency_image_encoder.transformer.resblocks.5.attn.lora_o_B', 'frequency_image_encoder.transformer.resblocks.8.attn.lora_q_B', 'frequency_image_encoder.transformer.resblocks.7.attn.lora_o_B', 'frequency_image_encoder.transformer.resblocks.10.attn.lora_v_A', 'frequency_text_encoder.transformer.resblocks.6.attn.lora_k_B', 'frequency_image_encoder.transformer.resblocks.3.attn.lora_o_B', 'frequency_image_encoder.transformer.resblocks.10.attn.lora_o_B', 'frequency_image_encoder.transformer.resblocks.8.attn.lora_o_A', 'spatial_image_encoder.transformer.resblocks.8.attn.lora_q_A', 'spatial_image_encoder.transformer.resblocks.3.attn.lora_o_B', 'spatial_image_encoder.transformer.resblocks.9.attn.lora_q_A', 'frequency_text_encoder.transformer.resblocks.7.attn.lora_v_B', 'spatial_text_encoder.transformer.resblocks.1.attn.lora_v_B', 'frequency_text_encoder.transformer.resblocks.8.attn.lora_o_A', 'spatial_text_encoder.transformer.resblocks.3.attn.lora_o_A', 'frequency_image_encoder.transformer.resblocks.1.attn.lora_o_A', 'frequency_text_encoder.transformer.resblocks.1.attn.lora_q_B', 'spatial_text_encoder.transformer.resblocks.1.attn.lora_k_B', 'frequency_image_encoder.transformer.resblocks.2.attn.lora_o_B', 'spatial_image_encoder.transformer.resblocks.8.attn.lora_k_A', 'frequency_text_encoder.transformer.resblocks.0.attn.lora_q_A', 'spatial_image_encoder.transformer.resblocks.11.attn.lora_o_A', 'frequency_text_encoder.transformer.resblocks.8.attn.lora_q_A', 'frequency_text_encoder.transformer.resblocks.7.attn.lora_o_B', 'frequency_text_encoder.transformer.resblocks.11.attn.lora_o_A', 'frequency_text_encoder.transformer.resblocks.2.attn.lora_o_B', 'frequency_text_encoder.transformer.resblocks.1.attn.lora_o_B', 'frequency_text_encoder.transformer.resblocks.1.attn.lora_v_B', 'frequency_image_encoder.transformer.resblocks.11.attn.lora_q_B', 'spatial_text_encoder.transformer.resblocks.0.attn.lora_v_B', 'spatial_text_encoder.transformer.resblocks.5.attn.lora_v_B', 'frequency_image_encoder.transformer.resblocks.1.attn.lora_o_B', 'spatial_image_encoder.transformer.resblocks.7.attn.lora_o_B', 'spatial_text_encoder.transformer.resblocks.4.attn.lora_v_A', 'frequency_image_encoder.transformer.resblocks.9.attn.lora_k_A', 'frequency_text_encoder.transformer.resblocks.5.attn.lora_q_B', 'frequency_image_encoder.transformer.resblocks.2.attn.lora_q_B', 'spatial_image_encoder.transformer.resblocks.7.attn.lora_o_A', 'spatial_text_encoder.transformer.resblocks.9.attn.lora_o_B', 'spatial_image_encoder.transformer.resblocks.10.attn.lora_v_B', 'spatial_image_encoder.transformer.resblocks.2.attn.lora_k_B', 'frequency_text_encoder.transformer.resblocks.8.attn.lora_o_B', 'spatial_image_encoder.transformer.resblocks.5.attn.lora_v_B', 'spatial_image_encoder.transformer.resblocks.6.attn.lora_k_A', 'frequency_text_encoder.transformer.resblocks.7.attn.lora_q_A', 'frequency_text_encoder.transformer.resblocks.10.attn.lora_q_B', 'spatial_image_encoder.transformer.resblocks.10.attn.lora_o_A', 'frequency_text_encoder.transformer.resblocks.11.attn.lora_k_B', 'spatial_text_encoder.transformer.resblocks.2.attn.lora_o_B', 'spatial_image_encoder.transformer.resblocks.2.attn.lora_q_B', 'frequency_text_encoder.transformer.resblocks.8.attn.lora_v_A', 'frequency_text_encoder.transformer.resblocks.0.attn.lora_o_A', 'spatial_image_encoder.transformer.resblocks.10.attn.lora_v_A', 'frequency_image_encoder.transformer.resblocks.6.attn.lora_v_B', 'spatial_image_encoder.transformer.resblocks.2.attn.lora_k_A', 'frequency_image_encoder.transformer.resblocks.10.attn.lora_k_B', 'spatial_text_encoder.transformer.resblocks.6.attn.lora_q_B', 'spatial_text_encoder.transformer.resblocks.9.attn.lora_k_B', 'spatial_image_encoder.transformer.resblocks.9.attn.lora_o_B', 'spatial_image_encoder.transformer.resblocks.10.attn.lora_q_A', 'spatial_image_encoder.transformer.resblocks.1.attn.lora_o_B', 'frequency_text_encoder.transformer.resblocks.5.attn.lora_q_A', 'frequency_text_encoder.transformer.resblocks.5.attn.lora_k_B', 'spatial_text_encoder.transformer.resblocks.9.attn.lora_k_A', 'spatial_image_encoder.transformer.resblocks.2.attn.lora_v_B', 'frequency_image_encoder.transformer.resblocks.8.attn.lora_o_B', 'frequency_text_encoder.transformer.resblocks.9.attn.lora_v_A', 'spatial_text_encoder.transformer.resblocks.2.attn.lora_k_B', 'spatial_image_encoder.transformer.resblocks.6.attn.lora_v_A', 'frequency_text_encoder.transformer.resblocks.11.attn.lora_o_B', 'frequency_text_encoder.transformer.resblocks.4.attn.lora_v_A', 'spatial_text_encoder.transformer.resblocks.9.attn.lora_v_B', 'spatial_text_encoder.transformer.resblocks.8.attn.lora_v_B', 'frequency_text_encoder.transformer.resblocks.1.attn.lora_k_A', 'spatial_image_encoder.transformer.resblocks.7.attn.lora_k_B', 'spatial_image_encoder.transformer.resblocks.9.attn.lora_v_B', 'frequency_text_encoder.transformer.resblocks.3.attn.lora_v_A', 'frequency_image_encoder.transformer.resblocks.9.attn.lora_q_B', 'frequency_text_encoder.transformer.resblocks.5.attn.lora_k_A', 'frequency_text_encoder.transformer.resblocks.3.attn.lora_k_B', 'spatial_text_encoder.transformer.resblocks.11.attn.lora_v_B', 'frequency_image_encoder.transformer.resblocks.5.attn.lora_q_B', 'frequency_image_encoder.transformer.resblocks.9.attn.lora_v_B', 'spatial_image_encoder.transformer.resblocks.10.attn.lora_k_B', 'spatial_text_encoder.transformer.resblocks.8.attn.lora_o_A', 'spatial_image_encoder.transformer.resblocks.3.attn.lora_v_B', 'spatial_image_encoder.transformer.resblocks.11.attn.lora_v_A', 'spatial_image_encoder.transformer.resblocks.8.attn.lora_k_B'}
+evidence loss type:  log
+2026-10-17 07:25:40,537 - INFO - === Initializing Validation Trainer ===
+uncertainty thrshold ratio:  0.05
+2026-10-17 07:25:40,538 - INFO - Using device: cpu
+2026-10-17 07:25:40,542 - INFO - Logging to: /Users/sahilpatil/Documents/Default Project/DLED/results/combined_data_diagnostic/run_20261017T015537Z_a09df26b/logs/dled_combined_A_2026-10-17-07-25-36
+2026-10-17 07:25:40,542 - INFO - ===> Epoch[0] start!
+  0%|          | 0/16 [00:00<?, ?it/s]2026-10-17 07:25:58,277 - INFO - Fusion Step 0 - lr: 0.000200, clip: 1.00000
+2026-10-17 07:25:58,306 - INFO - Iter: 0    training-loss, fused_spatial_cls_loss: 0.6941847801208496    training-loss, fused_spatial_avu_loss: 1.7224074602127075    training-loss, fused_frequency_cls_loss: 0.6911928653717041    training-loss, fused_frequency_avu_loss: 1.4344875812530518    training-loss, overall: 4.542272567749023    
+2026-10-17 07:25:58,309 - INFO - Iter: 0    training-metric, acc: 0.5625    training-metric, auc: not calculated    training-metric, eer: not calculated    training-metric, ap: -1.0    
+  6%|▋         | 1/16 [00:17<04:25, 17.73s/it] 12%|█▎        | 2/16 [00:33<03:53, 16.66s/it] 19%|█▉        | 3/16 [00:49<03:29, 16.12s/it] 25%|██▌       | 4/16 [01:05<03:12, 16.07s/it] 31%|███▏      | 5/16 [01:20<02:55, 15.95s/it] 38%|███▊      | 6/16 [01:34<02:31, 15.16s/it] 44%|████▍     | 7/16 [01:50<02:19, 15.48s/it] 50%|█████     | 8/16 [02:06<02:04, 15.56s/it] 56%|█████▋    | 9/16 [02:19<01:44, 14.87s/it] 62%|██████▎   | 10/16 [02:35<01:30, 15.07s/it]2026-10-17 07:28:30,785 - INFO - Fusion Step 10 - lr: 0.000200, clip: 1.01000
+ 69%|██████▉   | 11/16 [02:50<01:15, 15.05s/it] 75%|███████▌  | 12/16 [03:05<01:00, 15.19s/it] 81%|████████▏ | 13/16 [03:21<00:46, 15.35s/it] 88%|████████▊ | 14/16 [03:36<00:30, 15.30s/it] 94%|█████████▍| 15/16 [03:52<00:15, 15.49s/it]100%|██████████| 16/16 [04:09<00:00, 15.96s/it]100%|██████████| 16/16 [04:09<00:00, 15.60s/it]
+2026-10-17 07:29:50,188 - INFO - Epoch[1] training loss means: {'fused_spatial_cls_loss': 0.6926464252173901, 'fused_spatial_avu_loss': 1.3544930964708328, 'fused_frequency_cls_loss': 0.6926829293370247, 'fused_frequency_avu_loss': 1.6319769099354744, 'overall': 4.371799349784851}
+2026-10-17 07:29:50,190 - INFO - Epoch[1] training metric means: {'acc': 0.515625, 'auc': nan, 'eer': nan, 'ap': -1.0}
+2026-10-17 07:29:51,744 - INFO - Latest checkpoint saved to /Users/sahilpatil/Documents/Default Project/DLED/results/combined_data_diagnostic/run_20261017T015537Z_a09df26b/checkpoints/ckpt_latest.pth (completed epoch 1)
+2026-10-17 07:29:51,745 - INFO - ===> Calculate Uncertainty Threshold !
+  0%|          | 0/16 [00:00<?, ?it/s]  6%|▋         | 1/16 [00:05<01:29,  5.95s/it] 12%|█▎        | 2/16 [00:11<01:23,  5.97s/it] 19%|█▉        | 3/16 [00:17<01:17,  5.93s/it] 25%|██▌       | 4/16 [00:23<01:10,  5.90s/it] 31%|███▏      | 5/16 [00:29<01:04,  5.90s/it] 38%|███▊      | 6/16 [00:35<00:59,  5.91s/it] 44%|████▍     | 7/16 [00:41<00:53,  5.91s/it] 50%|█████     | 8/16 [00:47<00:47,  5.93s/it] 56%|█████▋    | 9/16 [00:53<00:41,  5.91s/it] 62%|██████▎   | 10/16 [00:59<00:35,  5.92s/it] 69%|██████▉   | 11/16 [01:05<00:29,  5.98s/it] 75%|███████▌  | 12/16 [01:11<00:23,  5.96s/it] 81%|████████▏ | 13/16 [01:17<00:17,  5.95s/it] 88%|████████▊ | 14/16 [01:23<00:11,  5.93s/it] 94%|█████████▍| 15/16 [01:29<00:05,  5.94s/it]100%|██████████| 16/16 [01:35<00:00,  5.98s/it]100%|██████████| 16/16 [01:35<00:00,  5.94s/it]
+2026-10-17 07:31:26,862 - INFO - Retrieved uncertainty dict {'spatial': {'overall': 0.05452841520309448, 0: 0.05565907433629036, 1: 0.05320899933576584}, 'frequency': {'overall': 0.04199765622615814, 0: 0.042106207460165024, 1: 0.041973263025283813}, 'fused': {'overall': 0.0039881388656795025, 0: 0.004015377257019281, 1: 0.003975911531597376}} !
+2026-10-17 07:31:26,863 - INFO - ===> Test start!
+2026-10-17 07:31:26,871 - INFO - 
+test dataset class distribution:
+  Real: 256 (50.0%)
+  Fake_1: 256 (50.0%)
+Testing:   0%|          | 0/6 [00:00<?, ?it/s]Testing:  17%|█▋        | 1/6 [00:17<01:29, 17.93s/it]Testing:  33%|███▎      | 2/6 [00:35<01:11, 17.92s/it]Testing:  50%|█████     | 3/6 [00:53<00:53, 17.92s/it]Testing:  67%|██████▋   | 4/6 [01:11<00:35, 17.91s/it]Testing:  83%|████████▎ | 5/6 [01:29<00:17, 17.90s/it]Testing: 100%|██████████| 6/6 [01:31<00:00, 12.60s/it]Testing: 100%|██████████| 6/6 [01:31<00:00, 15.31s/it]
+2026-10-17 07:32:58,787 - INFO - Class 0 spatial accuracy: 0.46875
+2026-10-17 07:32:58,788 - INFO - Class 0 frequency accuracy: 0.96484
+2026-10-17 07:32:58,788 - INFO - Class 0 fused accuracy: 0.83594
+2026-10-17 07:32:58,789 - INFO - Class 1 spatial accuracy: 0.61719
+2026-10-17 07:32:58,789 - INFO - Class 1 frequency accuracy: 0.00391
+2026-10-17 07:32:58,790 - INFO - Class 1 fused accuracy: 0.12109
+2026-10-17 07:32:58,790 - INFO - Sptial Prediction confidence - mean: 0.53511, std: 0.01604
+2026-10-17 07:32:58,791 - INFO - Sptial Prediction confidence range - min: 0.51166, max: 0.56029
+2026-10-17 07:32:58,792 - INFO - Sptial Prediction confidence - mean: 0.56988, std: 0.03222
+2026-10-17 07:32:58,792 - INFO - Sptial Prediction confidence range - min: 0.50412, max: 0.61913
+2026-10-17 07:32:58,793 - INFO - Sptial Prediction confidence - mean: 0.93296, std: 0.05505
+2026-10-17 07:32:58,793 - INFO - Sptial Prediction confidence range - min: 0.81480, max: 0.99657
+2026-10-17 07:32:58,793 - INFO - Spatial Mean probabilities per class: ['0.50148', '0.49852']
+2026-10-17 07:32:58,794 - INFO - Frequency Mean probabilities per class: ['0.56988', '0.43012']
+2026-10-17 07:32:58,794 - INFO - Fused Mean probabilities per class: ['0.88049', '0.11951']
+2026-10-17 07:32:58,796 - INFO - dataset: combined_A_validation    step: 16    testing-loss, spatial_cls_loss: 0.6781353377737105    testing-loss, spatial_avu_loss: 4.842877388000488e-08    testing-loss, spatial_overall: 0.6781353973783553    testing-loss, frequency_cls_loss: 0.7098805657587945    testing-loss, frequency_avu_loss: 5.983747466964395e-08    testing-loss, frequency_overall: 0.7098806253634393    testing-loss, overall: 1.3880159994587302    
+2026-10-17 07:32:58,796 - INFO - dataset: combined_A_validation    step: 16    testing-metric, spatial_acc: 0.54296875    (new best)    testing-metric, spatial_binary_acc: 0.59765625    (new best)    testing-metric, frequency_acc: 0.484375    (new best)    testing-metric, frequency_binary_acc: 0.51171875    (new best)    testing-metric, fused_acc: 0.478515625    (new best)    testing-metric, fused_binary_acc: 0.52734375    (new best)    testing-metric, spatial_auc: 0.6315689086914062    (new best)    testing-metric, spatial_eer: 0.41015625    (new best)    testing-metric, spatial_ap: 0.6136611914376788    (new best)    testing-metric, frequency_auc: 0.500640869140625    (new best)    testing-metric, frequency_eer: 0.5234375    (new best)    testing-metric, frequency_ap: 0.49092828887616125    (new best)    testing-metric, fused_auc: 0.6102294921875    (new best)    testing-metric, fused_eer: 0.4140625    (new best)    testing-metric, fused_ap: 0.5855480693336601    (new best)    testing-metric, fused_precision: 0.5714285714285714    (new best)    testing-metric, fused_recall: 0.21875    (new best)    testing-metric, fused_f1: 0.3163841807909605    (new best)    spatial_acc_real:0.23438; spatial_acc_fake:0.36328frequency_acc_real:0.48242; frequency_acc_fake:0.02930fused_acc_real:0.41797; fused_acc_fake:0.10938
+2026-10-17 07:32:58,806 - INFO - Best metrics saved to /Users/sahilpatil/Documents/Default Project/DLED/results/combined_data_diagnostic/run_20261017T015537Z_a09df26b/logs/dled_combined_A_2026-10-17-07-25-36/test/combined_A_validation/metric_dict_best.pickle
+2026-10-17 07:32:58,806 - INFO - Epoch metrics saved to /Users/sahilpatil/Documents/Default Project/DLED/results/combined_data_diagnostic/run_20261017T015537Z_a09df26b/logs/dled_combined_A_2026-10-17-07-25-36/test/combined_A_validation/metrics_epoch_001.json
+2026-10-17 07:33:00,289 - INFO - Best checkpoint saved to /Users/sahilpatil/Documents/Default Project/DLED/results/combined_data_diagnostic/run_20261017T015537Z_a09df26b/logs/dled_combined_A_2026-10-17-07-25-36/test/combined_A_validation/ckpt_best.pth, fused_acc=0.478515625 at epoch 1 (iteration 15)
+2026-10-17 07:33:00,290 - INFO - dataset: avg    step: 16    testing-metric, fused_acc: 0.478515625    (new best)    testing-metric, fused_binary_acc: 0.52734375    (new best)    testing-metric, fused_auc: 0.6102294921875    (new best)    testing-metric, fused_eer: 0.4140625    (new best)    testing-metric, fused_ap: 0.5855480693336601    (new best)    
+2026-10-17 07:33:00,291 - INFO - Best metrics saved to /Users/sahilpatil/Documents/Default Project/DLED/results/combined_data_diagnostic/run_20261017T015537Z_a09df26b/logs/dled_combined_A_2026-10-17-07-25-36/test/avg/metric_dict_best.pickle
+2026-10-17 07:33:00,291 - INFO - Epoch metrics saved to /Users/sahilpatil/Documents/Default Project/DLED/results/combined_data_diagnostic/run_20261017T015537Z_a09df26b/logs/dled_combined_A_2026-10-17-07-25-36/test/avg/metrics_epoch_001.json
+2026-10-17 07:33:01,773 - INFO - Best checkpoint saved to /Users/sahilpatil/Documents/Default Project/DLED/results/combined_data_diagnostic/run_20261017T015537Z_a09df26b/logs/dled_combined_A_2026-10-17-07-25-36/test/avg/ckpt_best.pth, fused_acc=0.478515625 at epoch 1 (iteration 15)
+2026-10-17 07:33:01,774 - INFO - ===> Test Done!
+2026-10-17 07:33:01,854 - INFO - ===> Epoch[0] end with testing acc: 
+================================ Each dataset best metric ================================ 
+| combined_A_validation:  fused_acc=0.478515625  spatial_acc=0.54296875  spatial_binary_acc=0.59765625  frequency_acc=0.484375  frequency_binary_acc=0.51171875  fused_binary_acc=0.52734375  spatial_auc=0.6315689086914062  spatial_eer=0.41015625  spatial_ap=0.6136611914376788  frequency_auc=0.500640869140625  frequency_eer=0.5234375  frequency_ap=0.49092828887616125  fused_auc=0.6102294921875  fused_eer=0.4140625  fused_ap=0.5855480693336601  fused_precision=0.5714285714285714  fused_recall=0.21875  fused_f1=0.3163841807909605 | 
+============================================================================================= 
+================================== Average best metric ====================================== 
+| avg fused_acc: 0.478515625 | 
+| avg fused_binary_acc: 0.52734375 | 
+| avg fused_auc: 0.6102294921875 | 
+| avg fused_eer: 0.4140625 | 
+| avg fused_ap: 0.5855480693336601 | 
+=============================================================================================!
+2026-10-17 07:33:01,854 - INFO - ===> Epoch[1] start!
+  0%|          | 0/16 [00:00<?, ?it/s]2026-10-17 07:33:18,291 - INFO - Iter: 16    training-loss, fused_spatial_cls_loss: 0.6915550231933594    training-loss, fused_spatial_avu_loss: 0.7467558979988098    training-loss, fused_frequency_cls_loss: 0.6912487745285034    training-loss, fused_frequency_avu_loss: 1.1805216073989868    training-loss, overall: 3.3100810050964355    
+2026-10-17 07:33:18,293 - INFO - Iter: 16    training-metric, acc: 0.65625    training-metric, auc: not calculated    training-metric, eer: not calculated    training-metric, ap: -1.0    
+  6%|▋         | 1/16 [00:16<04:06, 16.44s/it] 12%|█▎        | 2/16 [00:32<03:45, 16.08s/it] 19%|█▉        | 3/16 [00:48<03:28, 16.03s/it] 25%|██▌       | 4/16 [01:04<03:11, 15.93s/it]2026-10-17 07:34:21,539 - INFO - Fusion Step 20 - lr: 0.002000, clip: 1.02000
+ 31%|███▏      | 5/16 [01:19<02:54, 15.84s/it] 38%|███▊      | 6/16 [01:35<02:39, 15.97s/it] 44%|████▍     | 7/16 [01:51<02:23, 15.94s/it] 50%|█████     | 8/16 [02:07<02:07, 15.98s/it] 56%|█████▋    | 9/16 [02:23<01:51, 15.99s/it] 62%|██████▎   | 10/16 [02:40<01:36, 16.05s/it] 69%|██████▉   | 11/16 [02:55<01:19, 15.97s/it] 75%|███████▌  | 12/16 [03:12<01:04, 16.04s/it] 81%|████████▏ | 13/16 [03:28<00:48, 16.28s/it] 88%|████████▊ | 14/16 [03:44<00:32, 16.22s/it]2026-10-17 07:37:00,486 - INFO - Fusion Step 30 - lr: 0.002000, clip: 1.03000
+ 94%|█████████▍| 15/16 [03:58<00:15, 15.45s/it]100%|██████████| 16/16 [04:14<00:00, 15.52s/it]100%|██████████| 16/16 [04:14<00:00, 15.90s/it]
+2026-10-17 07:37:16,207 - INFO - Epoch[2] training loss means: {'fused_spatial_cls_loss': 0.6917601749300957, 'fused_spatial_avu_loss': 1.0257211849093437, 'fused_frequency_cls_loss': 0.6919272616505623, 'fused_frequency_avu_loss': 1.2347831390798092, 'overall': 3.6441917568445206}
+2026-10-17 07:37:16,208 - INFO - Epoch[2] training metric means: {'acc': 0.5, 'auc': nan, 'eer': nan, 'ap': -1.0}
+2026-10-17 07:37:17,510 - INFO - Latest checkpoint saved to /Users/sahilpatil/Documents/Default Project/DLED/results/combined_data_diagnostic/run_20261017T015537Z_a09df26b/checkpoints/ckpt_latest.pth (completed epoch 2)
+2026-10-17 07:37:17,511 - INFO - ===> Calculate Uncertainty Threshold !
+  0%|          | 0/16 [00:00<?, ?it/s]  6%|▋         | 1/16 [00:05<01:24,  5.65s/it] 12%|█▎        | 2/16 [00:11<01:22,  5.90s/it] 19%|█▉        | 3/16 [00:17<01:17,  5.94s/it] 25%|██▌       | 4/16 [00:23<01:11,  5.96s/it] 31%|███▏      | 5/16 [00:29<01:05,  5.94s/it] 38%|███▊      | 6/16 [00:35<00:59,  5.95s/it] 44%|████▍     | 7/16 [00:41<00:54,  6.01s/it] 50%|█████     | 8/16 [00:47<00:47,  5.99s/it] 56%|█████▋    | 9/16 [00:53<00:42,  6.00s/it] 62%|██████▎   | 10/16 [00:59<00:36,  6.01s/it] 69%|██████▉   | 11/16 [01:05<00:30,  6.00s/it] 75%|███████▌  | 12/16 [01:11<00:24,  6.00s/it] 81%|████████▏ | 13/16 [01:17<00:17,  5.97s/it] 88%|████████▊ | 14/16 [01:23<00:11,  5.97s/it] 94%|█████████▍| 15/16 [01:29<00:06,  6.04s/it]100%|██████████| 16/16 [01:36<00:00,  6.13s/it]100%|██████████| 16/16 [01:36<00:00,  6.01s/it]
+2026-10-17 07:38:53,671 - INFO - Retrieved uncertainty dict {'spatial': {'overall': 0.8177212476730347, 0: 0.8763021230697632, 1: 0.7547094821929932}, 'frequency': {'overall': 0.7005038857460022, 0: 0.737119734287262, 1: 0.6933319568634033}, 'fused': {'overall': 0.30769604444503784, 0: 0.38343560695648193, 1: 0.27898335456848145}} !
+2026-10-17 07:38:53,672 - INFO - ===> Test start!
+2026-10-17 07:38:53,678 - INFO - 
+test dataset class distribution:
+  Real: 256 (50.0%)
+  Fake_1: 256 (50.0%)
+Testing:   0%|          | 0/6 [00:00<?, ?it/s]Testing:  17%|█▋        | 1/6 [00:18<01:31, 18.23s/it]Testing:  33%|███▎      | 2/6 [00:36<01:12, 18.11s/it]Testing:  50%|█████     | 3/6 [00:54<00:54, 18.01s/it]Testing:  67%|██████▋   | 4/6 [01:14<00:37, 18.76s/it]Testing:  83%|████████▎ | 5/6 [01:33<00:19, 19.02s/it]Testing: 100%|██████████| 6/6 [01:36<00:00, 13.45s/it]Testing: 100%|██████████| 6/6 [01:36<00:00, 16.03s/it]
+2026-10-17 07:40:29,875 - INFO - Class 0 spatial accuracy: 0.15625
+2026-10-17 07:40:29,875 - INFO - Class 0 frequency accuracy: 0.97656
+2026-10-17 07:40:29,876 - INFO - Class 0 fused accuracy: 0.73438
+2026-10-17 07:40:29,877 - INFO - Class 1 spatial accuracy: 0.83984
+2026-10-17 07:40:29,877 - INFO - Class 1 frequency accuracy: 0.00391
+2026-10-17 07:40:29,878 - INFO - Class 1 fused accuracy: 0.28906
+2026-10-17 07:40:29,879 - INFO - Sptial Prediction confidence - mean: 0.54874, std: 0.04036
+2026-10-17 07:40:29,880 - INFO - Sptial Prediction confidence range - min: 0.50094, max: 0.60726
+2026-10-17 07:40:29,881 - INFO - Sptial Prediction confidence - mean: 0.53884, std: 0.02111
+2026-10-17 07:40:29,881 - INFO - Sptial Prediction confidence range - min: 0.50170, max: 0.57499
+2026-10-17 07:40:29,882 - INFO - Sptial Prediction confidence - mean: 0.56355, std: 0.08640
+2026-10-17 07:40:29,883 - INFO - Sptial Prediction confidence range - min: 0.51245, max: 0.84567
+2026-10-17 07:40:29,883 - INFO - Spatial Mean probabilities per class: ['0.45126', '0.54874']
+2026-10-17 07:40:29,884 - INFO - Frequency Mean probabilities per class: ['0.53884', '0.46116']
+2026-10-17 07:40:29,885 - INFO - Fused Mean probabilities per class: ['0.48126', '0.51874']
+2026-10-17 07:40:29,887 - INFO - dataset: combined_A_validation    step: 32    testing-loss, spatial_cls_loss: 0.6779864407144487    testing-loss, spatial_avu_loss: 5.0989909905485575e-08    testing-loss, spatial_overall: 0.6779865003190935    testing-loss, frequency_cls_loss: 0.7047500689513981    testing-loss, frequency_avu_loss: 5.937181313253603e-08    testing-loss, frequency_overall: 0.7047501285560429    testing-loss, overall: 1.3827365953475237    
+2026-10-17 07:40:29,887 - INFO - dataset: combined_A_validation    step: 32    testing-metric, spatial_acc: 0.498046875    testing-metric, spatial_binary_acc: 0.56640625    testing-metric, frequency_acc: 0.490234375    (new best)    testing-metric, frequency_binary_acc: 0.505859375    testing-metric, fused_acc: 0.51171875    (new best)    testing-metric, fused_binary_acc: 0.541015625    (new best)    testing-metric, spatial_auc: 0.6522674560546875    (new best)    testing-metric, spatial_eer: 0.3828125    testing-metric, spatial_ap: 0.62849632219325    (new best)    testing-metric, frequency_auc: 0.45379638671875    testing-metric, frequency_eer: 0.5234375    testing-metric, frequency_ap: 0.4783975828517921    testing-metric, fused_auc: 0.5908660888671875    testing-metric, fused_eer: 0.44921875    (new best)    testing-metric, fused_ap: 0.5788768094878539    testing-metric, fused_precision: 0.5668789808917197    testing-metric, fused_recall: 0.34765625    (new best)    testing-metric, fused_f1: 0.43099273607748184    (new best)    spatial_acc_real:0.07812; spatial_acc_fake:0.48828frequency_acc_real:0.48828; frequency_acc_fake:0.01758fused_acc_real:0.36719; fused_acc_fake:0.17383
+2026-10-17 07:40:29,895 - INFO - Best metrics saved to /Users/sahilpatil/Documents/Default Project/DLED/results/combined_data_diagnostic/run_20261017T015537Z_a09df26b/logs/dled_combined_A_2026-10-17-07-25-36/test/combined_A_validation/metric_dict_best.pickle
+2026-10-17 07:40:29,896 - INFO - Epoch metrics saved to /Users/sahilpatil/Documents/Default Project/DLED/results/combined_data_diagnostic/run_20261017T015537Z_a09df26b/logs/dled_combined_A_2026-10-17-07-25-36/test/combined_A_validation/metrics_epoch_002.json
+2026-10-17 07:40:31,149 - INFO - Best checkpoint saved to /Users/sahilpatil/Documents/Default Project/DLED/results/combined_data_diagnostic/run_20261017T015537Z_a09df26b/logs/dled_combined_A_2026-10-17-07-25-36/test/combined_A_validation/ckpt_best.pth, fused_acc=0.51171875 at epoch 2 (iteration 15)
+2026-10-17 07:40:31,150 - INFO - dataset: avg    step: 32    testing-metric, fused_acc: 0.51171875    (new best)    testing-metric, fused_binary_acc: 0.541015625    (new best)    testing-metric, fused_auc: 0.5908660888671875    testing-metric, fused_eer: 0.44921875    (new best)    testing-metric, fused_ap: 0.5788768094878539    
+2026-10-17 07:40:31,152 - INFO - Best metrics saved to /Users/sahilpatil/Documents/Default Project/DLED/results/combined_data_diagnostic/run_20261017T015537Z_a09df26b/logs/dled_combined_A_2026-10-17-07-25-36/test/avg/metric_dict_best.pickle
+2026-10-17 07:40:31,152 - INFO - Epoch metrics saved to /Users/sahilpatil/Documents/Default Project/DLED/results/combined_data_diagnostic/run_20261017T015537Z_a09df26b/logs/dled_combined_A_2026-10-17-07-25-36/test/avg/metrics_epoch_002.json
+2026-10-17 07:40:32,348 - INFO - Best checkpoint saved to /Users/sahilpatil/Documents/Default Project/DLED/results/combined_data_diagnostic/run_20261017T015537Z_a09df26b/logs/dled_combined_A_2026-10-17-07-25-36/test/avg/ckpt_best.pth, fused_acc=0.51171875 at epoch 2 (iteration 15)
+2026-10-17 07:40:32,348 - INFO - ===> Test Done!
+2026-10-17 07:40:32,406 - INFO - ===> Epoch[1] end with testing acc: 
+================================ Each dataset best metric ================================ 
+| combined_A_validation:  fused_acc=0.51171875  spatial_acc=0.54296875  spatial_binary_acc=0.59765625  frequency_acc=0.490234375  frequency_binary_acc=0.51171875  fused_binary_acc=0.541015625  spatial_auc=0.6522674560546875  spatial_eer=0.41015625  spatial_ap=0.62849632219325  frequency_auc=0.500640869140625  frequency_eer=0.5234375  frequency_ap=0.49092828887616125  fused_auc=0.6102294921875  fused_eer=0.44921875  fused_ap=0.5855480693336601  fused_precision=0.5714285714285714  fused_recall=0.34765625  fused_f1=0.43099273607748184 | 
+============================================================================================= 
+================================== Average best metric ====================================== 
+| avg fused_acc: 0.51171875 | 
+| avg fused_binary_acc: 0.541015625 | 
+| avg fused_auc: 0.6102294921875 | 
+| avg fused_eer: 0.44921875 | 
+| avg fused_ap: 0.5855480693336601 | 
+=============================================================================================!
+2026-10-17 07:40:32,407 - INFO - ===> Epoch[2] start!
+  0%|          | 0/16 [00:00<?, ?it/s]2026-10-17 07:40:51,188 - INFO - Iter: 32    training-loss, fused_spatial_cls_loss: 0.6919472217559814    training-loss, fused_spatial_avu_loss: 0.7357812523841858    training-loss, fused_frequency_cls_loss: 0.6900818347930908    training-loss, fused_frequency_avu_loss: 0.5657286643981934    training-loss, overall: 2.6835389137268066    
+2026-10-17 07:40:51,190 - INFO - Iter: 32    training-metric, acc: 0.53125    training-metric, auc: not calculated    training-metric, eer: not calculated    training-metric, ap: -1.0    
+  6%|▋         | 1/16 [00:18<04:41, 18.78s/it] 12%|█▎        | 2/16 [00:39<04:39, 19.93s/it] 19%|█▉        | 3/16 [00:57<04:05, 18.90s/it] 25%|██▌       | 4/16 [01:15<03:43, 18.64s/it] 31%|███▏      | 5/16 [01:33<03:24, 18.56s/it] 38%|███▊      | 6/16 [01:51<03:01, 18.17s/it] 44%|████▍     | 7/16 [02:08<02:39, 17.74s/it] 50%|█████     | 8/16 [02:24<02:18, 17.28s/it]2026-10-17 07:43:13,961 - INFO - Fusion Step 40 - lr: 0.001994, clip: 1.04000
+ 56%|█████▋    | 9/16 [02:41<02:00, 17.24s/it] 62%|██████▎   | 10/16 [02:57<01:41, 16.92s/it] 69%|██████▉   | 11/16 [03:13<01:22, 16.45s/it] 75%|███████▌  | 12/16 [03:28<01:04, 16.09s/it] 81%|████████▏ | 13/16 [03:44<00:48, 16.12s/it] 88%|████████▊ | 14/16 [04:00<00:32, 16.09s/it] 94%|█████████▍| 15/16 [04:16<00:15, 15.98s/it]100%|██████████| 16/16 [04:34<00:00, 16.77s/it]100%|██████████| 16/16 [04:34<00:00, 17.19s/it]
+2026-10-17 07:45:07,386 - INFO - Epoch[3] training loss means: {'fused_spatial_cls_loss': 0.6898835934698582, 'fused_spatial_avu_loss': 0.3371154684573412, 'fused_frequency_cls_loss': 0.6939256712794304, 'fused_frequency_avu_loss': 0.21412364300340414, 'overall': 1.9350483790040016}
+2026-10-17 07:45:07,388 - INFO - Epoch[3] training metric means: {'acc': 0.576171875, 'auc': nan, 'eer': nan, 'ap': -1.0}
+2026-10-17 07:45:08,699 - INFO - Latest checkpoint saved to /Users/sahilpatil/Documents/Default Project/DLED/results/combined_data_diagnostic/run_20261017T015537Z_a09df26b/checkpoints/ckpt_latest.pth (completed epoch 3)
+2026-10-17 07:45:08,700 - INFO - ===> Calculate Uncertainty Threshold !
+  0%|          | 0/16 [00:00<?, ?it/s]  6%|▋         | 1/16 [00:05<01:29,  5.99s/it] 12%|█▎        | 2/16 [00:12<01:24,  6.02s/it] 19%|█▉        | 3/16 [00:17<01:17,  5.94s/it] 25%|██▌       | 4/16 [00:23<01:10,  5.90s/it] 31%|███▏      | 5/16 [00:29<01:05,  5.95s/it] 38%|███▊      | 6/16 [00:35<00:59,  5.92s/it] 44%|████▍     | 7/16 [00:41<00:53,  5.94s/it] 50%|█████     | 8/16 [00:47<00:47,  5.95s/it] 56%|█████▋    | 9/16 [00:53<00:41,  5.97s/it] 62%|██████▎   | 10/16 [00:59<00:35,  5.96s/it] 69%|██████▉   | 11/16 [01:05<00:30,  6.00s/it] 75%|███████▌  | 12/16 [01:11<00:24,  6.01s/it] 81%|████████▏ | 13/16 [01:17<00:18,  6.05s/it] 88%|████████▊ | 14/16 [01:23<00:12,  6.02s/it] 94%|█████████▍| 15/16 [01:29<00:06,  6.04s/it]100%|██████████| 16/16 [01:35<00:00,  5.97s/it]100%|██████████| 16/16 [01:35<00:00,  5.98s/it]
+2026-10-17 07:46:44,361 - INFO - Retrieved uncertainty dict {'spatial': {'overall': 0.9979313611984253, 0: 0.9988895058631897, 1: 0.9974305033683777}, 'frequency': {'overall': 0.9965420365333557, 0: 0.9968110918998718, 1: 0.9962848424911499}, 'fused': {'overall': 0.9822462797164917, 0: 0.9806492328643799, 1: 0.9843016862869263}} !
+2026-10-17 07:46:44,362 - INFO - ===> Test start!
+2026-10-17 07:46:44,369 - INFO - 
+test dataset class distribution:
+  Real: 256 (50.0%)
+  Fake_1: 256 (50.0%)
+Testing:   0%|          | 0/6 [00:00<?, ?it/s]Testing:  17%|█▋        | 1/6 [00:17<01:29, 17.84s/it]Testing:  33%|███▎      | 2/6 [00:35<01:11, 17.77s/it]Testing:  50%|█████     | 3/6 [00:53<00:53, 17.78s/it]Testing:  67%|██████▋   | 4/6 [01:10<00:35, 17.68s/it]Testing:  83%|████████▎ | 5/6 [01:28<00:17, 17.71s/it]Testing: 100%|██████████| 6/6 [01:30<00:00, 12.48s/it]Testing: 100%|██████████| 6/6 [01:30<00:00, 15.16s/it]
+2026-10-17 07:48:15,356 - INFO - Class 0 spatial accuracy: 0.67969
+2026-10-17 07:48:15,356 - INFO - Class 0 frequency accuracy: 0.96875
+2026-10-17 07:48:15,357 - INFO - Class 0 fused accuracy: 0.84766
+2026-10-17 07:48:15,357 - INFO - Class 1 spatial accuracy: 0.41406
+2026-10-17 07:48:15,358 - INFO - Class 1 frequency accuracy: 0.00000
+2026-10-17 07:48:15,359 - INFO - Class 1 fused accuracy: 0.18359
+2026-10-17 07:48:15,360 - INFO - Sptial Prediction confidence - mean: 0.50127, std: 0.00192
+2026-10-17 07:48:15,360 - INFO - Sptial Prediction confidence range - min: 0.50000, max: 0.50691
+2026-10-17 07:48:15,361 - INFO - Sptial Prediction confidence - mean: 0.50554, std: 0.00880
+2026-10-17 07:48:15,361 - INFO - Sptial Prediction confidence range - min: 0.50032, max: 0.52784
+2026-10-17 07:48:15,362 - INFO - Sptial Prediction confidence - mean: 0.50467, std: 0.00628
+2026-10-17 07:48:15,363 - INFO - Sptial Prediction confidence range - min: 0.50032, max: 0.51629
+2026-10-17 07:48:15,363 - INFO - Spatial Mean probabilities per class: ['0.49952', '0.50048']
+2026-10-17 07:48:15,364 - INFO - Frequency Mean probabilities per class: ['0.50554', '0.49446']
+2026-10-17 07:48:15,364 - INFO - Fused Mean probabilities per class: ['0.50467', '0.49533']
+2026-10-17 07:48:15,365 - INFO - dataset: combined_A_validation    step: 48    testing-loss, spatial_cls_loss: 0.690799652133137    testing-loss, spatial_avu_loss: 4.633329805936448e-08    testing-loss, spatial_overall: 0.6907997117377818    testing-loss, frequency_cls_loss: 0.6936604827642441    testing-loss, frequency_avu_loss: 5.960464424803469e-08    testing-loss, frequency_overall: 0.6936605423688889    testing-loss, overall: 1.3844602555036545    
+2026-10-17 07:48:15,366 - INFO - dataset: combined_A_validation    step: 48    testing-metric, spatial_acc: 0.546875    (new best)    testing-metric, spatial_binary_acc: 0.564453125    testing-metric, frequency_acc: 0.484375    testing-metric, frequency_binary_acc: 0.501953125    testing-metric, fused_acc: 0.515625    (new best)    testing-metric, fused_binary_acc: 0.537109375    testing-metric, spatial_auc: 0.6028366088867188    testing-metric, spatial_eer: 0.43359375    (new best)    testing-metric, spatial_ap: 0.6204037677615488    testing-metric, frequency_auc: 0.475372314453125    testing-metric, frequency_eer: 0.515625    testing-metric, frequency_ap: 0.48917476373755964    testing-metric, fused_auc: 0.550262451171875    testing-metric, fused_eer: 0.47265625    (new best)    testing-metric, fused_ap: 0.6030609001955987    (new best)    testing-metric, fused_precision: 0.5979381443298969    (new best)    testing-metric, fused_recall: 0.2265625    testing-metric, fused_f1: 0.3286118980169972    spatial_acc_real:0.33984; spatial_acc_fake:0.22461frequency_acc_real:0.48438; frequency_acc_fake:0.01758fused_acc_real:0.42383; fused_acc_fake:0.11328
+2026-10-17 07:48:15,372 - INFO - Best metrics saved to /Users/sahilpatil/Documents/Default Project/DLED/results/combined_data_diagnostic/run_20261017T015537Z_a09df26b/logs/dled_combined_A_2026-10-17-07-25-36/test/combined_A_validation/metric_dict_best.pickle
+2026-10-17 07:48:15,373 - INFO - Epoch metrics saved to /Users/sahilpatil/Documents/Default Project/DLED/results/combined_data_diagnostic/run_20261017T015537Z_a09df26b/logs/dled_combined_A_2026-10-17-07-25-36/test/combined_A_validation/metrics_epoch_003.json
+2026-10-17 07:48:16,533 - INFO - Best checkpoint saved to /Users/sahilpatil/Documents/Default Project/DLED/results/combined_data_diagnostic/run_20261017T015537Z_a09df26b/logs/dled_combined_A_2026-10-17-07-25-36/test/combined_A_validation/ckpt_best.pth, fused_acc=0.515625 at epoch 3 (iteration 15)
+2026-10-17 07:48:16,534 - INFO - dataset: avg    step: 48    testing-metric, fused_acc: 0.515625    (new best)    testing-metric, fused_binary_acc: 0.537109375    testing-metric, fused_auc: 0.550262451171875    testing-metric, fused_eer: 0.47265625    (new best)    testing-metric, fused_ap: 0.6030609001955987    (new best)    
+2026-10-17 07:48:16,535 - INFO - Best metrics saved to /Users/sahilpatil/Documents/Default Project/DLED/results/combined_data_diagnostic/run_20261017T015537Z_a09df26b/logs/dled_combined_A_2026-10-17-07-25-36/test/avg/metric_dict_best.pickle
+2026-10-17 07:48:16,535 - INFO - Epoch metrics saved to /Users/sahilpatil/Documents/Default Project/DLED/results/combined_data_diagnostic/run_20261017T015537Z_a09df26b/logs/dled_combined_A_2026-10-17-07-25-36/test/avg/metrics_epoch_003.json
+2026-10-17 07:48:17,733 - INFO - Best checkpoint saved to /Users/sahilpatil/Documents/Default Project/DLED/results/combined_data_diagnostic/run_20261017T015537Z_a09df26b/logs/dled_combined_A_2026-10-17-07-25-36/test/avg/ckpt_best.pth, fused_acc=0.515625 at epoch 3 (iteration 15)
+2026-10-17 07:48:17,734 - INFO - ===> Test Done!
+2026-10-17 07:48:17,772 - INFO - ===> Epoch[2] end with testing acc: 
+================================ Each dataset best metric ================================ 
+| combined_A_validation:  fused_acc=0.515625  spatial_acc=0.546875  spatial_binary_acc=0.59765625  frequency_acc=0.490234375  frequency_binary_acc=0.51171875  fused_binary_acc=0.541015625  spatial_auc=0.6522674560546875  spatial_eer=0.43359375  spatial_ap=0.62849632219325  frequency_auc=0.500640869140625  frequency_eer=0.5234375  frequency_ap=0.49092828887616125  fused_auc=0.6102294921875  fused_eer=0.47265625  fused_ap=0.6030609001955987  fused_precision=0.5979381443298969  fused_recall=0.34765625  fused_f1=0.43099273607748184 | 
+============================================================================================= 
+================================== Average best metric ====================================== 
+| avg fused_acc: 0.515625 | 
+| avg fused_binary_acc: 0.541015625 | 
+| avg fused_auc: 0.6102294921875 | 
+| avg fused_eer: 0.47265625 | 
+| avg fused_ap: 0.6030609001955987 | 
+=============================================================================================!
+2026-10-17 07:48:17,773 - INFO - ===> Epoch[3] start!
+  0%|          | 0/16 [00:00<?, ?it/s]2026-10-17 07:48:36,194 - INFO - Iter: 48    training-loss, fused_spatial_cls_loss: 0.6931387186050415    training-loss, fused_spatial_avu_loss: 0.3433259129524231    training-loss, fused_frequency_cls_loss: 0.6929720640182495    training-loss, fused_frequency_avu_loss: 0.3109486997127533    training-loss, overall: 2.0403854846954346    
+2026-10-17 07:48:36,196 - INFO - Iter: 48    training-metric, acc: 0.5    training-metric, auc: not calculated    training-metric, eer: not calculated    training-metric, ap: -1.0    
+  6%|▋         | 1/16 [00:18<04:36, 18.42s/it] 12%|█▎        | 2/16 [00:34<03:58, 17.01s/it]2026-10-17 07:49:08,902 - INFO - Fusion Step 50 - lr: 0.001984, clip: 1.05000
+ 19%|█▉        | 3/16 [00:51<03:39, 16.87s/it] 25%|██▌       | 4/16 [01:09<03:29, 17.46s/it] 31%|███▏      | 5/16 [01:25<03:07, 17.02s/it] 38%|███▊      | 6/16 [01:43<02:51, 17.11s/it] 44%|████▍     | 7/16 [01:59<02:32, 16.92s/it] 50%|█████     | 8/16 [02:17<02:19, 17.38s/it] 56%|█████▋    | 9/16 [02:34<01:59, 17.07s/it] 62%|██████▎   | 10/16 [02:51<01:41, 16.96s/it] 69%|██████▉   | 11/16 [03:07<01:23, 16.74s/it] 75%|███████▌  | 12/16 [03:23<01:06, 16.72s/it]2026-10-17 07:51:57,680 - INFO - Fusion Step 60 - lr: 0.001984, clip: 1.06000
+ 81%|████████▏ | 13/16 [03:39<00:49, 16.49s/it] 88%|████████▊ | 14/16 [03:56<00:32, 16.44s/it] 94%|█████████▍| 15/16 [04:14<00:16, 16.94s/it]100%|██████████| 16/16 [04:31<00:00, 17.00s/it]100%|██████████| 16/16 [04:31<00:00, 16.97s/it]
+2026-10-17 07:52:49,280 - INFO - Epoch[4] training loss means: {'fused_spatial_cls_loss': 0.6900560595095158, 'fused_spatial_avu_loss': 0.3645615316927433, 'fused_frequency_cls_loss': 0.692456379532814, 'fused_frequency_avu_loss': 0.2934189736843109, 'overall': 2.040492959320545}
+2026-10-17 07:52:49,282 - INFO - Epoch[4] training metric means: {'acc': 0.529296875, 'auc': nan, 'eer': nan, 'ap': -1.0}
+2026-10-17 07:52:50,592 - INFO - Latest checkpoint saved to /Users/sahilpatil/Documents/Default Project/DLED/results/combined_data_diagnostic/run_20261017T015537Z_a09df26b/checkpoints/ckpt_latest.pth (completed epoch 4)
+2026-10-17 07:52:50,594 - INFO - ===> Calculate Uncertainty Threshold !
+  0%|          | 0/16 [00:00<?, ?it/s]  6%|▋         | 1/16 [00:07<01:47,  7.19s/it] 12%|█▎        | 2/16 [00:13<01:35,  6.85s/it] 19%|█▉        | 3/16 [00:20<01:25,  6.59s/it] 25%|██▌       | 4/16 [00:26<01:17,  6.42s/it] 31%|███▏      | 5/16 [00:32<01:09,  6.31s/it] 38%|███▊      | 6/16 [00:38<01:02,  6.21s/it] 44%|████▍     | 7/16 [00:44<00:54,  6.11s/it] 50%|█████     | 8/16 [00:50<00:48,  6.09s/it] 56%|█████▋    | 9/16 [00:56<00:42,  6.07s/it] 62%|██████▎   | 10/16 [01:02<00:36,  6.14s/it] 69%|██████▉   | 11/16 [01:09<00:31,  6.27s/it] 75%|███████▌  | 12/16 [01:15<00:24,  6.19s/it] 81%|████████▏ | 13/16 [01:21<00:18,  6.13s/it] 88%|████████▊ | 14/16 [01:27<00:12,  6.19s/it] 94%|█████████▍| 15/16 [01:33<00:06,  6.15s/it]100%|██████████| 16/16 [01:39<00:00,  6.12s/it]100%|██████████| 16/16 [01:39<00:00,  6.23s/it]
+2026-10-17 07:54:30,296 - INFO - Retrieved uncertainty dict {'spatial': {'overall': 0.98692387342453, 0: 0.9882646799087524, 1: 0.98692387342453}, 'frequency': {'overall': 0.9920427203178406, 0: 0.9920642971992493, 1: 0.9920427203178406}, 'fused': {'overall': 0.9458380937576294, 0: 0.957554042339325, 1: 0.9425632357597351}} !
+2026-10-17 07:54:30,298 - INFO - ===> Test start!
+2026-10-17 07:54:30,304 - INFO - 
+test dataset class distribution:
+  Real: 256 (50.0%)
+  Fake_1: 256 (50.0%)
+Testing:   0%|          | 0/6 [00:00<?, ?it/s]Testing:  17%|█▋        | 1/6 [00:17<01:27, 17.58s/it]Testing:  33%|███▎      | 2/6 [00:35<01:10, 17.60s/it]Testing:  50%|█████     | 3/6 [00:53<00:54, 18.09s/it]Testing:  67%|██████▋   | 4/6 [01:12<00:36, 18.26s/it]Testing:  83%|████████▎ | 5/6 [01:30<00:18, 18.23s/it]Testing: 100%|██████████| 6/6 [01:33<00:00, 12.87s/it]Testing: 100%|██████████| 6/6 [01:33<00:00, 15.50s/it]
+2026-10-17 07:56:03,360 - INFO - Class 0 spatial accuracy: 0.52734
+2026-10-17 07:56:03,360 - INFO - Class 0 frequency accuracy: 0.96484
+2026-10-17 07:56:03,361 - INFO - Class 0 fused accuracy: 0.79688
+2026-10-17 07:56:03,362 - INFO - Class 1 spatial accuracy: 0.61328
+2026-10-17 07:56:03,363 - INFO - Class 1 frequency accuracy: 0.00000
+2026-10-17 07:56:03,363 - INFO - Class 1 fused accuracy: 0.33203
+2026-10-17 07:56:03,365 - INFO - Sptial Prediction confidence - mean: 0.50244, std: 0.00268
+2026-10-17 07:56:03,365 - INFO - Sptial Prediction confidence range - min: 0.50000, max: 0.50901
+2026-10-17 07:56:03,366 - INFO - Sptial Prediction confidence - mean: 0.50322, std: 0.00422
+2026-10-17 07:56:03,367 - INFO - Sptial Prediction confidence range - min: 0.50033, max: 0.51150
+2026-10-17 07:56:03,368 - INFO - Sptial Prediction confidence - mean: 0.50620, std: 0.00874
+2026-10-17 07:56:03,368 - INFO - Sptial Prediction confidence range - min: 0.50007, max: 0.53312
+2026-10-17 07:56:03,369 - INFO - Spatial Mean probabilities per class: ['0.49873', '0.50127']
+2026-10-17 07:56:03,370 - INFO - Frequency Mean probabilities per class: ['0.50184', '0.49816']
+2026-10-17 07:56:03,370 - INFO - Fused Mean probabilities per class: ['0.49933', '0.50067']
+2026-10-17 07:56:03,372 - INFO - dataset: combined_A_validation    step: 64    testing-loss, spatial_cls_loss: 0.6887628878466785    testing-loss, spatial_avu_loss: 4.5169144757828406e-08    testing-loss, spatial_overall: 0.6887629474513233    testing-loss, frequency_cls_loss: 0.6932145152240992    testing-loss, frequency_avu_loss: 6.007030542432013e-08    testing-loss, frequency_overall: 0.6932145748287439    testing-loss, overall: 1.3819775339215994    
+2026-10-17 07:56:03,373 - INFO - dataset: combined_A_validation    step: 64    testing-metric, spatial_acc: 0.5703125    (new best)    testing-metric, spatial_binary_acc: 0.58984375    testing-metric, frequency_acc: 0.482421875    testing-metric, frequency_binary_acc: 0.50390625    testing-metric, fused_acc: 0.564453125    (new best)    testing-metric, fused_binary_acc: 0.583984375    (new best)    testing-metric, spatial_auc: 0.6567535400390625    (new best)    testing-metric, spatial_eer: 0.39453125    testing-metric, spatial_ap: 0.674044238355079    (new best)    testing-metric, frequency_auc: 0.50531005859375    (new best)    testing-metric, frequency_eer: 0.5    testing-metric, frequency_ap: 0.5165291967466061    (new best)    testing-metric, fused_auc: 0.60833740234375    testing-metric, fused_eer: 0.40625    testing-metric, fused_ap: 0.642602394575145    (new best)    testing-metric, fused_precision: 0.6462585034013606    (new best)    testing-metric, fused_recall: 0.37109375    (new best)    testing-metric, fused_f1: 0.47146401985111663    (new best)    spatial_acc_real:0.26367; spatial_acc_fake:0.32617frequency_acc_real:0.48242; frequency_acc_fake:0.02148fused_acc_real:0.39844; fused_acc_fake:0.18555
+2026-10-17 07:56:03,379 - INFO - Best metrics saved to /Users/sahilpatil/Documents/Default Project/DLED/results/combined_data_diagnostic/run_20261017T015537Z_a09df26b/logs/dled_combined_A_2026-10-17-07-25-36/test/combined_A_validation/metric_dict_best.pickle
+2026-10-17 07:56:03,380 - INFO - Epoch metrics saved to /Users/sahilpatil/Documents/Default Project/DLED/results/combined_data_diagnostic/run_20261017T015537Z_a09df26b/logs/dled_combined_A_2026-10-17-07-25-36/test/combined_A_validation/metrics_epoch_004.json
+2026-10-17 07:56:04,617 - INFO - Best checkpoint saved to /Users/sahilpatil/Documents/Default Project/DLED/results/combined_data_diagnostic/run_20261017T015537Z_a09df26b/logs/dled_combined_A_2026-10-17-07-25-36/test/combined_A_validation/ckpt_best.pth, fused_acc=0.564453125 at epoch 4 (iteration 15)
+2026-10-17 07:56:04,619 - INFO - dataset: avg    step: 64    testing-metric, fused_acc: 0.564453125    (new best)    testing-metric, fused_binary_acc: 0.583984375    (new best)    testing-metric, fused_auc: 0.60833740234375    testing-metric, fused_eer: 0.40625    testing-metric, fused_ap: 0.642602394575145    (new best)    
+2026-10-17 07:56:04,620 - INFO - Best metrics saved to /Users/sahilpatil/Documents/Default Project/DLED/results/combined_data_diagnostic/run_20261017T015537Z_a09df26b/logs/dled_combined_A_2026-10-17-07-25-36/test/avg/metric_dict_best.pickle
+2026-10-17 07:56:04,620 - INFO - Epoch metrics saved to /Users/sahilpatil/Documents/Default Project/DLED/results/combined_data_diagnostic/run_20261017T015537Z_a09df26b/logs/dled_combined_A_2026-10-17-07-25-36/test/avg/metrics_epoch_004.json
+2026-10-17 07:56:05,806 - INFO - Best checkpoint saved to /Users/sahilpatil/Documents/Default Project/DLED/results/combined_data_diagnostic/run_20261017T015537Z_a09df26b/logs/dled_combined_A_2026-10-17-07-25-36/test/avg/ckpt_best.pth, fused_acc=0.564453125 at epoch 4 (iteration 15)
+2026-10-17 07:56:05,807 - INFO - ===> Test Done!
+2026-10-17 07:56:05,851 - INFO - ===> Epoch[3] end with testing acc: 
+================================ Each dataset best metric ================================ 
+| combined_A_validation:  fused_acc=0.564453125  spatial_acc=0.5703125  spatial_binary_acc=0.59765625  frequency_acc=0.490234375  frequency_binary_acc=0.51171875  fused_binary_acc=0.583984375  spatial_auc=0.6567535400390625  spatial_eer=0.43359375  spatial_ap=0.674044238355079  frequency_auc=0.50531005859375  frequency_eer=0.5234375  frequency_ap=0.5165291967466061  fused_auc=0.6102294921875  fused_eer=0.47265625  fused_ap=0.642602394575145  fused_precision=0.6462585034013606  fused_recall=0.37109375  fused_f1=0.47146401985111663 | 
+============================================================================================= 
+================================== Average best metric ====================================== 
+| avg fused_acc: 0.564453125 | 
+| avg fused_binary_acc: 0.583984375 | 
+| avg fused_auc: 0.6102294921875 | 
+| avg fused_eer: 0.47265625 | 
+| avg fused_ap: 0.642602394575145 | 
+=============================================================================================!
+2026-10-17 07:56:05,852 - INFO - ===> Epoch[4] start!
+  0%|          | 0/16 [00:00<?, ?it/s]2026-10-17 07:56:25,009 - INFO - Iter: 64    training-loss, fused_spatial_cls_loss: 0.6872095465660095    training-loss, fused_spatial_avu_loss: 0.6499273180961609    training-loss, fused_frequency_cls_loss: 0.6903694868087769    training-loss, fused_frequency_avu_loss: 0.6811525821685791    training-loss, overall: 2.7086589336395264    
+2026-10-17 07:56:25,011 - INFO - Iter: 64    training-metric, acc: 0.6875    training-metric, auc: not calculated    training-metric, eer: not calculated    training-metric, ap: -1.0    
+  6%|▋         | 1/16 [00:19<04:47, 19.16s/it] 12%|█▎        | 2/16 [00:36<04:15, 18.27s/it] 19%|█▉        | 3/16 [00:54<03:53, 17.96s/it] 25%|██▌       | 4/16 [01:11<03:32, 17.75s/it] 31%|███▏      | 5/16 [01:28<03:12, 17.53s/it] 38%|███▊      | 6/16 [01:45<02:51, 17.20s/it]2026-10-17 07:58:06,380 - INFO - Fusion Step 70 - lr: 0.001971, clip: 1.07000
+ 44%|████▍     | 7/16 [02:00<02:28, 16.49s/it] 50%|█████     | 8/16 [02:17<02:12, 16.51s/it] 56%|█████▋    | 9/16 [02:31<01:50, 15.80s/it] 62%|██████▎   | 10/16 [02:48<01:37, 16.31s/it] 69%|██████▉   | 11/16 [03:06<01:23, 16.63s/it] 75%|███████▌  | 12/16 [03:23<01:07, 16.98s/it] 81%|████████▏ | 13/16 [03:41<00:51, 17.08s/it] 88%|████████▊ | 14/16 [03:58<00:34, 17.02s/it] 94%|█████████▍| 15/16 [04:14<00:16, 16.81s/it]100%|██████████| 16/16 [04:29<00:00, 16.23s/it]100%|██████████| 16/16 [04:29<00:00, 16.83s/it]
+2026-10-17 08:00:35,177 - INFO - Epoch[5] training loss means: {'fused_spatial_cls_loss': 0.6894664205610752, 'fused_spatial_avu_loss': 0.4160612318664789, 'fused_frequency_cls_loss': 0.6929098628461361, 'fused_frequency_avu_loss': 0.4161316677927971, 'overall': 2.2145691961050034}
+2026-10-17 08:00:35,179 - INFO - Epoch[5] training metric means: {'acc': 0.537109375, 'auc': nan, 'eer': nan, 'ap': -1.0}
+2026-10-17 08:00:36,526 - INFO - Latest checkpoint saved to /Users/sahilpatil/Documents/Default Project/DLED/results/combined_data_diagnostic/run_20261017T015537Z_a09df26b/checkpoints/ckpt_latest.pth (completed epoch 5)
+2026-10-17 08:00:36,527 - INFO - ===> Calculate Uncertainty Threshold !
+  0%|          | 0/16 [00:00<?, ?it/s]  6%|▋         | 1/16 [00:05<01:27,  5.86s/it] 12%|█▎        | 2/16 [00:12<01:25,  6.08s/it] 19%|█▉        | 3/16 [00:18<01:19,  6.13s/it] 25%|██▌       | 4/16 [00:24<01:13,  6.16s/it] 31%|███▏      | 5/16 [00:30<01:07,  6.16s/it] 38%|███▊      | 6/16 [00:36<01:01,  6.18s/it] 44%|████▍     | 7/16 [00:43<00:55,  6.17s/it] 50%|█████     | 8/16 [00:49<00:49,  6.17s/it] 56%|█████▋    | 9/16 [00:55<00:43,  6.19s/it] 62%|██████▎   | 10/16 [01:01<00:37,  6.20s/it] 69%|██████▉   | 11/16 [01:07<00:31,  6.20s/it] 75%|███████▌  | 12/16 [01:14<00:24,  6.22s/it] 81%|████████▏ | 13/16 [01:20<00:18,  6.22s/it] 88%|████████▊ | 14/16 [01:26<00:12,  6.23s/it] 94%|█████████▍| 15/16 [01:32<00:06,  6.18s/it]100%|██████████| 16/16 [01:39<00:00,  6.28s/it]100%|██████████| 16/16 [01:39<00:00,  6.20s/it]
+2026-10-17 08:02:15,726 - INFO - Retrieved uncertainty dict {'spatial': {'overall': 0.6837767958641052, 0: 0.7038551568984985, 1: 0.6729112863540649}, 'frequency': {'overall': 0.9413581490516663, 0: 0.9411640167236328, 1: 0.9502489566802979}, 'fused': {'overall': 0.4499710202217102, 0: 0.43597137928009033, 1: 0.4659620225429535}} !
+2026-10-17 08:02:15,728 - INFO - ===> Test start!
+2026-10-17 08:02:15,734 - INFO - 
+test dataset class distribution:
+  Real: 256 (50.0%)
+  Fake_1: 256 (50.0%)
+Testing:   0%|          | 0/6 [00:00<?, ?it/s]Testing:  17%|█▋        | 1/6 [00:18<01:32, 18.44s/it]Testing:  33%|███▎      | 2/6 [00:36<01:12, 18.22s/it]Testing:  50%|█████     | 3/6 [00:54<00:54, 18.18s/it]Testing:  67%|██████▋   | 4/6 [01:12<00:36, 18.11s/it]Testing:  83%|████████▎ | 5/6 [01:30<00:18, 18.06s/it]Testing: 100%|██████████| 6/6 [01:33<00:00, 12.76s/it]Testing: 100%|██████████| 6/6 [01:33<00:00, 15.51s/it]
+2026-10-17 08:03:48,854 - INFO - Class 0 spatial accuracy: 0.66406
+2026-10-17 08:03:48,854 - INFO - Class 0 frequency accuracy: 0.98047
+2026-10-17 08:03:48,855 - INFO - Class 0 fused accuracy: 0.86719
+2026-10-17 08:03:48,856 - INFO - Class 1 spatial accuracy: 0.42578
+2026-10-17 08:03:48,856 - INFO - Class 1 frequency accuracy: 0.00000
+2026-10-17 08:03:48,857 - INFO - Class 1 fused accuracy: 0.16016
+2026-10-17 08:03:48,858 - INFO - Sptial Prediction confidence - mean: 0.52617, std: 0.02004
+2026-10-17 08:03:48,859 - INFO - Sptial Prediction confidence range - min: 0.50645, max: 0.56828
+2026-10-17 08:03:48,859 - INFO - Sptial Prediction confidence - mean: 0.51350, std: 0.01115
+2026-10-17 08:03:48,860 - INFO - Sptial Prediction confidence range - min: 0.50430, max: 0.54830
+2026-10-17 08:03:48,861 - INFO - Sptial Prediction confidence - mean: 0.53768, std: 0.02747
+2026-10-17 08:03:48,862 - INFO - Sptial Prediction confidence range - min: 0.50209, max: 0.60180
+2026-10-17 08:03:48,862 - INFO - Spatial Mean probabilities per class: ['0.51106', '0.48894']
+2026-10-17 08:03:48,863 - INFO - Frequency Mean probabilities per class: ['0.51173', '0.48827']
+2026-10-17 08:03:48,864 - INFO - Fused Mean probabilities per class: ['0.53733', '0.46267']
+2026-10-17 08:03:48,865 - INFO - dataset: combined_A_validation    step: 80    testing-loss, spatial_cls_loss: 0.6736585246399045    testing-loss, spatial_avu_loss: 4.7963112398408114e-08    testing-loss, spatial_overall: 0.6736585842445493    testing-loss, frequency_cls_loss: 0.6921243444085121    testing-loss, frequency_avu_loss: 5.983747500271086e-08    testing-loss, frequency_overall: 0.6921244040131569    testing-loss, overall: 1.3657829752191901    
+2026-10-17 08:03:48,866 - INFO - dataset: combined_A_validation    step: 80    testing-metric, spatial_acc: 0.544921875    testing-metric, spatial_binary_acc: 0.57421875    testing-metric, frequency_acc: 0.490234375    testing-metric, frequency_binary_acc: 0.513671875    (new best)    testing-metric, fused_acc: 0.513671875    testing-metric, fused_binary_acc: 0.560546875    testing-metric, spatial_auc: 0.659820556640625    (new best)    testing-metric, spatial_eer: 0.39453125    testing-metric, spatial_ap: 0.67633194740296    (new best)    testing-metric, frequency_auc: 0.56378173828125    (new best)    testing-metric, frequency_eer: 0.45703125    testing-metric, frequency_ap: 0.5703269181312343    (new best)    testing-metric, fused_auc: 0.6277008056640625    (new best)    testing-metric, fused_eer: 0.41015625    testing-metric, fused_ap: 0.6632775227421502    (new best)    testing-metric, fused_precision: 0.6565656565656566    (new best)    testing-metric, fused_recall: 0.25390625    testing-metric, fused_f1: 0.36619718309859156    spatial_acc_real:0.33203; spatial_acc_fake:0.24219frequency_acc_real:0.49023; frequency_acc_fake:0.02344fused_acc_real:0.43359; fused_acc_fake:0.12695
+2026-10-17 08:03:48,871 - INFO - Epoch metrics saved to /Users/sahilpatil/Documents/Default Project/DLED/results/combined_data_diagnostic/run_20261017T015537Z_a09df26b/logs/dled_combined_A_2026-10-17-07-25-36/test/combined_A_validation/metrics_epoch_005.json
+2026-10-17 08:03:48,872 - INFO - dataset: avg    step: 80    testing-metric, fused_acc: 0.513671875    testing-metric, fused_binary_acc: 0.560546875    testing-metric, fused_auc: 0.6277008056640625    (new best)    testing-metric, fused_eer: 0.41015625    testing-metric, fused_ap: 0.6632775227421502    (new best)    
+2026-10-17 08:03:48,873 - INFO - Epoch metrics saved to /Users/sahilpatil/Documents/Default Project/DLED/results/combined_data_diagnostic/run_20261017T015537Z_a09df26b/logs/dled_combined_A_2026-10-17-07-25-36/test/avg/metrics_epoch_005.json
+2026-10-17 08:03:48,874 - INFO - ===> Test Done!
+2026-10-17 08:03:48,919 - INFO - ===> Epoch[4] end with testing acc: 
+================================ Each dataset best metric ================================ 
+| combined_A_validation:  fused_acc=0.564453125  spatial_acc=0.5703125  spatial_binary_acc=0.59765625  frequency_acc=0.490234375  frequency_binary_acc=0.513671875  fused_binary_acc=0.583984375  spatial_auc=0.659820556640625  spatial_eer=0.43359375  spatial_ap=0.67633194740296  frequency_auc=0.56378173828125  frequency_eer=0.5234375  frequency_ap=0.5703269181312343  fused_auc=0.6277008056640625  fused_eer=0.47265625  fused_ap=0.6632775227421502  fused_precision=0.6565656565656566  fused_recall=0.37109375  fused_f1=0.47146401985111663 | 
+============================================================================================= 
+================================== Average best metric ====================================== 
+| avg fused_acc: 0.564453125 | 
+| avg fused_binary_acc: 0.583984375 | 
+| avg fused_auc: 0.6277008056640625 | 
+| avg fused_eer: 0.47265625 | 
+| avg fused_ap: 0.6632775227421502 | 
+=============================================================================================!
+2026-10-17 08:03:48,919 - INFO - Stop Training on best Testing metric 
+================================ Each dataset best metric ================================ 
+| combined_A_validation:  fused_acc=0.564453125  spatial_acc=0.5703125  spatial_binary_acc=0.59765625  frequency_acc=0.490234375  frequency_binary_acc=0.513671875  fused_binary_acc=0.583984375  spatial_auc=0.659820556640625  spatial_eer=0.43359375  spatial_ap=0.67633194740296  frequency_auc=0.56378173828125  frequency_eer=0.5234375  frequency_ap=0.5703269181312343  fused_auc=0.6277008056640625  fused_eer=0.47265625  fused_ap=0.6632775227421502  fused_precision=0.6565656565656566  fused_recall=0.37109375  fused_f1=0.47146401985111663 | 
+============================================================================================= 
+================================== Average best metric ====================================== 
+| avg fused_acc: 0.564453125 | 
+| avg fused_binary_acc: 0.583984375 | 
+| avg fused_auc: 0.6277008056640625 | 
+| avg fused_eer: 0.47265625 | 
+| avg fused_ap: 0.6632775227421502 | 
+=============================================================================================
+2026-10-17 08:03:48,920 - INFO - Uncertainty threshold: {0: {'spatial': {'overall': 0.05452841520309448, 0: 0.05565907433629036, 1: 0.05320899933576584}, 'frequency': {'overall': 0.04199765622615814, 0: 0.042106207460165024, 1: 0.041973263025283813}, 'fused': {'overall': 0.0039881388656795025, 0: 0.004015377257019281, 1: 0.003975911531597376}}, 1: {'spatial': {'overall': 0.8177212476730347, 0: 0.8763021230697632, 1: 0.7547094821929932}, 'frequency': {'overall': 0.7005038857460022, 0: 0.737119734287262, 1: 0.6933319568634033}, 'fused': {'overall': 0.30769604444503784, 0: 0.38343560695648193, 1: 0.27898335456848145}}, 2: {'spatial': {'overall': 0.9979313611984253, 0: 0.9988895058631897, 1: 0.9974305033683777}, 'frequency': {'overall': 0.9965420365333557, 0: 0.9968110918998718, 1: 0.9962848424911499}, 'fused': {'overall': 0.9822462797164917, 0: 0.9806492328643799, 1: 0.9843016862869263}}, 3: {'spatial': {'overall': 0.98692387342453, 0: 0.9882646799087524, 1: 0.98692387342453}, 'frequency': {'overall': 0.9920427203178406, 0: 0.9920642971992493, 1: 0.9920427203178406}, 'fused': {'overall': 0.9458380937576294, 0: 0.957554042339325, 1: 0.9425632357597351}}, 4: {'spatial': {'overall': 0.6837767958641052, 0: 0.7038551568984985, 1: 0.6729112863540649}, 'frequency': {'overall': 0.9413581490516663, 0: 0.9411640167236328, 1: 0.9502489566802979}, 'fused': {'overall': 0.4499710202217102, 0: 0.43597137928009033, 1: 0.4659620225429535}}}
+2026-10-17 08:03:48,921 - INFO - Dataset combined_A_validation
+2026-10-17 08:03:48,932 - INFO - spatial_Accuracy: [0.54296875, 0.498046875, 0.546875, 0.5703125, 0.544921875]
+2026-10-17 08:03:48,933 - INFO - spatial_Binary Accuracy: [0.59765625, 0.56640625, 0.564453125, 0.58984375, 0.57421875]
+2026-10-17 08:03:48,934 - INFO - frequency_Accuracy: [0.484375, 0.490234375, 0.484375, 0.482421875, 0.490234375]
+2026-10-17 08:03:48,934 - INFO - frequency_Binary Accuracy: [0.51171875, 0.505859375, 0.501953125, 0.50390625, 0.513671875]
+2026-10-17 08:03:48,935 - INFO - fused_Accuracy: [0.478515625, 0.51171875, 0.515625, 0.564453125, 0.513671875]
+2026-10-17 08:03:48,935 - INFO - fused_Binary Accuracy: [0.52734375, 0.541015625, 0.537109375, 0.583984375, 0.560546875]
+2026-10-17 08:03:48,936 - INFO - ===> Save Model
+file_path:  /Users/sahilpatil/Documents/Default Project/DLED/results/combined_data_diagnostic/run_20261017T015537Z_a09df26b/checkpoints/dled_tf1_ep5_20261017_080348_c2_combined_A_train.pth

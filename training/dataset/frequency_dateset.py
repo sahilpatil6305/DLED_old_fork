@@ -83,8 +83,13 @@ class DeepfakeFrequencyDataset(data.Dataset):
                 image_list.extend(tmp_image)
                 label_list.extend(tmp_label)
                 
-            # Balance the dataset
-            image_list, label_list = self.balance_dataset(image_list, label_list, ratio=self.config['training_data_ratio'])
+            # Balance the dataset unless the caller needs the complete frame
+            # pool for an epoch-level sampler.
+            if self.config.get('balance_train_data', True):
+                image_list, label_list = self.balance_dataset(
+                    image_list, label_list, ratio=self.config['training_data_ratio'])
+            else:
+                print(f"Training data balancing disabled; using all {len(image_list)} frame references.")
         elif mode == 'test':
             dataset_list = config['test_dataset']
             print(f"Testing datasets: {dataset_list}")
@@ -101,8 +106,10 @@ class DeepfakeFrequencyDataset(data.Dataset):
                 image_list.extend(tmp_image)
                 label_list.extend(tmp_label)
                 
-            # Balance the test set as well
-            image_list, label_list = self.balance_dataset(image_list, label_list)
+            # Preserve every evaluation reference when requested. The default
+            # remains balanced to keep existing benchmark behavior unchanged.
+            if config.get('balance_test_data', True):
+                image_list, label_list = self.balance_dataset(image_list, label_list)
         else:
             raise NotImplementedError('Only train and test modes are supported.')
 
@@ -448,15 +455,17 @@ class DeepfakeFrequencyDataset(data.Dataset):
                 # In this case, we select self.frame_num frames from the original 270 frames
                 total_frames = len(frame_paths)
                 if self.frame_num < total_frames:
-                    total_frames = self.frame_num
                     if self.video_level:
                         # Select clip_size continuous frames
                         start_frame = random.randint(0, total_frames - self.frame_num)
                         frame_paths = frame_paths[start_frame:start_frame + self.frame_num]  # update total_frames
                     else:
                         # Select self.frame_num frames evenly distributed throughout the video
-                        step = total_frames // self.frame_num
-                        frame_paths = [frame_paths[i] for i in range(0, total_frames, step)][:self.frame_num]
+                        frame_indices = np.linspace(
+                            0, total_frames - 1, num=self.frame_num, dtype=int
+                        )
+                        frame_paths = [frame_paths[i] for i in frame_indices]
+                    total_frames = len(frame_paths)
                 
                 # If video-level methods, crop clips from the selected frames if needed
                 if self.video_level:
@@ -741,9 +750,10 @@ class DeepfakeFrequencyDataset(data.Dataset):
             try:
                 image, freq_map, high_map = self.load_rgb(image_path)
             except Exception as e:
-                # Skip this image and return the first one
-                print(f"Error loading image at index {index}: {e}")
-                return self.__getitem__(0)
+                raise RuntimeError(
+                    f"Failed to load image for dataset sample index {index}, "
+                    f"label {label}, path {image_path!r}: {e}"
+                ) from e
             image = np.array(image)  # Convert to numpy array for data augmentation
             freq_map = np.array(freq_map)
             high_map = np.array(high_map)

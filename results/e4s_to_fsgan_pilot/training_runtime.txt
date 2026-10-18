@@ -1,0 +1,1 @@
+training_wall_seconds=3820

@@ -1,0 +1,49 @@
+{
+  "spatial_acc": 0.55859375,
+  "spatial_binary_acc": 0.625,
+  "frequency_acc": 0.470703125,
+  "frequency_binary_acc": 0.525390625,
+  "fused_acc": 0.53125,
+  "fused_binary_acc": 0.5703125,
+  "spatial_auc": 0.7121124267578125,
+  "spatial_eer": 0.359375,
+  "spatial_ap": 0.7104079652707721,
+  "frequency_auc": 0.6271820068359375,
+  "frequency_eer": 0.41015625,
+  "frequency_ap": 0.6210056203539542,
+  "fused_auc": 0.705078125,
+  "fused_eer": 0.37109375,
+  "fused_ap": 0.7163236574058516,
+  "fused_precision": 0.7045454545454546,
+  "fused_recall": 0.2421875,
+  "fused_f1": 0.36046511627906974,
+  "binary_confusion_matrix_real_fake": [
+    [
+      230,
+      26
+    ],
+    [
+      194,
+      62
+    ]
+  ],
+  "binary_class_counts_real_fake": [
+    256,
+    256
+  ],
+  "losses": {
+    "spatial_cls_loss": 0.6690418678335845,
+    "spatial_avu_loss": 4.074536275044949e-08,
+    "spatial_overall": 0.6690419274382293,
+    "frequency_cls_loss": 0.6868149032816291,
+    "frequency_avu_loss": 5.960464435905699e-08,
+    "frequency_overall": 0.6868149628862739,
+    "overall": 1.355856891721487
+  },
+  "spatial_mean_confidence": 0.5238394737243652,
+  "spatial_std_confidence": 0.01898200437426567,
+  "frequency_mean_confidence": 0.5356367230415344,
+  "frequency_std_confidence": 0.028502939268946648,
+  "fused_mean_confidence": 0.5601144433021545,
+  "fused_std_confidence": 0.05663009360432625
+}

@@ -26,9 +26,13 @@
 #   DLED_NUM_EPOCHS           — number of epochs (default: 50)
 #   DLED_TEST_FRE             — test frequency in epochs (default: 50)
 #   DLED_PRETRAINED_ROOT      — directory used to cache CLIP weights
+#   DLED_DATASET_JSON_DIR     — directory containing protocol JSON files
+#   DLED_OUTPUT_DIR           — persistent root for logs and checkpoints
 #   DF40_DATA_ROOT / DF40_OLD_ROOT — see README for path-rewriting setup
 
 set -euo pipefail
+ROOT="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
+cd "$ROOT"
 
 if [[ $# -lt 1 ]]; then
     echo "Usage: $0 <NOEFS|NOFS|NOFR|open> [extra_train.py_args...]" >&2
@@ -42,9 +46,11 @@ LOCAL_RANK="${DLED_LOCAL_RANK:-0}"
 MAX_SAMPLES_PER_CLS="${DLED_MAX_SAMPLES_PER_CLS:-13504}"
 NUM_EPOCHS="${DLED_NUM_EPOCHS:-50}"
 TEST_FRE="${DLED_TEST_FRE:-50}"
-LOG_DIR_DEFAULT="./logs"
-LOG_DIR="${DLED_LOG_DIR:-$LOG_DIR_DEFAULT}"
-mkdir -p "$LOG_DIR"
+OUTPUT_DIR="${DLED_OUTPUT_DIR:-./outputs}"
+LOG_DIR="${DLED_LOG_DIR:-$OUTPUT_DIR/logs}"
+SAVE_DIR="${DLED_SAVE_DIR:-$OUTPUT_DIR/checkpoints/$PROTOCOL}"
+DATASET_JSON_DIR="${DLED_DATASET_JSON_DIR:-./datasets/DF40/json_file}"
+mkdir -p "$LOG_DIR" "$SAVE_DIR"
 
 case "$PROTOCOL" in
     NOEFS)
@@ -77,7 +83,7 @@ esac
 export NCCL_DEBUG="${NCCL_DEBUG:-INFO}"
 export NCCL_TIMEOUT="${NCCL_TIMEOUT:-7200}"
 
-LOG_FILE="$LOG_DIR/DLED_${PROTOCOL}.log"
+LOG_FILE="$LOG_DIR/DLED_${PROTOCOL}_$(date +%Y%m%d_%H%M%S)_$$.log"
 echo "Logging to $LOG_FILE"
 
 python3 training/train.py \
@@ -88,7 +94,12 @@ python3 training/train.py \
     --num_classes "$NUM_CLASSES" \
     --test_fre "$TEST_FRE" \
     --num_epochs "$NUM_EPOCHS" \
+    --dataset_json_folder "$DATASET_JSON_DIR" \
+    --log_dir "$LOG_DIR" \
+    --save_path "$SAVE_DIR" \
+    --save_model \
     --avu_reg \
     --max_samples_per_class "$MAX_SAMPLES_PER_CLS" \
+    --experiment_type "df40_${PROTOCOL}" \
     "$@" \
     > "$LOG_FILE" 2>&1
