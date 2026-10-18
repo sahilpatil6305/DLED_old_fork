@@ -8,8 +8,8 @@ Under `results/combined_data_corrected/run_20261017T034241Z_9ca284c7/`, these fo
 
 - `checkpoints/ckpt_latest.pth` — 1,011,396,798 bytes
 - `checkpoints/dled_tf1_ep5_20261017_134704_c2_combined_A_train.pth` — 1,011,433,640 bytes
-- `logs/dled_combined_A_fullpool_diagnostic_2026-10-17-09-12-40/test/combined_A_validation/ckpt_best.pth`
-- `logs/dled_combined_A_fullpool_diagnostic_2026-10-17-09-12-40/test/avg/ckpt_best.pth`
+- `logs/dled_combined_A_fullpool_diagnostic_2026-10-17-09-12-40/test/combined_A_validation/ckpt_best.pth` — 1,011,394,810 bytes
+- `logs/dled_combined_A_fullpool_diagnostic_2026-10-17-09-12-40/test/avg/ckpt_best.pth` — 1,011,394,810 bytes
 
 The run's 22 MiB expanded `manifests/combined_A_all_samples.jsonl` remains local; the compact summary and split JSONs are retained. The checkpoint paths, sizes, and experiment context are documented in [the experiment report](combined_data_corrected/EXPERIMENT_REPORT.md).
 

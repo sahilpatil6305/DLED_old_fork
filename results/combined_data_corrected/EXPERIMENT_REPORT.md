@@ -68,11 +68,11 @@ For that earlier checkpoint, saved frame-level fused test accuracy was 0.5215060
 
 ## Large local artifacts and Git exclusions
 
-The corrected run has four checkpoint files, each about 965 MiB. Exact byte sizes for the two files in `checkpoints/` are 1,011,396,798 bytes (`ckpt_latest.pth`) and 1,011,433,640 bytes (`dled_tf1_ep5_20261017_134704_c2_combined_A_train.pth`). The validation and average `ckpt_best.pth` copies are also about 965 MiB each. They remain local because ordinary GitHub Git files cannot host files of this size:
+The corrected run has four checkpoint files, each about 965 MiB. They remain local because ordinary GitHub Git files cannot host files of this size. Exact paths and byte sizes:
 
-- `results/combined_data_corrected/run_20261017T034241Z_9ca284c7/checkpoints/ckpt_latest.pth`
-- `results/combined_data_corrected/run_20261017T034241Z_9ca284c7/checkpoints/dled_tf1_ep5_20261017_134704_c2_combined_A_train.pth`
-- `results/combined_data_corrected/run_20261017T034241Z_9ca284c7/logs/dled_combined_A_fullpool_diagnostic_2026-10-17-09-12-40/test/combined_A_validation/ckpt_best.pth`
-- `results/combined_data_corrected/run_20261017T034241Z_9ca284c7/logs/dled_combined_A_fullpool_diagnostic_2026-10-17-09-12-40/test/avg/ckpt_best.pth`
+- `results/combined_data_corrected/run_20261017T034241Z_9ca284c7/checkpoints/ckpt_latest.pth` — 1,011,396,798 bytes
+- `results/combined_data_corrected/run_20261017T034241Z_9ca284c7/checkpoints/dled_tf1_ep5_20261017_134704_c2_combined_A_train.pth` — 1,011,433,640 bytes
+- `results/combined_data_corrected/run_20261017T034241Z_9ca284c7/logs/dled_combined_A_fullpool_diagnostic_2026-10-17-09-12-40/test/combined_A_validation/ckpt_best.pth` — 1,011,394,810 bytes
+- `results/combined_data_corrected/run_20261017T034241Z_9ca284c7/logs/dled_combined_A_fullpool_diagnostic_2026-10-17-09-12-40/test/avg/ckpt_best.pth` — 1,011,394,810 bytes
 
 The dataset tree (`datasets/`, about 85 MiB), virtual environment (`.venv/`, about 860 MiB), pretrained CLIP weights (`training/pretrained/clip/`, about 335 MiB), and expanded all-frame JSONL are local-only. No dataset, archive, credential, or secret is included in the experiment evidence commit. Checkpoints and JSONL files are covered by `.gitignore`; `results/EXCLUDED_ARTIFACTS.md` inventories other large local artifacts.
